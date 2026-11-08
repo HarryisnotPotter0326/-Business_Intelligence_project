@@ -1,0 +1,13 @@
+# 指令：src/ext_error_coding.py
+# 開始：2026-11-08 12:09:54
+
+錯誤原因歸類（120 則）：
+   人工歸類  假正評  假負評  合計    占比  其他3個模型也錯的平均數
+評分與文字矛盾   13   48  61 0.508          2.90
+   正負混雜   27    6  33 0.275          1.91
+   隱含負面   10    0  10 0.083          1.20
+ 太短／無意義    3    0   3 0.025          2.33
+ 模型真的判錯    4    1   5 0.042          1.20
+中性敘述／詢問    3    5   8 0.067          1.88
+[12:09:54] 評分與文字矛盾（標籤雜訊）占 51%；模型真的判錯只占 4%    (CPU 100%  RAM 0.1G  GPU 28%  VRAM 0.7/11.0G  TEMP 43C)
+[12:09:55] 結果已存到 results/ext_error_sample.csv、results/ext_error_coding.csv、figures/rq1_error_coding.png；記錄檔 C:\商業智慧專案\logs\ext_error_coding_20261108_120954.log    (CPU 70%  RAM 0.1G  GPU 28%  VRAM 0.7/11.0G  TEMP 43C)

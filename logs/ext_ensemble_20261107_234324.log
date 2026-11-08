@@ -1,0 +1,28 @@
+# 指令：src/ext_ensemble.py
+# 開始：2026-11-07 23:43:24
+[23:43:25] 可用的模型：TF-IDF（1 個種子）、Base 凍結（1 個種子）、Large 凍結（1 個種子）、Base 微調（8 個種子）、Large 微調（8 個種子）、m-BERT 微調（8 個種子）、Qwen-0.5B LoRA（1 個種子）、Qwen-1.5B LoRA（1 個種子）、Qwen-1.5B 零樣本（1 個種子）    (CPU 36%  RAM 0.2G  GPU 96%  VRAM 8.8/11.0G  TEMP 57C)
+
+集成結果（依測試 AUC 排序）：
+                                                                                            組合  模型數  test_auc  比Large微調_百分點    CI低    CI高  p_value
+                                                                     Large 微調 ＋ Qwen-1.5B LoRA    2    0.9878         0.052 -0.012  0.119    0.117
+                                                           Large 微調 ＋ Base 微調 ＋ Qwen-1.5B LoRA    3    0.9875         0.021 -0.034  0.081    0.454
+                                                                                      Large 微調    1    0.9873           NaN    NaN    NaN      NaN
+                                                          Large 微調 ＋ Qwen-1.5B LoRA ＋ Large 凍結    3    0.9871        -0.024 -0.107  0.064    0.578
+                                                                                Qwen-1.5B LoRA    1    0.9867           NaN    NaN    NaN      NaN
+                                                                            Large 微調 ＋ Base 微調    2    0.9867        -0.058 -0.101 -0.016    0.006
+                                                                Base 微調 ＋ Large 微調 ＋ m-BERT 微調    3    0.9862        -0.108 -0.180 -0.040    0.001
+                                                                 Large 微調 ＋ Base 微調 ＋ Large 凍結    3    0.9861        -0.123 -0.210 -0.041    0.002
+                                                            Large 微調 ＋ Qwen-1.5B LoRA ＋ TF-IDF    3    0.9860        -0.126 -0.247 -0.015    0.021
+TF-IDF ＋ Base 凍結 ＋ Large 凍結 ＋ Base 微調 ＋ Large 微調 ＋ m-BERT 微調 ＋ Qwen-0.5B LoRA ＋ Qwen-1.5B LoRA    8    0.9858        -0.152 -0.260 -0.057    0.001
+                                                                           Large 微調 ＋ Large 凍結    2    0.9857        -0.161 -0.274 -0.059    0.003
+                                                                                       Base 微調    1    0.9854           NaN    NaN    NaN      NaN
+                                                                   Large 微調 ＋ Base 微調 ＋ TF-IDF    3    0.9851        -0.216 -0.328 -0.113    0.000
+                                                                  Large 微調 ＋ TF-IDF ＋ Large 凍結    3    0.9845        -0.278 -0.416 -0.156    0.000
+                                                                             Large 微調 ＋ TF-IDF    2    0.9838        -0.354 -0.522 -0.204    0.000
+                                                                                Qwen-0.5B LoRA    1    0.9836           NaN    NaN    NaN      NaN
+                                                                                     m-BERT 微調    1    0.9824           NaN    NaN    NaN      NaN
+                                                                                      Large 凍結    1    0.9816           NaN    NaN    NaN      NaN
+                                                                                       Base 凍結    1    0.9774           NaN    NaN    NaN      NaN
+                                                                                        TF-IDF    1    0.9738           NaN    NaN    NaN      NaN
+                                                                                 Qwen-1.5B 零樣本    1    0.9701           NaN    NaN    NaN      NaN
+[23:44:27] 結果已存到 results/ext_ensemble.csv；記錄檔 C:\商業智慧專案\logs\ext_ensemble_20261107_234324.log    (CPU 25%  RAM 0.2G  GPU 98%  VRAM 8.8/11.0G  TEMP 62C)

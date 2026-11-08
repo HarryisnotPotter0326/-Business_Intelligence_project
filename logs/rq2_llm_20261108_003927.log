@@ -1,0 +1,19 @@
+# 指令：src/rq2_llm.py qwen-0.5b --shots 8 --score_val
+# 開始：2026-11-08 00:39:27
+[00:39:32] 少樣本提示：8 則範例（正負各半）    (CPU 17%  RAM 0.8G  GPU 0%  VRAM 0.5/11.0G  TEMP 52C)
+[00:39:32] GPU：NVIDIA GeForce RTX 2080 Ti；載入 Qwen/Qwen2.5-0.5B-Instruct（fp16）    (CPU 56%  RAM 0.8G  GPU 0%  VRAM 0.5/11.0G  TEMP 52C)
+[00:41:13] qwen-0.5b fewshot8 n=0: 測試 AUC 0.9564  準確率 0.8747  負評 F1 0.8233  判為正面比例 0.591    (CPU 33%  RAM 2.4G  GPU 97%  VRAM 8.4/11.0G  TEMP 66C)
+[00:41:13] 結果已存到 C:\商業智慧專案\results\rq2_llm.csv    (CPU 22%  RAM 2.4G  GPU 97%  VRAM 8.4/11.0G  TEMP 66C)
+    model     mode  train_size  seed  epochs      lr lora_r  trainable_params train_loss  test_auc  test_acc  test_f1_neg  pred_pos_rate  train_minutes  infer_sec_per_1k  n_test  val_auc
+qwen-0.5b     lora       30464    42       1  0.0002   16.0           8798208      0.167    0.9836    0.9525       0.9215         0.6940          13.70               3.4    3807      NaN
+qwen-1.5b     lora        1000    42       1  0.0002   16.0          18464768     0.5538    0.9812    0.9406       0.9016         0.6963           0.69               7.7    3807      NaN
+qwen-1.5b     lora        5000    42       1  0.0002   16.0          18464768     0.1486    0.9846    0.9553       0.9264         0.6927           3.36               7.7    3807      NaN
+qwen-1.5b     lora       30464    42       1  0.0002   16.0          18464768     0.1601    0.9867    0.9551       0.9257         0.6950          20.18               7.7    3807      NaN
+qwen-0.5b zeroshot           0    42       0     NaN    NaN                 0        NaN    0.9521    0.8553       0.8012         0.5716           0.00               2.1    3807   0.9558
+qwen-1.5b zeroshot           0    42       0     NaN    NaN                 0        NaN    0.9701    0.9165       0.8742         0.6354           0.00               5.5    3807   0.9711
+  qwen-3b zeroshot           0    42       0     NaN    NaN                 0        NaN    0.9686    0.9070       0.8629         0.6212           0.00              10.4    3807   0.9697
+qwen-0.5b fewshot4           0    42       0     NaN    NaN                 0        NaN    0.9571    0.8721       0.8209         0.5852           0.00               7.3    3807   0.9612
+qwen-1.5b fewshot4           0    42       0     NaN    NaN                 0        NaN    0.9712    0.9194       0.8774         0.6414           0.00              31.2    3807   0.9717
+  qwen-3b fewshot4           0    42       0     NaN    NaN                 0        NaN    0.9720    0.9070       0.8628         0.6217           0.00             186.5    3807   0.9695
+qwen-0.5b fewshot8           0    42       0    None   None                 0       None    0.9564    0.8747       0.8233         0.5905           0.00              13.0    3807   0.9600
+[00:41:13] 記錄檔 C:\商業智慧專案\logs\rq2_llm_20261108_003927.log    (CPU 29%  RAM 2.4G  GPU 97%  VRAM 8.4/11.0G  TEMP 66C)

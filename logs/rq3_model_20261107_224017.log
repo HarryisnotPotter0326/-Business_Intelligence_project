@@ -1,0 +1,56 @@
+# 指令：src/rq3_model.py
+# 開始：2026-11-07 22:40:17
+[22:40:17] 訂單 98,673 筆，負評率 14.7%    (CPU 47%  RAM 0.3G  GPU 14%  VRAM 1.1/11.0G  TEMP 46C)
+[22:40:23] [full/time/neg] LR           驗證 AUC 0.7720  測試 AUC 0.7371  PR-AUC 0.3873  F1 0.4013  5 秒  {'C': 1.0}    (CPU 65%  RAM 0.4G  GPU 28%  VRAM 1.1/11.0G  TEMP 46C)
+[22:40:30] [full/time/neg] DecisionTree 驗證 AUC 0.7655  測試 AUC 0.7372  PR-AUC 0.3921  F1 0.4256  7 秒  {'max_depth': 8}    (CPU 22%  RAM 0.5G  GPU 14%  VRAM 1.1/11.0G  TEMP 46C)
+[22:41:02] [full/time/neg] RandomForest 驗證 AUC 0.7707  測試 AUC 0.7419  PR-AUC 0.4159  F1 0.4331  32 秒  {'min_samples_leaf': 20}    (CPU 95%  RAM 0.6G  GPU 16%  VRAM 1.1/11.0G  TEMP 45C)
+[22:41:08] [full/time/neg] XGBoost      驗證 AUC 0.7803  測試 AUC 0.7480  PR-AUC 0.4236  F1 0.4351  6 秒  {'max_depth': 4, 'n_estimators': 177}    (CPU 88%  RAM 0.6G  GPU 3%  VRAM 1.3/11.0G  TEMP 47C)
+[22:41:11] [full/time/neg] LightGBM     驗證 AUC 0.7789  測試 AUC 0.7474  PR-AUC 0.4253  F1 0.4397  3 秒  {'num_leaves': 31, 'n_estimators': 87}    (CPU 75%  RAM 0.6G  GPU 14%  VRAM 1.3/11.0G  TEMP 46C)
+[22:41:15] [preship/time/neg] LR           驗證 AUC 0.6457  測試 AUC 0.6159  PR-AUC 0.2173  F1 0.2410  4 秒  {'C': 0.01}    (CPU 59%  RAM 0.6G  GPU 13%  VRAM 1.3/11.0G  TEMP 46C)
+[22:41:21] [preship/time/neg] DecisionTree 驗證 AUC 0.6464  測試 AUC 0.6111  PR-AUC 0.2068  F1 0.2721  6 秒  {'max_depth': 6}    (CPU 20%  RAM 0.6G  GPU 14%  VRAM 1.3/11.0G  TEMP 45C)
+[22:41:47] [preship/time/neg] RandomForest 驗證 AUC 0.6567  測試 AUC 0.6305  PR-AUC 0.2364  F1 0.2567  26 秒  {'min_samples_leaf': 20}    (CPU 95%  RAM 0.7G  GPU 17%  VRAM 1.3/11.0G  TEMP 45C)
+[22:41:52] [preship/time/neg] XGBoost      驗證 AUC 0.6632  測試 AUC 0.6309  PR-AUC 0.2373  F1 0.2663  4 秒  {'max_depth': 4, 'n_estimators': 53}    (CPU 84%  RAM 0.6G  GPU 17%  VRAM 1.3/11.0G  TEMP 45C)
+[22:41:55] [preship/time/neg] LightGBM     驗證 AUC 0.6644  測試 AUC 0.6350  PR-AUC 0.2319  F1 0.2555  4 秒  {'num_leaves': 31, 'n_estimators': 205}    (CPU 82%  RAM 0.6G  GPU 18%  VRAM 1.2/11.0G  TEMP 45C)
+[22:42:00] [full/random/neg] LR           驗證 AUC 0.7842  測試 AUC 0.7850  PR-AUC 0.5057  F1 0.5205  5 秒  {'C': 0.01}    (CPU 55%  RAM 0.6G  GPU 17%  VRAM 1.2/11.0G  TEMP 45C)
+[22:42:08] [full/random/neg] DecisionTree 驗證 AUC 0.7844  測試 AUC 0.7894  PR-AUC 0.5248  F1 0.5344  8 秒  {'max_depth': 8}    (CPU 21%  RAM 0.6G  GPU 17%  VRAM 1.2/11.0G  TEMP 45C)
+[22:42:43] [full/random/neg] RandomForest 驗證 AUC 0.7947  測試 AUC 0.8014  PR-AUC 0.5434  F1 0.5377  35 秒  {'min_samples_leaf': 20}    (CPU 95%  RAM 0.8G  GPU 0%  VRAM 1.3/11.0G  TEMP 44C)
+[22:42:52] [full/random/neg] XGBoost      驗證 AUC 0.7984  測試 AUC 0.8021  PR-AUC 0.5507  F1 0.5460  9 秒  {'max_depth': 6, 'n_estimators': 177}    (CPU 92%  RAM 0.6G  GPU 0%  VRAM 1.3/11.0G  TEMP 44C)
+[22:42:55] [full/random/neg] LightGBM     驗證 AUC 0.7966  測試 AUC 0.8004  PR-AUC 0.5527  F1 0.5423  4 秒  {'num_leaves': 63, 'n_estimators': 101}    (CPU 80%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 44C)
+[22:43:00] [preship/random/neg] LR           驗證 AUC 0.6470  測試 AUC 0.6600  PR-AUC 0.2876  F1 0.3155  4 秒  {'C': 0.01}    (CPU 57%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 44C)
+[22:43:06] [preship/random/neg] DecisionTree 驗證 AUC 0.6546  測試 AUC 0.6614  PR-AUC 0.2864  F1 0.3393  6 秒  {'max_depth': 8}    (CPU 18%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 44C)
+[22:43:33] [preship/random/neg] RandomForest 驗證 AUC 0.6823  測試 AUC 0.6915  PR-AUC 0.3250  F1 0.3582  27 秒  {'min_samples_leaf': 20}    (CPU 93%  RAM 0.8G  GPU 0%  VRAM 1.2/11.0G  TEMP 44C)
+[22:43:43] [preship/random/neg] XGBoost      驗證 AUC 0.6866  測試 AUC 0.6947  PR-AUC 0.3330  F1 0.3610  10 秒  {'max_depth': 6, 'n_estimators': 269}    (CPU 93%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 44C)
+[22:43:48] [preship/random/neg] LightGBM     驗證 AUC 0.6910  測試 AUC 0.6952  PR-AUC 0.3308  F1 0.3643  4 秒  {'num_leaves': 63, 'n_estimators': 214}    (CPU 83%  RAM 0.7G  GPU 0%  VRAM 1.3/11.0G  TEMP 43C)
+[22:43:52] [full/time/neg3] LR           驗證 AUC 0.7217  測試 AUC 0.6976  PR-AUC 0.4332  F1 0.4026  4 秒  {'C': 1.0}    (CPU 57%  RAM 0.6G  GPU 0%  VRAM 1.3/11.0G  TEMP 43C)
+[22:43:59] [full/time/neg3] DecisionTree 驗證 AUC 0.7187  測試 AUC 0.6901  PR-AUC 0.4282  F1 0.4088  7 秒  {'max_depth': 8}    (CPU 18%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 43C)
+[22:44:28] [full/time/neg3] RandomForest 驗證 AUC 0.7174  測試 AUC 0.6997  PR-AUC 0.4514  F1 0.4041  29 秒  {'min_samples_leaf': 20}    (CPU 94%  RAM 0.8G  GPU 0%  VRAM 1.2/11.0G  TEMP 43C)
+[22:44:34] [full/time/neg3] XGBoost      驗證 AUC 0.7250  測試 AUC 0.7041  PR-AUC 0.4567  F1 0.4033  6 秒  {'max_depth': 6, 'n_estimators': 127}    (CPU 88%  RAM 0.6G  GPU 0%  VRAM 1.2/11.0G  TEMP 43C)
+[22:44:37] [full/time/neg3] LightGBM     驗證 AUC 0.7243  測試 AUC 0.7045  PR-AUC 0.4584  F1 0.4121  3 秒  {'num_leaves': 31, 'n_estimators': 99}    (CPU 75%  RAM 0.7G  GPU 11%  VRAM 1.2/11.0G  TEMP 43C)
+
+features  split label        model  test_auc  test_ap  test_precision  test_recall  test_f1  seconds
+    full random   neg      XGBoost    0.8021   0.5507          0.6029       0.4988   0.5460      8.9
+    full random   neg RandomForest    0.8014   0.5434          0.5902       0.4938   0.5377     34.7
+    full random   neg     LightGBM    0.8004   0.5527          0.6331       0.4743   0.5423      3.7
+    full random   neg DecisionTree    0.7894   0.5248          0.5810       0.4947   0.5344      7.6
+    full random   neg           LR    0.7850   0.5057          0.5699       0.4789   0.5205      4.7
+ preship random   neg     LightGBM    0.6952   0.3308          0.2922       0.4836   0.3643      4.3
+ preship random   neg      XGBoost    0.6947   0.3330          0.2776       0.5160   0.3610     10.4
+ preship random   neg RandomForest    0.6915   0.3250          0.2966       0.4521   0.3582     27.2
+ preship random   neg DecisionTree    0.6614   0.2864          0.2653       0.4706   0.3393      6.1
+ preship random   neg           LR    0.6600   0.2876          0.2759       0.3683   0.3155      4.3
+    full   time   neg      XGBoost    0.7480   0.4236          0.5696       0.3519   0.4351      6.4
+    full   time   neg     LightGBM    0.7474   0.4253          0.5352       0.3731   0.4397      2.7
+    full   time   neg RandomForest    0.7419   0.4159          0.5398       0.3615   0.4331     31.8
+    full   time   neg DecisionTree    0.7372   0.3921          0.4458       0.4072   0.4256      7.2
+    full   time   neg           LR    0.7371   0.3873          0.4248       0.3803   0.4013      5.2
+ preship   time   neg     LightGBM    0.6350   0.2319          0.2563       0.2548   0.2555      3.6
+ preship   time   neg      XGBoost    0.6309   0.2373          0.2498       0.2851   0.2663      4.4
+ preship   time   neg RandomForest    0.6305   0.2364          0.2446       0.2702   0.2567     26.5
+ preship   time   neg           LR    0.6159   0.2173          0.1835       0.3510   0.2410      4.4
+ preship   time   neg DecisionTree    0.6111   0.2068          0.2626       0.2822   0.2721      5.7
+    full   time  neg3     LightGBM    0.7045   0.4584          0.5471       0.3306   0.4121      2.8
+    full   time  neg3      XGBoost    0.7041   0.4567          0.5825       0.3084   0.4033      6.2
+    full   time  neg3 RandomForest    0.6997   0.4514          0.4991       0.3394   0.4041     29.3
+    full   time  neg3           LR    0.6976   0.4332          0.4438       0.3684   0.4026      4.0
+    full   time  neg3 DecisionTree    0.6901   0.4282          0.4589       0.3687   0.4088      6.9
+[22:44:37] 結果已存到 C:\商業智慧專案\results\rq3_models.csv；記錄檔 C:\商業智慧專案\logs\rq3_model_20261107_224017.log    (CPU 100%  RAM 0.5G  GPU 11%  VRAM 1.2/11.0G  TEMP 43C)

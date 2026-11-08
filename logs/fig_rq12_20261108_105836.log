@@ -1,0 +1,10 @@
+# 指令：src/fig_rq12.py
+# 開始：2026-11-08 10:58:36
+[11:01:19] 已存 figures/rq1_forest.png    (CPU 16%  RAM 0.2G  GPU 7%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:19] 已存 figures/rq1_sweep.png    (CPU 24%  RAM 0.2G  GPU 7%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:19] 已存 figures/rq1_tfidf_gap.png    (CPU 27%  RAM 0.3G  GPU 7%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:20] 已存 figures/rq1_error.png    (CPU 18%  RAM 0.3G  GPU 7%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:20] 已存 figures/rq2_learning_curve.png    (CPU 28%  RAM 0.3G  GPU 7%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:21] 已存 figures/rq2_llm.png    (CPU 14%  RAM 0.3G  GPU 8%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:21] 已存 figures/rq2_pareto.png    (CPU 19%  RAM 0.2G  GPU 8%  VRAM 0.6/11.0G  TEMP 42C)
+[11:01:21] 完成；記錄檔 C:\商業智慧專案\logs\fig_rq12_20261108_105836.log    (CPU 0%  RAM 0.2G  GPU 8%  VRAM 0.6/11.0G  TEMP 42C)

@@ -1,0 +1,8 @@
+method,device,params_M,train_seconds,sec_per_1k,peak_vram_GB
+TF-IDF ＋ LR,CPU,0.01,1.3,0.0179,0.0
+bertimbau-base,GPU,108.9,,0.294,0.99
+bertimbau-large,GPU,334.4,,0.936,2.42
+mbert,GPU,177.9,,0.295,1.27
+qwen-0.5b,GPU,494.0,,2.037,1.25
+qwen-1.5b,GPU,1543.7,,5.485,3.54
+qwen-3b,GPU,3085.9,,10.398,6.85

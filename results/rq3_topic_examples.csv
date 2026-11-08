@@ -1,0 +1,48 @@
+topic,review_score,review_comment_message,is_late,delivered,category
+0,1,Ainda nao recebi o produto,1.0,1.0,health_beauty
+0,1,Ainda não recebi o produto...,0.0,1.0,electronics
+0,1,Não recebi o produto,1.0,1.0,office_furniture
+0,1,Ainda não recebi o produto :(,0.0,1.0,bed_bath_table
+0,2,Não recebi o produto ainda,,0.0,auto
+1,1,Produto não entregue,1.0,1.0,cool_stuff
+1,1,o produto não foi entregue,0.0,1.0,unknown
+1,1,Produto ainda não foi entregue,1.0,1.0,bed_bath_table
+1,1,O produto ainda ainda não foi entregue.,1.0,1.0,auto
+1,1,"Meu produto não foi entregue e está constatado como entregue...
+",0.0,1.0,watches_gifts
+2,1,meu produto não chegou,,0.0,stationery
+2,1,O produto ainda não chegou,1.0,1.0,computers_accessories
+2,1,O produto ainda não chegou,1.0,1.0,sports_leisure
+2,1,Produto ainda não chegou,1.0,1.0,telephony
+2,2,O produto não chegou!,0.0,1.0,bed_bath_table
+3,1,comprei um termostato e não aquecedor,0.0,1.0,pet_shop
+3,1,Comprei um recibie outro,0.0,1.0,watches_gifts
+3,1,Comprei o Iso X e recebi o Nitro Hard ,0.0,1.0,sports_leisure
+3,1,Comprei dois cobertores e recebi apenas um,0.0,1.0,bed_bath_table
+3,1,Comprei 02 rolos tecrbi 01.,0.0,1.0,furniture_decor
+4,2,O produto veio com uma lente arranhada.,1.0,1.0,telephony
+4,1,O produto não veio,0.0,1.0,health_beauty
+4,1,O produto veio estragado,0.0,1.0,computers_accessories
+4,2,Produto veio torto na ponta onde medi,0.0,1.0,garden_tools
+4,1,O produto não veio,,0.0,health_beauty
+5,1,O prazo da entrega nao foi comprido.,1.0,1.0,garden_tools
+5,1,Não respeitou o prazo da entrega,1.0,1.0,perfumery
+5,1,Prazo de entrega gigante e mesmo assim conseguiram atrasar a entrega.,0.0,1.0,bed_bath_table
+5,1,Prazo de entrega gigante e mesmo assim conseguiram atrasar a entrega.,1.0,1.0,bed_bath_table
+5,1,Ainda esta no prazo para entrega,0.0,1.0,auto
+6,1,não recebi,,0.0,furniture_decor
+6,1,Ainda não recebi,0.0,1.0,bed_bath_table
+6,1,Não recebi,,0.0,
+6,1,Não recebi,0.0,1.0,bed_bath_table
+6,1,Ainda não recebi,1.0,1.0,perfumery
+7,1,"Nunca tive problemas com esse site e no mesmo mes tive 2 transtornos, não compro mais nada aqui. E quero meu dinheiro de volta! Não quero mais a compra ou saber dessa loja.
+Grata! ",,0.0,furniture_decor
+7,1,Quero meu dinheiro de volta. ,,0.0,health_beauty
+7,1,Foi a primeira vez que fiz uma compra pela a internet e foi uma péssima esperiencia.Agora quero saber se vou ficar no prejuízo? Não recebi o produto e quero meu dinheiro de volta!!,1.0,1.0,telephony
+7,1,Quero meu dinheiro de volta,1.0,1.0,telephony
+7,1,Quero meu dinheiro de volta ,,0.0,health_beauty
+8,1,"Péssima qualidade, estarei devolvendo o produto.",1.0,1.0,furniture_decor
+8,1,Produto de péssima qualidade!,0.0,1.0,bed_bath_table
+8,1,O produto de pessima qualidade se pudesse devolvia.,0.0,1.0,unknown
+8,1,Produto de péssima qualidade ,0.0,1.0,sports_leisure
+8,1,Produto de péssima qualidade,0.0,1.0,housewares

@@ -1,0 +1,28 @@
+model,strategy,dim,C,val_auc,test_auc
+bertimbau-base,[CLS],768,0.03,0.9698,0.9749
+bertimbau-base,mean,768,0.003,0.974,0.9749
+bertimbau-base,max,768,0.003,0.9685,0.9693
+bertimbau-base,[CLS]+mean,1536,0.003,0.9744,0.9774
+bertimbau-base,mean+max,1536,0.003,0.9742,0.9745
+bertimbau-base,[CLS]+mean+std,2304,0.003,0.9743,0.9782
+bertimbau-base,[CLS]+mean+max,2304,0.003,0.9742,0.9765
+bertimbau-base,[CLS] last4,768,0.03,0.9703,0.975
+bertimbau-base,mean last4,768,0.003,0.9737,0.9773
+mbert,[CLS],768,0.1,0.9377,0.9404
+mbert,mean,768,0.1,0.952,0.9559
+mbert,max,768,0.003,0.9444,0.9515
+mbert,[CLS]+mean,1536,0.03,0.9547,0.958
+mbert,mean+max,1536,0.01,0.9548,0.9599
+mbert,[CLS]+mean+std,2304,0.01,0.958,0.9621
+mbert,[CLS]+mean+max,2304,0.01,0.9569,0.9606
+mbert,[CLS] last4,768,0.01,0.9326,0.9391
+mbert,mean last4,768,0.03,0.9541,0.9587
+bertimbau-large,[CLS],1024,0.003,0.9768,0.9813
+bertimbau-large,mean,1024,0.001,0.9771,0.9801
+bertimbau-large,max,1024,0.001,0.9747,0.9776
+bertimbau-large,[CLS]+mean,2048,0.001,0.9779,0.9823
+bertimbau-large,mean+max,2048,0.001,0.9773,0.9809
+bertimbau-large,[CLS]+mean+std,3072,0.001,0.9781,0.9826
+bertimbau-large,[CLS]+mean+max,3072,0.001,0.9781,0.9827
+bertimbau-large,[CLS] last4,1024,0.001,0.9779,0.9808
+bertimbau-large,mean last4,1024,0.003,0.9782,0.9816

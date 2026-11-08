@@ -1,0 +1,17 @@
+# Python 虛擬環境與暫存
+.venv/
+__pycache__/
+*.pyc
+
+# 中間檔（BERT 向量、訂單資料快取，可由程式重新產生，約 2.3 GB）
+cache/
+
+# 資料檔太大（最大 1.1 GB，超過 GitHub 單檔 100 MB 上限），請依 datasets/README.md 下載
+datasets/*
+!datasets/README.md
+
+# 報告的中間檔與壓縮檔（程式碼已在 repo 中；資料壓縮檔 472 MB 超過上限）
+報告/_build/
+報告/*.zip
+report/_tmp_*.md
+logs/-c_*.log

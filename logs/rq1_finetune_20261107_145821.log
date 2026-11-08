@@ -1,0 +1,39 @@
+# 指令：src/rq1_finetune.py bertimbau-base --lr 5e-5 --dropout 0.1 --epochs 4 --seeds 42 43 44 --out rq1_sweep.csv
+# 開始：2026-11-07 14:58:21
+[14:58:25] GPU：NVIDIA GeForce RTX 2080 Ti    (CPU 16%  RAM 0.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 56C)
+[14:58:29] [bertimbau-base seed=42] 訓練 30464 筆，4 epoch × 952 步，LR 5e-05，dropout 0.1，batch 32    (CPU 20%  RAM 1.5G  GPU 0%  VRAM 1.4/11.0G  TEMP 56C)
+[14:59:37] [bertimbau-base seed=42] epoch 1: loss 0.1798  驗證 AUC 0.9790  測試 AUC 0.9828  準確率 0.9475  負評 F1 0.9147  累計 1.1 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 64C)
+[15:00:46] [bertimbau-base seed=42] epoch 2: loss 0.1201  驗證 AUC 0.9791  測試 AUC 0.9838  準確率 0.9538  負評 F1 0.9246  累計 2.3 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:01:55] [bertimbau-base seed=42] epoch 3: loss 0.0737  驗證 AUC 0.9792  測試 AUC 0.9830  準確率 0.9488  負評 F1 0.9158  累計 3.4 分    (CPU 20%  RAM 1.8G  GPU 98%  VRAM 4.1/11.0G  TEMP 65C)
+[15:03:04] [bertimbau-base seed=42] epoch 4: loss 0.0543  驗證 AUC 0.9772  測試 AUC 0.9804  準確率 0.9462  負評 F1 0.9100  累計 4.6 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:03:07] [bertimbau-base seed=43] 訓練 30464 筆，4 epoch × 952 步，LR 5e-05，dropout 0.1，batch 32    (CPU 25%  RAM 2.2G  GPU 0%  VRAM 2.9/11.0G  TEMP 59C)
+[15:04:16] [bertimbau-base seed=43] epoch 1: loss 0.1785  驗證 AUC 0.9775  測試 AUC 0.9806  準確率 0.9412  負評 F1 0.9059  累計 1.1 分    (CPU 18%  RAM 2.2G  GPU 99%  VRAM 4.0/11.0G  TEMP 65C)
+[15:05:25] [bertimbau-base seed=43] epoch 2: loss 0.1343  驗證 AUC 0.9795  測試 AUC 0.9819  準確率 0.9448  負評 F1 0.9098  累計 2.3 分    (CPU 18%  RAM 2.2G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:06:34] [bertimbau-base seed=43] epoch 3: loss 0.0819  驗證 AUC 0.9783  測試 AUC 0.9814  準確率 0.9425  負評 F1 0.9029  累計 3.4 分    (CPU 22%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:07:43] [bertimbau-base seed=43] epoch 4: loss 0.0387  驗證 AUC 0.9750  測試 AUC 0.9783  準確率 0.9438  負評 F1 0.9063  累計 4.6 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:07:46] [bertimbau-base seed=44] 訓練 30464 筆，4 epoch × 952 步，LR 5e-05，dropout 0.1，batch 32    (CPU 26%  RAM 2.2G  GPU 0%  VRAM 3.0/11.0G  TEMP 59C)
+[15:08:54] [bertimbau-base seed=44] epoch 1: loss 0.1577  驗證 AUC 0.9773  測試 AUC 0.9810  準確率 0.9488  負評 F1 0.9165  累計 1.1 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:10:04] [bertimbau-base seed=44] epoch 2: loss 0.1222  驗證 AUC 0.9802  測試 AUC 0.9826  準確率 0.9496  負評 F1 0.9187  累計 2.3 分    (CPU 16%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:11:12] [bertimbau-base seed=44] epoch 3: loss 0.0763  驗證 AUC 0.9784  測試 AUC 0.9809  準確率 0.9467  負評 F1 0.9115  累計 3.4 分    (CPU 18%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:12:21] [bertimbau-base seed=44] epoch 4: loss 0.0495  驗證 AUC 0.9756  測試 AUC 0.9788  準確率 0.9475  負評 F1 0.9132  累計 4.6 分    (CPU 19%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 65C)
+[15:12:21] 結果已存到 C:\商業智慧專案\results\rq1_sweep.csv    (CPU 23%  RAM 1.5G  GPU 98%  VRAM 2.9/11.0G  TEMP 65C)
+         model  train_size       lr  dropout  epochs  seeds  test_auc_mean  test_auc_std  test_acc_mean  minutes
+bertimbau-base       30464 0.000010      0.0       1      3         0.9837        0.0005         0.9494   1.2000
+bertimbau-base       30464 0.000010      0.0       2      3         0.9844        0.0003         0.9512   2.4100
+bertimbau-base       30464 0.000010      0.0       4      3         0.9824        0.0002         0.9490   4.8667
+bertimbau-base       30464 0.000010      0.1       1      3         0.9837        0.0005         0.9494   1.2033
+bertimbau-base       30464 0.000010      0.1       2      3         0.9843        0.0004         0.9511   2.2533
+bertimbau-base       30464 0.000010      0.1       4      3         0.9824        0.0006         0.9476   4.8967
+bertimbau-base       30464 0.000025      0.0       1      3         0.9846        0.0002         0.9519   1.2067
+bertimbau-base       30464 0.000025      0.0       2      3         0.9849        0.0008         0.9516   2.4367
+bertimbau-base       30464 0.000025      0.0       4      3         0.9800        0.0003         0.9483   4.9167
+bertimbau-base       30464 0.000025      0.1       1      3         0.9846        0.0002         0.9519   1.2100
+bertimbau-base       30464 0.000025      0.1       2      3         0.9849        0.0009         0.9518   2.2667
+bertimbau-base       30464 0.000025      0.1       4      3         0.9801        0.0004         0.9477   4.9200
+bertimbau-base       30464 0.000050      0.0       1      3         0.9849        0.0001         0.9526   1.2067
+bertimbau-base       30464 0.000050      0.0       2      3         0.9839        0.0005         0.9505   2.4400
+bertimbau-base       30464 0.000050      0.0       4      3         0.9794        0.0011         0.9481   4.9267
+bertimbau-base       30464 0.000050      0.1       1      3         0.9849        0.0001         0.9526   1.2067
+bertimbau-base       30464 0.000050      0.1       2      3         0.9844        0.0007         0.9511   2.4400
+bertimbau-base       30464 0.000050      0.1       4      3         0.9792        0.0011         0.9458   4.5900
+[15:12:21] 記錄檔 C:\商業智慧專案\logs\rq1_finetune_20261107_145821.log    (CPU 12%  RAM 1.5G  GPU 98%  VRAM 2.9/11.0G  TEMP 65C)

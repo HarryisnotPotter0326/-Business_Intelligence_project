@@ -1,0 +1,9 @@
+# 指令：src/rq1_finetune.py bertimbau-base --train_size 1000 --epochs 1 --seeds 42 --dropout 0 --out _smoke.csv
+# 開始：2026-11-07 16:41:31
+[16:41:36] GPU：NVIDIA GeForce RTX 2080 Ti    (CPU 38%  RAM 0.7G  GPU 24%  VRAM 0.8/11.0G  TEMP 44C)
+[16:41:38] [bertimbau-base seed=42] 訓練 1000 筆，1 epoch × 32 步，LR 2.5e-05，dropout 0.0，batch 32    (CPU 25%  RAM 1.3G  GPU 25%  VRAM 1.4/11.0G  TEMP 44C)
+[16:41:43] [bertimbau-base seed=42] epoch 1: loss 0.5524  驗證 AUC 0.9483  測試 AUC 0.9496  準確率 0.8892  負評 F1 0.8090  累計 0.1 分    (CPU 22%  RAM 1.9G  GPU 98%  VRAM 4.2/11.0G  TEMP 51C)
+[16:41:43] 結果已存到 C:\商業智慧專案\results\_smoke.csv    (CPU 21%  RAM 1.8G  GPU 98%  VRAM 2.8/11.0G  TEMP 51C)
+         model  train_size       lr  dropout  epochs  seeds  test_auc_mean  test_auc_std  test_acc_mean  minutes
+bertimbau-base        1000 0.000025      0.0       1      1         0.9496           NaN         0.8892     0.08
+[16:41:43] 記錄檔 C:\商業智慧專案\logs\rq1_finetune_20261107_164131.log    (CPU 43%  RAM 1.8G  GPU 98%  VRAM 2.8/11.0G  TEMP 51C)

@@ -1,0 +1,51 @@
+# 指令：src/ext_tfidf_gap.py
+# 開始：2026-11-07 23:42:39
+[23:42:41] 我們的設定（論文描述的設定）                   AUC 0.9738（比論文 +0.88）    (CPU 21%  RAM 0.2G  GPU 0%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:42] 只用訓練集（不合併驗證集）                    AUC 0.9734（比論文 +0.84）    (CPU 20%  RAM 0.2G  GPU 2%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:44] 文字欄位：review_text_processed       AUC 0.9741（比論文 +0.91）    (CPU 26%  RAM 0.2G  GPU 0%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:45] 文字欄位：review_text                 AUC 0.9735（比論文 +0.85）    (CPU 20%  RAM 0.2G  GPU 1%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:47] C = 0.03                         AUC 0.9604（比論文 -0.46）    (CPU 21%  RAM 0.2G  GPU 3%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:48] C = 0.1                          AUC 0.9666（比論文 +0.16）    (CPU 27%  RAM 0.2G  GPU 16%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:49] C = 0.3                          AUC 0.9709（比論文 +0.59）    (CPU 20%  RAM 0.2G  GPU 1%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:51] C = 3.0                          AUC 0.9746（比論文 +0.96）    (CPU 26%  RAM 0.2G  GPU 3%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:53] C = 10.0                         AUC 0.9726（比論文 +0.76）    (CPU 21%  RAM 0.2G  GPU 0%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:54] sublinear TF                     AUC 0.9742（比論文 +0.92）    (CPU 26%  RAM 0.2G  GPU 13%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:56] class_weight=balanced            AUC 0.9741（比論文 +0.91）    (CPU 35%  RAM 0.2G  GPU 9%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:57] solver=liblinear（舊版 sklearn 預設）  AUC 0.9740（比論文 +0.90）    (CPU 23%  RAM 0.2G  GPU 0%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:58] 只用 1-gram                        AUC 0.9727（比論文 +0.77）    (CPU 24%  RAM 0.2G  GPU 4%  VRAM 0.9/11.0G  TEMP 45C)
+[23:42:59] 詞彙 1,000                         AUC 0.9718（比論文 +0.68）    (CPU 21%  RAM 0.2G  GPU 7%  VRAM 0.9/11.0G  TEMP 45C)
+[23:43:01] min_df = 2                       AUC 0.9741（比論文 +0.91）    (CPU 43%  RAM 0.2G  GPU 6%  VRAM 0.9/11.0G  TEMP 45C)
+[23:43:01] 強正則化＋只用訓練集＋1-gram                AUC 0.9643（比論文 -0.07）    (CPU 42%  RAM 0.2G  GPU 6%  VRAM 0.9/11.0G  TEMP 45C)
+
+各變化：
+                             變化  test_auc  與論文差距_百分點   秒
+                 我們的設定（論文描述的設定）    0.9738       0.88 1.4
+                  只用訓練集（不合併驗證集）    0.9734       0.84 1.3
+     文字欄位：review_text_processed    0.9741       0.91 1.5
+               文字欄位：review_text    0.9735       0.85 1.6
+                       C = 0.03    0.9604      -0.46 1.4
+                        C = 0.1    0.9666       0.16 1.5
+                        C = 0.3    0.9709       0.59 1.5
+                        C = 3.0    0.9746       0.96 1.6
+                       C = 10.0    0.9726       0.76 1.6
+                   sublinear TF    0.9742       0.92 1.6
+          class_weight=balanced    0.9741       0.91 1.5
+solver=liblinear（舊版 sklearn 預設）    0.9740       0.90 1.4
+                      只用 1-gram    0.9727       0.77 0.4
+                       詞彙 1,000    0.9718       0.68 1.4
+                     min_df = 2    0.9741       0.91 1.7
+              強正則化＋只用訓練集＋1-gram    0.9643      -0.07 0.3
+
+10 折交叉驗證：
+ 測試折  test_auc
+   1    0.9754
+   2    0.9740
+   3    0.9727
+   4    0.9732
+   5    0.9770
+   6    0.9734
+   7    0.9778
+   8    0.9741
+   9    0.9727
+  10    0.9738
+[23:43:18] 10 折平均 0.9744 ± 0.0018（最低 0.9727、最高 0.9778）；論文 0.965；記錄檔 C:\商業智慧專案\logs\ext_tfidf_gap_20261107_234239.log    (CPU 50%  RAM 0.3G  GPU 97%  VRAM 8.8/11.0G  TEMP 54C)

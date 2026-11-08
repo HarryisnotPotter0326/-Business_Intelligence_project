@@ -1,0 +1,20 @@
+# 指令：src/rq3_cluster.py
+# 開始：2026-11-07 22:44:48
+[22:45:19] 顧客 95,380 人；只買過 1 次的比例 96.9%    (CPU 16%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:24] K=2：silhouette 0.7070，inertia 194,321    (CPU 34%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:27] K=3：silhouette 0.3656，inertia 129,956    (CPU 34%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:31] K=4：silhouette 0.3743，inertia 87,251    (CPU 34%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:34] K=5：silhouette 0.3457，inertia 72,360    (CPU 36%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:38] K=6：silhouette 0.3385，inertia 61,514    (CPU 36%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:42] K=7：silhouette 0.3513，inertia 52,912    (CPU 37%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:45] K=8：silhouette 0.3438，inertia 46,851    (CPU 41%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:45] 使用 K = 4    (CPU 25%  RAM 0.3G  GPU 0%  VRAM 1.1/11.0G  TEMP 43C)
+
+各群畫像：
+           顧客數  R_中位數天   F_平均   M_中位數   平均評分    負評率    延遲率   未送達率  平均運費占比           最常見品類 最常見州   顧客占比
+cluster                                                                                              
+2         2951   249.0  2.116  225.50  4.111  0.146  0.069  0.037   0.216  bed_bath_table   SP  0.031
+1        28642   318.0  1.000  213.54  3.938  0.186  0.097  0.035   0.126   watches_gifts   SP  0.300
+3        25163   113.0  1.000  101.48  4.252  0.110  0.061  0.017   0.214   health_beauty   SP  0.264
+0        38624   339.0  1.000   65.96  4.082  0.143  0.081  0.030   0.265  bed_bath_table   SP  0.405
+[22:45:46] 結果已存到 results/rq3_cluster_*.csv、figures/rq3_cluster_*.png；記錄檔 C:\商業智慧專案\logs\rq3_cluster_20261107_224448.log    (CPU 40%  RAM 0.3G  GPU 2%  VRAM 1.1/11.0G  TEMP 43C)

@@ -1,0 +1,16 @@
+# 指令：src/rq1_finetune.py bertimbau-base --lr 1e-5 --dropout 0.1 --epochs 1 --seeds 42 43 44 --out rq1_sweep.csv
+# 開始：2026-11-07 19:25:41
+[19:25:46] GPU：NVIDIA GeForce RTX 2080 Ti    (CPU 17%  RAM 0.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 56C)
+[19:25:49] [bertimbau-base seed=42] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 21%  RAM 1.5G  GPU 0%  VRAM 1.4/11.0G  TEMP 55C)
+[19:27:02] [bertimbau-base seed=42] epoch 1: loss 0.1754  驗證 AUC 0.9785  測試 AUC 0.9831  準確率 0.9480  負評 F1 0.9149  累計 1.2 分    (CPU 17%  RAM 2.1G  GPU 99%  VRAM 4.1/11.0G  TEMP 63C)
+[19:27:05] [bertimbau-base seed=43] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 26%  RAM 2.2G  GPU 0%  VRAM 2.9/11.0G  TEMP 58C)
+[19:28:18] [bertimbau-base seed=43] epoch 1: loss 0.1670  驗證 AUC 0.9794  測試 AUC 0.9832  準確率 0.9485  負評 F1 0.9157  累計 1.2 分    (CPU 18%  RAM 2.2G  GPU 98%  VRAM 4.1/11.0G  TEMP 64C)
+[19:28:21] [bertimbau-base seed=44] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 23%  RAM 2.2G  GPU 0%  VRAM 3.0/11.0G  TEMP 59C)
+[19:29:35] [bertimbau-base seed=44] epoch 1: loss 0.1478  驗證 AUC 0.9790  測試 AUC 0.9827  準確率 0.9472  負評 F1 0.9144  累計 1.2 分    (CPU 20%  RAM 1.8G  GPU 98%  VRAM 4.0/11.0G  TEMP 64C)
+[19:29:35] 結果已存到 C:\商業智慧專案\results\rq1_sweep.csv    (CPU 34%  RAM 1.5G  GPU 98%  VRAM 2.9/11.0G  TEMP 64C)
+         model  train_size      lr  dropout  epochs  seeds  test_auc_mean  test_auc_std  test_acc_mean  minutes
+bertimbau-base       30464 0.00001      0.0       1      3         0.9826        0.0006         0.9487   1.2200
+bertimbau-base       30464 0.00001      0.0       2      3         0.9839        0.0005         0.9512   2.4433
+bertimbau-base       30464 0.00001      0.0       4      3         0.9827        0.0006         0.9481   4.8800
+bertimbau-base       30464 0.00001      0.1       1      3         0.9830        0.0003         0.9479   1.2200
+[19:29:35] 記錄檔 C:\商業智慧專案\logs\rq1_finetune_20261107_192541.log    (CPU 25%  RAM 1.5G  GPU 98%  VRAM 2.9/11.0G  TEMP 64C)

@@ -1,0 +1,31 @@
+# 指令：src/rq1_finetune.py bertimbau-large --lr 1e-5 --dropout 0.1 --epochs 1 --seeds 42 43 44 --out rq1_sweep.csv
+# 開始：2026-11-07 15:12:25
+[15:12:29] GPU：NVIDIA GeForce RTX 2080 Ti    (CPU 17%  RAM 0.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 56C)
+[15:12:34] [bertimbau-large seed=42] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 24%  RAM 1.8G  GPU 1%  VRAM 2.2/11.0G  TEMP 56C)
+[15:15:35] [bertimbau-large seed=42] epoch 1: loss 0.1521  驗證 AUC 0.9820  測試 AUC 0.9847  準確率 0.9509  負評 F1 0.9187  累計 3.0 分    (CPU 17%  RAM 2.4G  GPU 99%  VRAM 9.1/11.0G  TEMP 66C)
+[15:15:39] [bertimbau-large seed=43] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 22%  RAM 2.8G  GPU 0%  VRAM 6.2/11.0G  TEMP 60C)
+[15:18:40] [bertimbau-large seed=43] epoch 1: loss 0.1480  驗證 AUC 0.9824  測試 AUC 0.9869  準確率 0.9540  負評 F1 0.9244  累計 3.0 分    (CPU 17%  RAM 2.8G  GPU 99%  VRAM 9.1/11.0G  TEMP 66C)
+[15:18:44] [bertimbau-large seed=44] 訓練 30464 筆，1 epoch × 952 步，LR 1e-05，dropout 0.1，batch 32    (CPU 22%  RAM 2.8G  GPU 8%  VRAM 6.3/11.0G  TEMP 60C)
+[15:21:45] [bertimbau-large seed=44] epoch 1: loss 0.1338  驗證 AUC 0.9826  測試 AUC 0.9858  準確率 0.9509  負評 F1 0.9196  累計 3.0 分    (CPU 18%  RAM 1.8G  GPU 99%  VRAM 9.1/11.0G  TEMP 66C)
+[15:21:45] 結果已存到 C:\商業智慧專案\results\rq1_sweep.csv    (CPU 15%  RAM 1.5G  GPU 99%  VRAM 6.3/11.0G  TEMP 66C)
+          model  train_size       lr  dropout  epochs  seeds  test_auc_mean  test_auc_std  test_acc_mean  minutes
+ bertimbau-base       30464 0.000010      0.0       1      3         0.9837        0.0005         0.9494   1.2000
+ bertimbau-base       30464 0.000010      0.0       2      3         0.9844        0.0003         0.9512   2.4100
+ bertimbau-base       30464 0.000010      0.0       4      3         0.9824        0.0002         0.9490   4.8667
+ bertimbau-base       30464 0.000010      0.1       1      3         0.9837        0.0005         0.9494   1.2033
+ bertimbau-base       30464 0.000010      0.1       2      3         0.9843        0.0004         0.9511   2.2533
+ bertimbau-base       30464 0.000010      0.1       4      3         0.9824        0.0006         0.9476   4.8967
+ bertimbau-base       30464 0.000025      0.0       1      3         0.9846        0.0002         0.9519   1.2067
+ bertimbau-base       30464 0.000025      0.0       2      3         0.9849        0.0008         0.9516   2.4367
+ bertimbau-base       30464 0.000025      0.0       4      3         0.9800        0.0003         0.9483   4.9167
+ bertimbau-base       30464 0.000025      0.1       1      3         0.9846        0.0002         0.9519   1.2100
+ bertimbau-base       30464 0.000025      0.1       2      3         0.9849        0.0009         0.9518   2.2667
+ bertimbau-base       30464 0.000025      0.1       4      3         0.9801        0.0004         0.9477   4.9200
+ bertimbau-base       30464 0.000050      0.0       1      3         0.9849        0.0001         0.9526   1.2067
+ bertimbau-base       30464 0.000050      0.0       2      3         0.9839        0.0005         0.9505   2.4400
+ bertimbau-base       30464 0.000050      0.0       4      3         0.9794        0.0011         0.9481   4.9267
+ bertimbau-base       30464 0.000050      0.1       1      3         0.9849        0.0001         0.9526   1.2067
+ bertimbau-base       30464 0.000050      0.1       2      3         0.9844        0.0007         0.9511   2.4400
+ bertimbau-base       30464 0.000050      0.1       4      3         0.9792        0.0011         0.9458   4.5900
+bertimbau-large       30464 0.000010      0.1       1      3         0.9858        0.0011         0.9519   3.0200
+[15:21:45] 記錄檔 C:\商業智慧專案\logs\rq1_finetune_20261107_151225.log    (CPU 12%  RAM 1.5G  GPU 99%  VRAM 6.3/11.0G  TEMP 66C)

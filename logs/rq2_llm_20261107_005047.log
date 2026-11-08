@@ -1,0 +1,8 @@
+# 指令：src/rq2_llm.py qwen-0.5b --mode zeroshot
+# 開始：2026-11-07 00:50:47
+[00:50:52] GPU：NVIDIA GeForce RTX 2080 Ti；載入 Qwen/Qwen2.5-0.5B-Instruct（fp16）    (CPU 16%  RAM 0.8G  GPU 1%  VRAM 0.7/11.0G  TEMP 56C)
+[00:51:02] qwen-0.5b zeroshot n=0: 測試 AUC 0.9521  準確率 0.8553  負評 F1 0.8012  判為正面比例 0.572    (CPU 37%  RAM 2.4G  GPU 93%  VRAM 3.0/11.0G  TEMP 63C)
+[00:51:02] 結果已存到 C:\商業智慧專案\results\rq2_llm.csv    (CPU 0%  RAM 2.4G  GPU 93%  VRAM 3.0/11.0G  TEMP 63C)
+    model     mode  train_size  seed  epochs   lr lora_r  trainable_params train_loss  test_auc  test_acc  test_f1_neg  pred_pos_rate  train_minutes  infer_sec_per_1k  n_test
+qwen-0.5b zeroshot           0    42       0 None   None                 0       None    0.9521    0.8553       0.8012         0.5716            0.0               2.1    3807
+[00:51:02] 記錄檔 C:\商業智慧專案\logs\rq2_llm_20261107_005047.log    (CPU 0%  RAM 2.4G  GPU 93%  VRAM 3.0/11.0G  TEMP 63C)

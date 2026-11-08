@@ -1,0 +1,19 @@
+# 指令：src/rq1_finetune.py bertimbau-large --seeds 45 46 47 48 49
+# 開始：2026-11-07 12:17:15
+[12:17:34] GPU：NVIDIA GeForce RTX 2080 Ti    (CPU 15%  RAM 0.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 51C)
+[12:17:38] [bertimbau-large seed=45] 訓練 30464 筆，1 epoch × 952 步，LR 2.5e-05，dropout 0.1，batch 32    (CPU 22%  RAM 1.8G  GPU 0%  VRAM 2.1/11.0G  TEMP 51C)
+[12:20:39] [bertimbau-large seed=45] epoch 1: loss 0.1342  驗證 AUC 0.9827  測試 AUC 0.9865  準確率 0.9561  負評 F1 0.9272  累計 3.0 分    (CPU 18%  RAM 2.4G  GPU 99%  VRAM 9.1/11.0G  TEMP 65C)
+[12:20:43] [bertimbau-large seed=46] 訓練 30464 筆，1 epoch × 952 步，LR 2.5e-05，dropout 0.1，batch 32    (CPU 20%  RAM 2.8G  GPU 2%  VRAM 6.2/11.0G  TEMP 60C)
+[12:23:43] [bertimbau-large seed=46] epoch 1: loss 0.1355  驗證 AUC 0.9819  測試 AUC 0.9854  準確率 0.9527  負評 F1 0.9227  累計 3.0 分    (CPU 17%  RAM 2.8G  GPU 100%  VRAM 9.1/11.0G  TEMP 66C)
+[12:23:47] [bertimbau-large seed=47] 訓練 30464 筆，1 epoch × 952 步，LR 2.5e-05，dropout 0.1，batch 32    (CPU 22%  RAM 2.9G  GPU 0%  VRAM 6.3/11.0G  TEMP 60C)
+[12:26:48] [bertimbau-large seed=47] epoch 1: loss 0.1474  驗證 AUC 0.9830  測試 AUC 0.9869  準確率 0.9546  負評 F1 0.9247  累計 3.0 分    (CPU 17%  RAM 1.8G  GPU 100%  VRAM 9.1/11.0G  TEMP 66C)
+[12:26:52] [bertimbau-large seed=48] 訓練 30464 筆，1 epoch × 952 步，LR 2.5e-05，dropout 0.1，batch 32    (CPU 21%  RAM 2.4G  GPU 0%  VRAM 6.3/11.0G  TEMP 59C)
+[12:29:53] [bertimbau-large seed=48] epoch 1: loss 0.1388  驗證 AUC 0.9821  測試 AUC 0.9866  準確率 0.9582  負評 F1 0.9310  累計 3.0 分    (CPU 17%  RAM 2.4G  GPU 100%  VRAM 9.1/11.0G  TEMP 66C)
+[12:29:57] [bertimbau-large seed=49] 訓練 30464 筆，1 epoch × 952 步，LR 2.5e-05，dropout 0.1，batch 32    (CPU 21%  RAM 2.3G  GPU 18%  VRAM 6.3/11.0G  TEMP 59C)
+[12:32:57] [bertimbau-large seed=49] epoch 1: loss 0.1276  驗證 AUC 0.9820  測試 AUC 0.9863  準確率 0.9559  負評 F1 0.9272  累計 3.0 分    (CPU 17%  RAM 1.9G  GPU 99%  VRAM 9.1/11.0G  TEMP 65C)
+[12:32:57] 結果已存到 C:\商業智慧專案\results\rq1_finetune.csv    (CPU 15%  RAM 1.6G  GPU 99%  VRAM 6.3/11.0G  TEMP 65C)
+          model  train_size       lr  dropout  epochs  seeds  test_auc_mean  test_auc_std  test_acc_mean  minutes
+ bertimbau-base       30464 0.000025      0.1       1      8         0.9848        0.0003         0.9523   1.2075
+bertimbau-large       30464 0.000025      0.1       1      8         0.9863        0.0005         0.9552   3.0112
+          mbert       30464 0.000025      0.0       2      8         0.9807        0.0007         0.9460   2.8450
+[12:32:57] 記錄檔 C:\商業智慧專案\logs\rq1_finetune_20261107_121715.log    (CPU 0%  RAM 1.6G  GPU 99%  VRAM 6.3/11.0G  TEMP 65C)

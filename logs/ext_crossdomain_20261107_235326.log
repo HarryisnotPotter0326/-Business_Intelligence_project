@@ -1,0 +1,47 @@
+# 指令：src/ext_crossdomain.py
+# 開始：2026-11-07 23:53:26
+[23:53:29] olist：訓練 30,000（正面 70.0%）、測試 3,807；平均 11.7 個字    (CPU 18%  RAM 0.8G  GPU 0%  VRAM 0.7/11.0G  TEMP 51C)
+[23:53:29] b2w：訓練 30,000（正面 69.2%）、測試 5,000；平均 23.7 個字    (CPU 21%  RAM 0.9G  GPU 0%  VRAM 0.7/11.0G  TEMP 51C)
+[23:53:29] buscape：訓練 30,000（正面 90.8%）、測試 5,000；平均 44.2 個字    (CPU 15%  RAM 1.0G  GPU 0%  VRAM 0.7/11.0G  TEMP 51C)
+[23:53:30] utlc_apps：訓練 30,000（正面 77.5%）、測試 5,000；平均 12.4 個字    (CPU 15%  RAM 1.2G  GPU 0%  VRAM 0.7/11.0G  TEMP 51C)
+[23:53:32] utlc_movies：訓練 30,000（正面 88.4%）、測試 5,000；平均 34.7 個字    (CPU 16%  RAM 2.4G  GPU 0%  VRAM 0.7/11.0G  TEMP 51C)
+[23:53:51] TF-IDF 完成    (CPU 12%  RAM 0.9G  GPU 0%  VRAM 0.7/11.0G  TEMP 47C)
+[23:53:55] [BERT 訓練於 olist] 訓練 bertimbau-base：30,000 筆，1 epoch，max_len 128    (CPU 20%  RAM 1.8G  GPU 0%  VRAM 1.3/11.0G  TEMP 48C)
+[23:55:49] BERT 訓練於 olist：olist 0.9837、b2w 0.9864、buscape 0.9173、utlc_apps 0.9606、utlc_movies 0.8345    (CPU 19%  RAM 1.8G  GPU 99%  VRAM 2.1/11.0G  TEMP 63C)
+[23:55:53] [BERT 訓練於 b2w] 訓練 bertimbau-base：30,000 筆，1 epoch，max_len 128    (CPU 23%  RAM 2.2G  GPU 0%  VRAM 2.3/11.0G  TEMP 57C)
+[23:57:50] BERT 訓練於 b2w：olist 0.9741、b2w 0.9903、buscape 0.9253、utlc_apps 0.9612、utlc_movies 0.8661    (CPU 22%  RAM 1.9G  GPU 99%  VRAM 2.2/11.0G  TEMP 64C)
+[23:57:55] [BERT 訓練於 buscape] 訓練 bertimbau-base：30,000 筆，1 epoch，max_len 128    (CPU 26%  RAM 2.4G  GPU 0%  VRAM 2.3/11.0G  TEMP 57C)
+[23:59:52] BERT 訓練於 buscape：olist 0.9620、b2w 0.9841、buscape 0.9497、utlc_apps 0.9573、utlc_movies 0.8281    (CPU 22%  RAM 1.9G  GPU 99%  VRAM 2.3/11.0G  TEMP 64C)
+[23:59:56] [BERT 訓練於 utlc_apps] 訓練 bertimbau-base：30,000 筆，1 epoch，max_len 128    (CPU 23%  RAM 2.6G  GPU 0%  VRAM 2.4/11.0G  TEMP 58C)
+[00:01:51] BERT 訓練於 utlc_apps：olist 0.9720、b2w 0.9855、buscape 0.9221、utlc_apps 0.9727、utlc_movies 0.8547    (CPU 22%  RAM 1.9G  GPU 99%  VRAM 2.4/11.0G  TEMP 64C)
+[00:01:55] [BERT 訓練於 utlc_movies] 訓練 bertimbau-base：30,000 筆，1 epoch，max_len 128    (CPU 25%  RAM 2.7G  GPU 0%  VRAM 2.5/11.0G  TEMP 58C)
+[00:03:49] BERT 訓練於 utlc_movies：olist 0.9011、b2w 0.9600、buscape 0.8903、utlc_apps 0.9245、utlc_movies 0.9442    (CPU 21%  RAM 2.0G  GPU 99%  VRAM 2.5/11.0G  TEMP 64C)
+[00:04:03] Qwen-1.5B 零樣本 olist：AUC 0.9709    (CPU 17%  RAM 4.9G  GPU 97%  VRAM 7.7/11.0G  TEMP 65C)
+[00:04:17] Qwen-1.5B 零樣本 b2w：AUC 0.9869    (CPU 12%  RAM 4.9G  GPU 98%  VRAM 9.2/11.0G  TEMP 66C)
+[00:04:35] Qwen-1.5B 零樣本 buscape：AUC 0.9386    (CPU 0%  RAM 4.9G  GPU 98%  VRAM 9.2/11.0G  TEMP 67C)
+[00:04:45] Qwen-1.5B 零樣本 utlc_apps：AUC 0.9648    (CPU 29%  RAM 4.9G  GPU 97%  VRAM 9.2/11.0G  TEMP 67C)
+[00:04:59] Qwen-1.5B 零樣本 utlc_movies：AUC 0.9078    (CPU 19%  RAM 4.9G  GPU 98%  VRAM 9.2/11.0G  TEMP 67C)
+
+BERTimbau Base 微調（列＝訓練資料集、欄＝測試資料集）：
+test            b2w  buscape   olist  utlc_apps  utlc_movies
+train                                                       
+b2w          0.9903   0.9253  0.9741     0.9612       0.8661
+buscape      0.9841   0.9497  0.9620     0.9573       0.8281
+olist        0.9864   0.9173  0.9837     0.9606       0.8345
+utlc_apps    0.9855   0.9221  0.9720     0.9727       0.8547
+utlc_movies  0.9600   0.8903  0.9011     0.9245       0.9442
+
+Qwen-1.5B 零樣本（列＝訓練資料集、欄＝測試資料集）：
+test      b2w  buscape   olist  utlc_apps  utlc_movies
+train                                                 
+（不訓練）  0.9869   0.9386  0.9709     0.9648       0.9078
+
+TF-IDF（列＝訓練資料集、欄＝測試資料集）：
+test            b2w  buscape   olist  utlc_apps  utlc_movies
+train                                                       
+b2w          0.9831   0.9023  0.9660     0.9378       0.7471
+buscape      0.9690   0.9204  0.9353     0.9285       0.7243
+olist        0.9699   0.8759  0.9739     0.9222       0.6547
+utlc_apps    0.9602   0.8842  0.9474     0.9548       0.7209
+utlc_movies  0.8904   0.7932  0.8155     0.8762       0.8912
+[00:05:00] 結果已存到 results/ext_crossdomain.csv、figures/ext_crossdomain.png；記錄檔 C:\商業智慧專案\logs\ext_crossdomain_20261107_235326.log    (CPU 17%  RAM 4.9G  GPU 98%  VRAM 2.5/11.0G  TEMP 64C)

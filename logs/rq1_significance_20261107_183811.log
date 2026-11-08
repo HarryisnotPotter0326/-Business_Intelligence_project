@@ -1,0 +1,44 @@
+# 指令：src/rq1_significance.py
+# 開始：2026-11-07 18:38:11
+[18:38:17] TF-IDF 預測完成    (CPU 16%  RAM 0.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 57C)
+[18:38:19] bertimbau-base 凍結：驗證最佳聚合 [CLS]+mean，C=0.003，測試 AUC 0.9774    (CPU 57%  RAM 0.9G  GPU 0%  VRAM 0.8/11.0G  TEMP 56C)
+[18:38:20] bertimbau-large 凍結：驗證最佳聚合 mean last4，C=0.003，測試 AUC 0.9816    (CPU 54%  RAM 0.9G  GPU 0%  VRAM 0.8/11.0G  TEMP 56C)
+[18:38:25] mbert 凍結：驗證最佳聚合 [CLS]+mean+std，C=0.01，測試 AUC 0.9621    (CPU 74%  RAM 1.0G  GPU 0%  VRAM 0.8/11.0G  TEMP 54C)
+[18:38:25] bertimbau-base 微調：找到 8 個種子的預測    (CPU 15%  RAM 1.0G  GPU 0%  VRAM 0.8/11.0G  TEMP 54C)
+[18:38:25] bertimbau-large 微調：找到 8 個種子的預測    (CPU 40%  RAM 1.0G  GPU 0%  VRAM 0.8/11.0G  TEMP 54C)
+[18:38:25] mbert 微調：找到 8 個種子的預測    (CPU 13%  RAM 1.0G  GPU 0%  VRAM 0.8/11.0G  TEMP 54C)
+
+各方法測試 AUC 與 95% 信賴區間：
+                        method  seeds  test_auc  seed_std  ci_low  ci_high
+            bertimbau-large 微調      8    0.9860    0.0008  0.9826   0.9892
+             bertimbau-base 微調      8    0.9842    0.0003  0.9806   0.9876
+bertimbau-large 凍結（mean last4）      1    0.9816       NaN  0.9771   0.9856
+                      mbert 微調      8    0.9808    0.0007  0.9764   0.9847
+ bertimbau-base 凍結（[CLS]+mean）      1    0.9774       NaN  0.9722   0.9819
+                   TF-IDF + LR      1    0.9738       NaN  0.9683   0.9789
+      mbert 凍結（[CLS]+mean+std）      1    0.9621       NaN  0.9558   0.9677
+
+兩兩比較（A − B，百分點）：
+                             A                              B  diff_pct  ci_low_pct  ci_high_pct  p_value  significant
+                   TF-IDF + LR  bertimbau-base 凍結（[CLS]+mean）    -0.359      -0.732       -0.001    0.050        False
+                   TF-IDF + LR bertimbau-large 凍結（mean last4）    -0.780      -1.133       -0.440    0.000         True
+                   TF-IDF + LR       mbert 凍結（[CLS]+mean+std）     1.176       0.789        1.597    0.000         True
+                   TF-IDF + LR              bertimbau-base 微調    -1.046      -1.384       -0.739    0.000         True
+                   TF-IDF + LR             bertimbau-large 微調    -1.225      -1.563       -0.910    0.000         True
+                   TF-IDF + LR                       mbert 微調    -0.695      -1.003       -0.392    0.000         True
+ bertimbau-base 凍結（[CLS]+mean） bertimbau-large 凍結（mean last4）    -0.421      -0.638       -0.206    0.000         True
+ bertimbau-base 凍結（[CLS]+mean）       mbert 凍結（[CLS]+mean+std）     1.535       1.119        1.977    0.000         True
+ bertimbau-base 凍結（[CLS]+mean）              bertimbau-base 微調    -0.687      -0.956       -0.432    0.000         True
+ bertimbau-base 凍結（[CLS]+mean）             bertimbau-large 微調    -0.866      -1.148       -0.586    0.000         True
+ bertimbau-base 凍結（[CLS]+mean）                       mbert 微調    -0.336      -0.648       -0.029    0.028         True
+bertimbau-large 凍結（mean last4）       mbert 凍結（[CLS]+mean+std）     1.956       1.533        2.415    0.000         True
+bertimbau-large 凍結（mean last4）              bertimbau-base 微調    -0.266      -0.483       -0.062    0.009         True
+bertimbau-large 凍結（mean last4）             bertimbau-large 微調    -0.444      -0.666       -0.245    0.000         True
+bertimbau-large 凍結（mean last4）                       mbert 微調     0.085      -0.169        0.343    0.522        False
+      mbert 凍結（[CLS]+mean+std）              bertimbau-base 微調    -2.222      -2.659       -1.792    0.000         True
+      mbert 凍結（[CLS]+mean+std）             bertimbau-large 微調    -2.400      -2.865       -1.971    0.000         True
+      mbert 凍結（[CLS]+mean+std）                       mbert 微調    -1.871      -2.277       -1.483    0.000         True
+             bertimbau-base 微調             bertimbau-large 微調    -0.179      -0.266       -0.101    0.000         True
+             bertimbau-base 微調                       mbert 微調     0.351       0.186        0.527    0.000         True
+            bertimbau-large 微調                       mbert 微調     0.530       0.362        0.710    0.000         True
+[18:40:28] 結果已存到 results/rq1_significance*.csv；記錄檔 C:\商業智慧專案\logs\rq1_significance_20261107_183811.log    (CPU 18%  RAM 1.0G  GPU 2%  VRAM 0.8/11.0G  TEMP 48C)

@@ -1,0 +1,35 @@
+# 指令：src/ext_ensemble.py
+# 開始：2026-11-08 04:33:30
+[04:33:30] 可用的模型：TF-IDF（1 個種子）、Base 凍結（1 個種子）、Large 凍結（1 個種子）、Base 微調（8 個種子）、Large 微調（8 個種子）、m-BERT 微調（8 個種子）、Qwen-0.5B LoRA（3 個種子）、Qwen-1.5B LoRA（3 個種子）、Qwen-3B LoRA（1 個種子）、Qwen-1.5B 零樣本（1 個種子）、Qwen-3B 零樣本（1 個種子）    (CPU 17%  RAM 0.2G  GPU 0%  VRAM 0.6/11.0G  TEMP 58C)
+
+集成結果（依測試 AUC 排序）：
+                                                                                                           組合  模型數  test_auc  比Large微調_百分點    CI低    CI高  p_value
+                                                                                    Large 微調 ＋ Qwen-1.5B LoRA    2    0.9880         0.073  0.010  0.136    0.024
+                                                                          Large 微調 ＋ Base 微調 ＋ Qwen-1.5B LoRA    3    0.9876         0.028 -0.028  0.085    0.321
+                                                                     Large 微調 ＋ Qwen-1.5B LoRA ＋ Qwen-3B LoRA    3    0.9876         0.026 -0.068  0.115    0.608
+                                                                                               Qwen-1.5B LoRA    1    0.9875           NaN    NaN    NaN      NaN
+                                                                                                     Large 微調    1    0.9873           NaN    NaN    NaN      NaN
+                                                                         Large 微調 ＋ Qwen-1.5B LoRA ＋ Large 凍結    3    0.9872        -0.014 -0.098  0.071    0.743
+                                                                            Large 微調 ＋ Base 微調 ＋ Qwen-3B LoRA    3    0.9868        -0.047 -0.127  0.030    0.231
+                                                                                           Large 微調 ＋ Base 微調    2    0.9867        -0.058 -0.101 -0.016    0.006
+                                                                                      Large 微調 ＋ Qwen-3B LoRA    2    0.9865        -0.078 -0.192  0.030    0.155
+                                                                           Large 微調 ＋ Qwen-3B LoRA ＋ Large 凍結    3    0.9864        -0.092 -0.190  0.007    0.071
+                                                                               Base 微調 ＋ Large 微調 ＋ m-BERT 微調    3    0.9862        -0.108 -0.180 -0.040    0.001
+                                                                           Large 微調 ＋ Qwen-1.5B LoRA ＋ TF-IDF    3    0.9861        -0.118 -0.242 -0.006    0.043
+                                                                                Large 微調 ＋ Base 微調 ＋ Large 凍結    3    0.9861        -0.123 -0.210 -0.041    0.002
+TF-IDF ＋ Base 凍結 ＋ Large 凍結 ＋ Base 微調 ＋ Large 微調 ＋ m-BERT 微調 ＋ Qwen-0.5B LoRA ＋ Qwen-1.5B LoRA ＋ Qwen-3B LoRA    9    0.9860        -0.130 -0.237 -0.035    0.005
+                                                                                          Large 微調 ＋ Large 凍結    2    0.9857        -0.161 -0.274 -0.059    0.003
+                                                                                                      Base 微調    1    0.9854           NaN    NaN    NaN      NaN
+                                                                                  Large 微調 ＋ Base 微調 ＋ TF-IDF    3    0.9851        -0.216 -0.328 -0.113    0.000
+                                                                             Large 微調 ＋ Qwen-3B LoRA ＋ TF-IDF    3    0.9850        -0.235 -0.392 -0.097    0.000
+                                                                                 Large 微調 ＋ TF-IDF ＋ Large 凍結    3    0.9845        -0.278 -0.416 -0.156    0.000
+                                                                                               Qwen-0.5B LoRA    1    0.9843           NaN    NaN    NaN      NaN
+                                                                                            Large 微調 ＋ TF-IDF    2    0.9838        -0.354 -0.522 -0.204    0.000
+                                                                                                    m-BERT 微調    1    0.9824           NaN    NaN    NaN      NaN
+                                                                                                 Qwen-3B LoRA    1    0.9817           NaN    NaN    NaN      NaN
+                                                                                                     Large 凍結    1    0.9816           NaN    NaN    NaN      NaN
+                                                                                                      Base 凍結    1    0.9774           NaN    NaN    NaN      NaN
+                                                                                                       TF-IDF    1    0.9738           NaN    NaN    NaN      NaN
+                                                                                                Qwen-1.5B 零樣本    1    0.9701           NaN    NaN    NaN      NaN
+                                                                                                  Qwen-3B 零樣本    1    0.9686           NaN    NaN    NaN      NaN
+[04:34:48] 結果已存到 results/ext_ensemble.csv；記錄檔 C:\商業智慧專案\logs\ext_ensemble_20261108_043330.log    (CPU 14%  RAM 0.2G  GPU 0%  VRAM 0.5/11.0G  TEMP 47C)

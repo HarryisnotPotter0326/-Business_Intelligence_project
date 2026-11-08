@@ -1,0 +1,138 @@
+﻿錯誤類型,rating,p_bert,其他模型也錯的數量,n_words,review_text,人工歸類,歸類理由
+假正評：負評判成正評,1,0.996,3,4,ChegoChegou antes do prazo,評分與文字矛盾,只說提前到貨，卻給 1 星
+假正評：負評判成正評,1,0.996,3,6,Ótimo site para comprar muito confiável,評分與文字矛盾,稱讚網站可靠，卻給 1 星
+假正評：負評判成正評,2,0.996,3,2,Muito bom!,評分與文字矛盾,「很好」卻給 2 星
+假正評：負評判成正評,2,0.995,3,1,recomendo,評分與文字矛盾,「推薦」卻給 2 星
+假正評：負評判成正評,1,0.995,2,2,"Nota 10
+",評分與文字矛盾,「10 分」卻給 1 星，疑似星等方向搞反
+假正評：負評判成正評,1,0.994,3,2,"Tudo Ok.
+",評分與文字矛盾,「都沒問題」卻給 1 星
+假正評：負評判成正評,2,0.993,3,2,Bom produto.,評分與文字矛盾,「好產品」卻給 2 星
+假正評：負評判成正評,2,0.993,3,21,"Eu tenho uma dúvida,pra tirar mas não sei quem pode me ajudar,sobre a entrega ocorreu tudo certo dentro do prazo,meus parabéns ",評分與文字矛盾,說配送都正常並道賀，卻給 2 星
+假正評：負評判成正評,2,0.992,3,3,"obrigado, pelo produto",評分與文字矛盾,道謝，卻給 2 星
+假正評：負評判成正評,2,0.987,2,1,ok,太短／無意義,只有 ok
+假正評：負評判成正評,1,0.985,3,1,obrigado,評分與文字矛盾,只有道謝，卻給 1 星
+假正評：負評判成正評,2,0.984,3,11,"O cor e estampa não é igual que a foto,mas ...gostei..",正負混雜,顏色和照片不同，但說喜歡
+假正評：負評判成正評,1,0.983,3,1,bom,評分與文字矛盾,「好」卻給 1 星
+假正評：負評判成正評,2,0.983,3,1,bom,評分與文字矛盾,「好」卻給 2 星
+假正評：負評判成正評,2,0.98,2,17,Pelo o preço sabia que não era de muita qualidade mas resolvi assumir o risco... Produto razoável,正負混雜,知道品質不高，結論「還可以」
+假正評：負評判成正評,2,0.977,2,11,"Relógio muuuuuuito pequeno, ainda bem que sou magra . Ficou legal ",正負混雜,錶太小，但說戴起來不錯
+假正評：負評判成正評,1,0.977,2,1,:(,模型真的判錯,只有哭臉符號，模型沒讀懂表情符號
+假正評：負評判成正評,2,0.976,3,20,"Acho muito bom esse tipo de serviço facilita muito a vida das pessoas, mais tem ter mais agilidade na entrega.",正負混雜,稱讚服務，但希望配送更快
+假正評：負評判成正評,1,0.967,3,1,mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm,太短／無意義,無意義字串
+假正評：負評判成正評,2,0.964,2,7,"Produto ótimo, a entrega deixou a desejar",正負混雜,商品很好、配送不好
+假正評：負評判成正評,2,0.958,2,18,"Controle é bom, levando em conta que não é original.
+
+Teclado mole, a única coisa que achei ruim.",正負混雜,手把不錯，但鍵盤太軟
+假正評：負評判成正評,2,0.953,2,24,A cadeira veio ok e no prazo. Dei apenas duas estrelas pois os demais produtos pedidos chegaram com uma semana de atraso na entrega!,正負混雜,椅子沒問題，其他商品延遲一週
+假正評：負評判成正評,2,0.945,2,13,"Recomendo a loja, infelizmente a entrega esta demorando mais que a previsão estipulada! ",正負混雜,推薦店家，但配送延遲
+假正評：負評判成正評,2,0.944,2,17,"Não veio na cor conforme o anuncio, a mochila não tem espuma interna. No mais tudo tranquilo",正負混雜,顏色不對、少了內襯，其他都還好
+假正評：負評判成正評,2,0.929,2,11,Só não gostei devido ter que retirar o produto nós correios.,正負混雜,「只是不喜歡」要去郵局取貨
+假正評：負評判成正評,1,0.911,2,12,Veio tudo bem embalado antes do prazo mas veio faltando o carregador ,正負混雜,包裝好、提早到，但少了充電器
+假正評：負評判成正評,1,0.901,2,11,Agora ja recebi o que faltava hoje dia 1 de junho.,中性敘述／詢問,只說缺的東西今天收到了
+假正評：負評判成正評,2,0.891,1,10,só achei que era de borracha e não de plástico,隱含負面,以為是橡膠卻是塑膠，沒有負面詞
+假正評：負評判成正評,2,0.884,2,29,Gostei do jogo de toalhas de banho que encomendei só que veio dois jogos dá mesma cor e eu tinha pedido um jogo de cor vinho e outro azul.,正負混雜,喜歡毛巾，但顏色寄錯
+假正評：負評判成正評,1,0.881,2,1,A,太短／無意義,只有一個字母
+假正評：負評判成正評,1,0.877,2,9,O pedido chehou no prazo certo. Mas Precisa melhor,正負混雜,準時到，但「需要改進」
+假正評：負評判成正評,2,0.872,1,25,"Recomendo pois é a primeira vez que acontece, mas pedi a devolução pq o produto veio sem acessórios, diferente da propaganda. Esperando lannister dar retorno.",正負混雜,推薦，但已申請退貨
+假正評：負評判成正評,2,0.868,1,31,Produto de ótima custo benefício! Porem a loja vendeu sem ter em ostoque e demorou mais de 30 dias para entrar em contato para fazer a troca por um produto disponível ,正負混雜,CP 值高，但缺貨 30 天才聯絡
+假正評：負評判成正評,1,0.858,1,2,Quantidade minima,隱含負面,「數量很少」，沒有負面詞
+假正評：負評判成正評,2,0.853,0,16,Comprei outros produtos e não tive problemas acredito que foi a falta do produto no estoque,中性敘述／詢問,說明以前沒問題、這次可能缺貨
+假正評：負評判成正評,2,0.851,1,22,"Recebi tido certinho, no prazo certo. A Loja esta de Parabéns em relação a logistica, porém o produto não é de qualidade. ",正負混雜,物流很好，但商品品質差
+假正評：負評判成正評,1,0.849,2,8,O pessoal e nota 10 eu comprei errado,評分與文字矛盾,稱讚店員，是自己買錯才給低分
+假正評：負評判成正評,1,0.844,1,13,pena que é muito pouco o produto e o frete é muito caro,模型真的判錯,明確抱怨分量太少、運費太貴
+假正評：負評判成正評,1,0.828,2,22,"O prazo de entrega foi de 28 dias. Chegou antes do prazo, mas demorou 3 semanas entre a compra e a chegada. ",正負混雜,比預計早到，但整體等了 3 週
+假正評：負評判成正評,2,0.822,0,7,Veio com barrado de fralda. Pode melhorar,隱含負面,「有尿布邊、可以更好」，語氣平淡
+假正評：負評判成正評,2,0.821,2,26,Produto de excelente qualidade mas a voltagem veio diferente ! Informei a lannister .com antes do embarque Enesio assim me enviaram 110 ao inves de 220v,正負混雜,品質很好，但電壓寄錯
+假正評：負評判成正評,1,0.818,2,10,"Produto correto,porém com Avarias na parte interna e nos pés. ",正負混雜,商品正確，但內部和腳有損傷
+假正評：負評判成正評,1,0.808,1,30,a loja em si não apresentou problemas porém houve um imprevisto com a entregadora (correios) que atrasou a entrega e acabei por pedir o cancelamento do produto por motivos pessoais,正負混雜,店家沒問題，物流延誤後取消
+假正評：負評判成正評,1,0.79,2,32,"Ainda não recebi o produto, ia mandar mensagem hoje mesmo para saber o que aconteceu, apesar do atraso sempre recebi em dias meus produtos, esse foi o 1° por isso ainda recomendo. ",正負混雜,還沒收到，但仍推薦
+假正評：負評判成正評,2,0.783,2,13,"óculos lindo, chegou em perfeito estado. Mas não foi entregue dentro do prazo. ",正負混雜,眼鏡漂亮，但沒準時送達
+假正評：負評判成正評,1,0.783,1,8,A minha tinha zíper essa é da loba,隱含負面,說收到的款式和自己的不同（少拉鍊）
+假正評：負評判成正評,2,0.773,1,21,"ainda estou verificando o atendimento quando precisamos efetuar uma troca ou resolver um problema, esse é o referencial de qualquer atendimento.",中性敘述／詢問,說還在觀察售後服務
+假正評：負評判成正評,1,0.764,2,8,Até agora só transtorno por causa desse produto.,模型真的判錯,明確說「只有麻煩」
+假正評：負評判成正評,2,0.754,1,10,loja cumpriu o prazo porem o produto é muito pequeno,正負混雜,準時，但商品太小
+假正評：負評判成正評,2,0.738,2,5,Achei q fosse mais resistente ,隱含負面,「以為會更耐用」，語氣平淡
+假正評：負評判成正評,2,0.718,2,15,"O produto foi entregue corretamente, mas achei o prazo de entrega muito, mas muito demorado.",正負混雜,正確送達，但配送非常久
+假正評：負評判成正評,2,0.707,1,33,"Recomendo a loja, porém, a entrega pelo Correios está cada dia mais difícil. Ao rastrear o objeto aparece que o Correios saiu para entrega, sendo que na realidade não houve tentativa de entrega",正負混雜,推薦店家，但郵局配送很糟
+假正評：負評判成正評,1,0.699,1,5,POXA SO QUERIA MEU PRODUTO ,隱含負面,「我只是想要我的商品」，要懂語氣才知道是抱怨
+假正評：負評判成正評,1,0.688,1,13,"o produto veio correto e no prazo, porem veio com uma peça quebrada ",正負混雜,準時、正確，但有零件壞了
+假正評：負評判成正評,1,0.669,2,17,"Ótima entrega antes do prazo ,mas a garantia estendida não veio
+E os meus dados estão incorretos",正負混雜,配送很好，但缺延長保固、資料錯誤
+假正評：負評判成正評,1,0.668,1,7,Faltou outro kit ja que comprei 2,隱含負面,「少了另一組」，沒有負面詞
+假正評：負評判成正評,1,0.657,1,17,Espero minha encomenda. Já comprei outras vezes na lannister e sempre recebi certo. Não mudei de endereço.,隱含負面,還在等貨並強調沒搬家，暗示寄丟
+假正評：負評判成正評,2,0.633,2,8,"Achei que o tecido fosse melhor, muito fino",隱含負面,「以為布料會更好」，語氣平淡
+假正評：負評判成正評,2,0.631,2,4,achei a cor fraca,隱含負面,「顏色偏淡」，語氣平淡
+假正評：負評判成正評,1,0.606,0,23,"A entrega foi fracionada tive desgaste e priblemas para resolver o impasse e foi estritamente desnecessario.Nunca tive qualquer problema com lannister.COM.
+SIMPLESMENTE HORRIVEL",模型真的判錯,結尾「非常糟」，模型被「從來沒問題」誤導
+假負評：正評判成負評,5,0.009,3,11,"Ainda não recebi minha compra!
+
+Isso é uma falta de vergonha!",評分與文字矛盾,還沒收到、說「可恥」，卻給 5 星
+假負評：正評判成負評,4,0.013,3,12,"Pedi o produto errado, solicitei autorização para devolução, até agora sem resposta.",評分與文字矛盾,退貨沒人回應，卻給 4 星
+假負評：正評判成負評,4,0.014,3,8,Fiz devolução e até agora não tive resposta.,評分與文字矛盾,退貨沒人回應，卻給 4 星
+假負評：正評判成負評,4,0.015,3,5,Aida nao recebi o produto,評分與文字矛盾,還沒收到，卻給 4 星
+假負評：正評判成負評,4,0.017,3,7,Prezado Senhores ainda não recebi minha mercadoria,評分與文字矛盾,還沒收到，卻給 4 星
+假負評：正評判成負評,4,0.017,3,6,o oproduto é de péssima qualidade,評分與文字矛盾,「品質極差」，卻給 4 星
+假負評：正評判成負評,5,0.018,3,38,"Comprei 4 kits e só recebi, por enquanto, apenas 01(um). Por isso minha avaliação de que ""o produto não foi entregue"". Penso que deveriam inf na compra q viria em partes e não td de uma vez. Aguardo.",評分與文字矛盾,4 組只收到 1 組，卻給 5 星
+假負評：正評判成負評,5,0.021,3,2,Não recebi,評分與文字矛盾,「沒收到」，卻給 5 星
+假負評：正評判成負評,5,0.022,3,12,"Efetue a compra de um produto e acabei recebendo outro, totalmente diferente.",評分與文字矛盾,收到別的商品，卻給 5 星
+假負評：正評判成負評,4,0.025,2,3,Produto muito frágil,評分與文字矛盾,「很脆弱」，卻給 4 星
+假負評：正評判成負評,5,0.032,3,8,"Recebi apenas o massageado e, falta um produto",評分與文字矛盾,少一件商品，卻給 5 星
+假負評：正評判成負評,5,0.032,3,5,Não consigo falar com vocês.,評分與文字矛盾,聯絡不到客服，卻給 5 星
+假負評：正評判成負評,4,0.034,3,3,Aguardo o produto,評分與文字矛盾,還在等貨，卻給 4 星
+假負評：正評判成負評,5,0.034,3,24,"Não recebi o produto até hoje dia 28-03-18. Mais fico aguardando uma solução. Não sei se houve algum problema na entrega, ou nos Correios ",評分與文字矛盾,還沒收到，卻給 5 星
+假負評：正評判成負評,5,0.037,3,11,o produto recebir com defeito a cortina desfiada e aoutra erada,評分與文字矛盾,收到瑕疵品和錯的商品，卻給 5 星
+假負評：正評判成負評,4,0.04,3,6,Não gostei do acabamento do produto,評分與文字矛盾,不喜歡做工，卻給 4 星
+假負評：正評判成負評,5,0.041,3,9,o produto veio com defeito. ja mandei email reclamando,評分與文字矛盾,瑕疵品、已寫信抱怨，卻給 5 星
+假負評：正評判成負評,4,0.041,2,6,Qualidade do produto deixa a desejar,評分與文字矛盾,品質不佳，卻給 4 星
+假負評：正評判成負評,5,0.041,3,27,Houve 3 tentativas de entrega mas eu não me encontrava no momento para receber. Aguardo orientação de como proceder para receber o produto ou cancelar a compra,中性敘述／詢問,自己不在家沒收到，詢問怎麼處理
+假負評：正評判成負評,5,0.049,3,7,Ainda não recebi a blusa na entrega ,評分與文字矛盾,還沒收到，卻給 5 星
+假負評：正評判成負評,4,0.051,2,22,"O status da entrega é ruim, sempre desatualizado, mostra que teve erro na entrega, mudam o prazo e no fim entregam antes. ",正負混雜,追蹤狀態很差，但最後提早送達
+假負評：正評判成負評,4,0.057,3,8,COMO FAÇO PRA FAZER A TROCA ..PRODUTO ERRADO,評分與文字矛盾,寄錯、要換貨，卻給 4 星
+假負評：正評判成負評,5,0.061,3,6,"Pedi a lapiseira 0,7 recebi 2.0",評分與文字矛盾,寄錯規格，卻給 5 星
+假負評：正評判成負評,4,0.062,3,24,"A loja apresentou um produto para venda embalado em caixa dizendo ser original e, veio um produto embalado a vácuo deixando dúvida ser original...",評分與文字矛盾,懷疑不是正品，卻給 4 星
+假負評：正評判成負評,4,0.063,3,14,Ainda não recebi. Os correios não atualiza o site. Quero saber o que aconteceu. ,評分與文字矛盾,還沒收到，卻給 4 星
+假負評：正評判成負評,4,0.063,3,19,"Comprei dois produtos. 
+Este foi entregue no prazo.
+O outro ainda não foi entregue e o prazo já acabou.",正負混雜,一件準時、另一件逾期未到
+假負評：正評判成負評,5,0.069,3,13,O produto até agora não fez efeito espero que faça nos próximos dias,中性敘述／詢問,說還沒見效、希望之後有效
+假負評：正評判成負評,5,0.07,2,19,"O produto chegou até antes do previsto, pena que já quebrou no mesmo dia em que comprei,
+Péssima qualidade!!!!!!",評分與文字矛盾,當天就壞、「品質極差」，卻給 5 星
+假負評：正評判成負評,5,0.072,3,37,"Não é muito agradável pois faz muito barulho qndo nos mexemos na cama,parece q tem um plástico no colchão sem contar q soa não gostei na imagem parece q é tecido qndo chega vê q é plástico.",評分與文字矛盾,不喜歡、和圖片不符，卻給 5 星
+假負評：正評判成負評,5,0.075,3,16,"MEU PRODUTO VEIO ERRADO.
+
+PAGUEI CASAL KING R$ 99,00 - NÂO CASAL PADRAO. QUERO TROCA URGENTE.",評分與文字矛盾,寄錯、要求緊急換貨，卻給 5 星
+假負評：正評判成負評,4,0.083,3,6,Insatisfação com a descrição do produto.,評分與文字矛盾,對商品描述不滿，卻給 4 星
+假負評：正評判成負評,4,0.084,3,27,"Boa noite recebi a mercadoria em parte pois uma cuba esta quebrada, como devo fazer? fico no prejuízo ou quem e que ira me repor esta quebrada",評分與文字矛盾,有零件破損，卻給 4 星
+假負評：正評判成負評,4,0.088,2,8,"estou esperando meu produto, depois faço a avaliaçao",中性敘述／詢問,還在等貨，說之後再評價
+假負評：正評判成負評,4,0.091,3,27,"Bom dia
+Eu comprei duas capinhas mas so recebi uma ate o momento
+Peço por favor para vocês da uma olhada qual foi o problema
+Muito obrigado.",評分與文字矛盾,只收到一個，卻給 4 星
+假負評：正評判成負評,5,0.096,3,25,comprei este produto é logo em seguida fiz uma nova compra...pedido n.02-650084157...so que ainda não recebi e gostaria de desisti da compra...o que eu faço?,中性敘述／詢問,詢問怎麼取消另一筆訂單
+假負評：正評判成負評,5,0.098,3,10,o tablet veio com defeito o que devo faze ????,評分與文字矛盾,平板是瑕疵品，卻給 5 星
+假負評：正評判成負評,4,0.1,3,27,"Produto entregue sem defeito e dentro do prazo, mas o produto não é bom; a base é de plástico e muito ruim, as argolas são ruins também.",正負混雜,準時無瑕疵，但商品品質差
+假負評：正評判成負評,4,0.102,1,18,"Estava previsto para ser entregue em 21 dias úteis , mas foi entregue em apenas 2 dias .",模型真的判錯,21 天的預計只花 2 天就到，是稱讚卻被判成負面
+假負評：正評判成負評,4,0.103,3,6,Um dos bonecos chegou com defeito,評分與文字矛盾,有瑕疵，卻給 4 星
+假負評：正評判成負評,4,0.106,3,12,"Recebi mais os dois estão com defeito e não sei como fazer
+",評分與文字矛盾,兩個都有瑕疵，卻給 4 星
+假負評：正評判成負評,4,0.12,3,10,Muita dificuldade de fazer contato com a loja via telefone.,評分與文字矛盾,很難聯絡店家，卻給 4 星
+假負評：正評判成負評,5,0.121,3,17,"Demora muito a entrega, e vc paga o frete é muitas vezes tem que retirar nos correios.",評分與文字矛盾,配送很慢、要去郵局，卻給 5 星
+假負評：正評判成負評,4,0.121,3,36,Minha opinião é que a empresa deveria informar todos os rastreamentos . uma vez que fiz 1 pedido com 03 unidades . sendo que recebi só o primeiro rastreamento que continha 01 unidade. entrei em pânico,評分與文字矛盾,追蹤資訊不完整、很慌，卻給 4 星
+假負評：正評判成負評,4,0.124,3,28,"Na vdd paguei por 3 produtos e recebi somente 2 produtos, quero saber qd chega o terceiro? Não posso ficar no prejuízo,. Pois confio muito nesta empresa, obgdo",評分與文字矛盾,少收一件，卻給 4 星
+假負評：正評判成負評,4,0.129,1,25,"BOA NOITE. RECEBI O PRODUTO, PORÉM MAL EMBALADO. EMBRULHADO NUM PAPEL MANILHA, QUE COM A CHUVA, CHEGOU RASGADO. MAS TUDO BEM. ACREDITO QUE DEVERÁ MELHORAR.",正負混雜,包裝破了，但「沒關係」
+假負評：正評判成負評,4,0.131,3,30,"Além do produto chegar errado, a devolução é feita pelo cliente, que tem de ir até uma agência dos Correios que aceite aquele tamanho de encomenda. Muito trabalhoso! Nunca mais.",評分與文字矛盾,寄錯、退貨麻煩、「再也不買」，卻給 4 星
+假負評：正評判成負評,4,0.136,2,17,Por favor preciso que resolva meu problema pq gosto muito dessa loja mais meu pedido veio errado,正負混雜,喜歡這家店，但這次寄錯
+假負評：正評判成負評,4,0.142,3,4,O pacote veio rasgado,評分與文字矛盾,包裹破了，卻給 4 星
+假負評：正評判成負評,5,0.156,3,10,NÃO GOSTEI DA TAXA DE ENTREGA MAIOR QUE O PRODUTO.,評分與文字矛盾,運費比商品貴，卻給 5 星
+假負評：正評判成負評,5,0.156,2,20,O PEDIDO FOI PARCELADO EM 10 VEZES MAS O CARTÃO baratheon PASSOU EM 3 VEZES. POR ISSO NÃO COMPRARIA NOVAMENTE ,評分與文字矛盾,分期被刷錯、「不會再買」，卻給 5 星
+假負評：正評判成負評,4,0.16,3,21,"O frasco é bem frágil, quando tirei a fita adesiva que prendia a tampa ela descascou toda. Ainda não foi utilizado.",評分與文字矛盾,瓶子很脆弱，卻給 4 星
+假負評：正評判成負評,4,0.161,1,10,vieram os tres conjuntos de lencois com dias de diferença,中性敘述／詢問,說三組床單相隔幾天才到
+假負評：正評判成負評,4,0.163,3,15,"o relógio não e a prova d,agua como tem na descrição do anuncio entrou agua",評分與文字矛盾,不防水、和描述不符，卻給 4 星
+假負評：正評判成負評,4,0.173,3,33,"Prezados, recebi o produto até antes do prazo previsto. Porém, a pipoqueira não funcionou. Exalou um cheiro de queimado e pulou um milho de pipoca sem estourar. A voltagem está correta. Peço troca. ",評分與文字矛盾,爆米花機不能用、要求換貨，卻給 4 星
+假負評：正評判成負評,5,0.174,3,26,Os correios informou ontem dia 25 que o produto estava a cinco dias esperando retirada e foi devolvido dia 24/10 mas só recebi essa informação ontem,評分與文字矛盾,郵局退回包裹沒通知，卻給 5 星
+假負評：正評判成負評,4,0.176,3,15,"O vaso é bonito,mas nao vale o preço!Muito caro para ser um vaso de plástico!",正負混雜,花瓶好看，但不值這個價
+假負評：正評判成負評,4,0.176,3,8,O produto não é tão portátil quanto anunciado.,評分與文字矛盾,不如廣告說的好攜帶，卻給 4 星
+假負評：正評判成負評,4,0.188,3,14,O e-mail consta relógio e gravadora mas somente foi entregue o relógio pelo correio,評分與文字矛盾,只收到手錶、沒收到錄音機，卻給 4 星
+假負評：正評判成負評,4,0.189,3,13,Ou a película é errada ou o modelo não protege toda a frente,評分與文字矛盾,保護貼不合，卻給 4 星
+假負評：正評判成負評,4,0.191,3,21,"A toalha q se referem ao piso do banheiro, veio na cor bege e nao8na cor vermelho como está na amostra.",評分與文字矛盾,顏色和樣品不同，卻給 4 星

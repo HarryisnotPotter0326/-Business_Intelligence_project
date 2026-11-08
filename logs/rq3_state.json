@@ -1,0 +1,37 @@
+{
+  "rq3_data": {
+    "title": "串接 9 張原始表、建立訂單特徵",
+    "status": "完成",
+    "start": "11-07 22:40",
+    "minutes": 0.0,
+    "log": ""
+  },
+  "rq3_model": {
+    "title": "負評預測：5 種模型 × 特徵組 × 切分方式",
+    "status": "完成",
+    "start": "11-07 22:40",
+    "minutes": 4.4,
+    "log": "logs\\rq3_model_20261107_224017.log"
+  },
+  "rq3_explain": {
+    "title": "SHAP、淺層決策樹規則、各因素負評率",
+    "status": "完成",
+    "start": "11-07 22:44",
+    "minutes": 0.1,
+    "log": "logs\\rq3_explain_20261107_224440.log"
+  },
+  "rq3_cluster": {
+    "title": "顧客分群：RFM ＋ K-means",
+    "status": "完成",
+    "start": "11-07 22:44",
+    "minutes": 1.0,
+    "log": "logs\\rq3_cluster_20261107_224448.log"
+  },
+  "rq3_topics": {
+    "title": "負評文字主題：TF-IDF ＋ NMF",
+    "status": "完成",
+    "start": "11-07 22:45",
+    "minutes": 0.1,
+    "log": "logs\\rq3_topics_20261107_224549.log"
+  }
+}

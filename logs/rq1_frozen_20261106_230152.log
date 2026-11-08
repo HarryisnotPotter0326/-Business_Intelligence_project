@@ -1,0 +1,27 @@
+# 指令：src/rq1_frozen.py bertimbau-base
+# 開始：2026-11-06 23:01:52
+[23:01:53] bertimbau-base train: 讀取已存的向量 frozen_bertimbau-base_train.npz    (CPU 16%  RAM 1.2G  GPU 1%  VRAM 0.6/11.0G  TEMP 49C)
+[23:01:53] bertimbau-base val: 讀取已存的向量 frozen_bertimbau-base_val.npz    (CPU 26%  RAM 1.3G  GPU 1%  VRAM 0.6/11.0G  TEMP 49C)
+[23:01:53] bertimbau-base test: 讀取已存的向量 frozen_bertimbau-base_test.npz    (CPU 16%  RAM 1.3G  GPU 1%  VRAM 0.6/11.0G  TEMP 49C)
+[23:01:53] bertimbau-base: 向量完成，花了 1 秒；開始訓練邏輯斯迴歸    (CPU 0%  RAM 1.3G  GPU 1%  VRAM 0.6/11.0G  TEMP 49C)
+[23:02:00] bertimbau-base   [CLS]            維度   768  C=0.03   驗證 AUC 0.9698  測試 AUC 0.9749    (CPU 67%  RAM 1.5G  GPU 0%  VRAM 0.6/11.0G  TEMP 49C)
+[23:02:06] bertimbau-base   mean             維度   768  C=0.003  驗證 AUC 0.9740  測試 AUC 0.9749    (CPU 62%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 49C)
+[23:02:11] bertimbau-base   max              維度   768  C=0.003  驗證 AUC 0.9685  測試 AUC 0.9693    (CPU 58%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:02:25] bertimbau-base   [CLS]+mean       維度  1536  C=0.003  驗證 AUC 0.9744  測試 AUC 0.9774    (CPU 70%  RAM 1.6G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:02:39] bertimbau-base   mean+max         維度  1536  C=0.003  驗證 AUC 0.9742  測試 AUC 0.9745    (CPU 71%  RAM 1.6G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:03:03] bertimbau-base   [CLS]+mean+std   維度  2304  C=0.003  驗證 AUC 0.9743  測試 AUC 0.9782    (CPU 76%  RAM 1.7G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:03:28] bertimbau-base   [CLS]+mean+max   維度  2304  C=0.003  驗證 AUC 0.9742  測試 AUC 0.9765    (CPU 76%  RAM 1.7G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:03:35] bertimbau-base   [CLS] last4      維度   768  C=0.03   驗證 AUC 0.9703  測試 AUC 0.9750    (CPU 66%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:03:41] bertimbau-base   mean last4       維度   768  C=0.003  驗證 AUC 0.9737  測試 AUC 0.9773    (CPU 65%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:03:41] 結果已存到 C:\商業智慧專案\results\rq1_frozen.csv    (CPU 0%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+         model       strategy  dim     C  val_auc  test_auc
+bertimbau-base [CLS]+mean+std 2304 0.003   0.9743    0.9782
+bertimbau-base     [CLS]+mean 1536 0.003   0.9744    0.9774
+bertimbau-base     mean last4  768 0.003   0.9737    0.9773
+bertimbau-base [CLS]+mean+max 2304 0.003   0.9742    0.9765
+bertimbau-base    [CLS] last4  768 0.030   0.9703    0.9750
+bertimbau-base          [CLS]  768 0.030   0.9698    0.9749
+bertimbau-base           mean  768 0.003   0.9740    0.9749
+bertimbau-base       mean+max 1536 0.003   0.9742    0.9745
+bertimbau-base            max  768 0.003   0.9685    0.9693
+[23:03:41] 記錄檔 C:\商業智慧專案\logs\rq1_frozen_20261106_230152.log    (CPU 0%  RAM 1.4G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)

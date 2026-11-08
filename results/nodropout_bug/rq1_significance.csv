@@ -1,0 +1,8 @@
+method,seeds,test_auc,seed_std,ci_low,ci_high
+bertimbau-large 微調,8,0.9863,0.0004,0.9829,0.9894
+bertimbau-base 微調,8,0.9848,0.0003,0.9813,0.9881
+bertimbau-large 凍結（mean last4）,1,0.9816,,0.9771,0.9856
+mbert 微調,8,0.9807,0.0007,0.9765,0.9847
+bertimbau-base 凍結（[CLS]+mean）,1,0.9774,,0.9722,0.9819
+TF-IDF + LR,1,0.9738,,0.9683,0.9789
+mbert 凍結（[CLS]+mean+std）,1,0.9621,,0.9558,0.9677

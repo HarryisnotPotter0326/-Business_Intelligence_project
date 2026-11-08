@@ -1,0 +1,24 @@
+# 指令：src/rq1_frozen.py bertimbau-base
+# 開始：2026-11-06 22:50:06
+[22:50:39] bertimbau-base: 向量完成，花了 32 秒；開始訓練邏輯斯迴歸    (CPU 30%  RAM 3.4G  GPU 97%  VRAM 2.2/11.0G  TEMP 55C)
+[22:50:46] bertimbau-base   [CLS]            維度   768  C=0.01   驗證 AUC 0.9697  測試 AUC 0.9746    (CPU 73%  RAM 3.5G  GPU 4%  VRAM 2.3/11.0G  TEMP 50C)
+[22:50:51] bertimbau-base   mean             維度   768  C=0.01   驗證 AUC 0.9739  測試 AUC 0.9756    (CPU 71%  RAM 3.5G  GPU 4%  VRAM 2.3/11.0G  TEMP 49C)
+[22:50:54] bertimbau-base   max              維度   768  C=0.01   驗證 AUC 0.9680  測試 AUC 0.9684    (CPU 67%  RAM 3.5G  GPU 7%  VRAM 2.3/11.0G  TEMP 49C)
+[22:51:07] bertimbau-base   [CLS]+mean       維度  1536  C=0.01   驗證 AUC 0.9744  測試 AUC 0.9782    (CPU 78%  RAM 3.6G  GPU 0%  VRAM 2.3/11.0G  TEMP 47C)
+[22:51:18] bertimbau-base   mean+max         維度  1536  C=0.01   驗證 AUC 0.9733  測試 AUC 0.9742    (CPU 76%  RAM 3.5G  GPU 9%  VRAM 2.3/11.0G  TEMP 47C)
+[22:51:41] bertimbau-base   [CLS]+mean+std   維度  2304  C=0.01   驗證 AUC 0.9732  測試 AUC 0.9779    (CPU 81%  RAM 3.6G  GPU 3%  VRAM 2.3/11.0G  TEMP 47C)
+[22:52:04] bertimbau-base   [CLS]+mean+max   維度  2304  C=0.01   驗證 AUC 0.9733  測試 AUC 0.9761    (CPU 81%  RAM 3.6G  GPU 5%  VRAM 2.3/11.0G  TEMP 47C)
+[22:52:09] bertimbau-base   [CLS] last4      維度   768  C=0.01   驗證 AUC 0.9702  測試 AUC 0.9747    (CPU 71%  RAM 3.4G  GPU 16%  VRAM 2.3/11.0G  TEMP 47C)
+[22:52:13] bertimbau-base   mean last4       維度   768  C=0.01   驗證 AUC 0.9734  測試 AUC 0.9777    (CPU 69%  RAM 3.4G  GPU 10%  VRAM 2.3/11.0G  TEMP 47C)
+[22:52:13] 結果已存到 C:\商業智慧專案\results\rq1_frozen.csv    (CPU 43%  RAM 3.4G  GPU 10%  VRAM 2.3/11.0G  TEMP 47C)
+         model       strategy  dim    C  val_auc  test_auc
+bertimbau-base     [CLS]+mean 1536 0.01   0.9744    0.9782
+bertimbau-base [CLS]+mean+std 2304 0.01   0.9732    0.9779
+bertimbau-base     mean last4  768 0.01   0.9734    0.9777
+bertimbau-base [CLS]+mean+max 2304 0.01   0.9733    0.9761
+bertimbau-base           mean  768 0.01   0.9739    0.9756
+bertimbau-base    [CLS] last4  768 0.01   0.9702    0.9747
+bertimbau-base          [CLS]  768 0.01   0.9697    0.9746
+bertimbau-base       mean+max 1536 0.01   0.9733    0.9742
+bertimbau-base            max  768 0.01   0.9680    0.9684
+[22:52:13] 記錄檔 C:\商業智慧專案\logs\rq1_frozen_20261106_225006.log    (CPU 0%  RAM 3.4G  GPU 10%  VRAM 2.3/11.0G  TEMP 47C)

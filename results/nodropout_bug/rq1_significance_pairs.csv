@@ -1,0 +1,22 @@
+A,B,diff_pct,ci_low_pct,ci_high_pct,p_value,significant
+TF-IDF + LR,bertimbau-base 凍結（[CLS]+mean）,-0.359,-0.732,-0.001,0.05,False
+TF-IDF + LR,bertimbau-large 凍結（mean last4）,-0.78,-1.133,-0.44,0.0,True
+TF-IDF + LR,mbert 凍結（[CLS]+mean+std）,1.176,0.789,1.597,0.0,True
+TF-IDF + LR,bertimbau-base 微調,-1.107,-1.441,-0.797,0.0,True
+TF-IDF + LR,bertimbau-large 微調,-1.254,-1.592,-0.936,0.0,True
+TF-IDF + LR,mbert 微調,-0.691,-1.007,-0.388,0.0,True
+bertimbau-base 凍結（[CLS]+mean）,bertimbau-large 凍結（mean last4）,-0.421,-0.638,-0.206,0.0,True
+bertimbau-base 凍結（[CLS]+mean）,mbert 凍結（[CLS]+mean+std）,1.535,1.119,1.977,0.0,True
+bertimbau-base 凍結（[CLS]+mean）,bertimbau-base 微調,-0.748,-1.028,-0.484,0.0,True
+bertimbau-base 凍結（[CLS]+mean）,bertimbau-large 微調,-0.895,-1.173,-0.621,0.0,True
+bertimbau-base 凍結（[CLS]+mean）,mbert 微調,-0.332,-0.642,-0.026,0.038,True
+bertimbau-large 凍結（mean last4）,mbert 凍結（[CLS]+mean+std）,1.956,1.533,2.415,0.0,True
+bertimbau-large 凍結（mean last4）,bertimbau-base 微調,-0.327,-0.545,-0.122,0.001,True
+bertimbau-large 凍結（mean last4）,bertimbau-large 微調,-0.474,-0.693,-0.271,0.0,True
+bertimbau-large 凍結（mean last4）,mbert 微調,0.089,-0.159,0.339,0.485,False
+mbert 凍結（[CLS]+mean+std）,bertimbau-base 微調,-2.282,-2.731,-1.849,0.0,True
+mbert 凍結（[CLS]+mean+std）,bertimbau-large 微調,-2.43,-2.899,-2.004,0.0,True
+mbert 凍結（[CLS]+mean+std）,mbert 微調,-1.867,-2.273,-1.477,0.0,True
+bertimbau-base 微調,bertimbau-large 微調,-0.147,-0.226,-0.072,0.0,True
+bertimbau-base 微調,mbert 微調,0.416,0.261,0.576,0.0,True
+bertimbau-large 微調,mbert 微調,0.563,0.407,0.728,0.0,True

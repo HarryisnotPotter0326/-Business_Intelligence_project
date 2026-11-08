@@ -1,0 +1,151 @@
+對照,特徵,SMD_配對前,SMD_配對後
+延遲（任何天數）,n_items,-0.061,0.019
+延遲（任何天數）,n_products,-0.098,0.007
+延遲（任何天數）,n_sellers,-0.131,-0.005
+延遲（任何天數）,price_total,0.051,0.012
+延遲（任何天數）,freight_total,0.087,-0.003
+延遲（任何天數）,freight_ratio,0.024,-0.033
+延遲（任何天數）,price_max,0.067,0.013
+延遲（任何天數）,payment_value,0.058,0.011
+延遲（任何天數）,installments,0.03,0.027
+延遲（任何天數）,n_payment_types,-0.021,0.008
+延遲（任何天數）,est_days,-0.234,-0.005
+延遲（任何天數）,approve_hours,0.097,-0.002
+延遲（任何天數）,purchase_hour,0.034,-0.006
+延遲（任何天數）,purchase_dow,-0.053,0.009
+延遲（任何天數）,purchase_month,-0.089,0.007
+延遲（任何天數）,weight_g,0.076,0.026
+延遲（任何天數）,volume_cm3,0.061,0.01
+延遲（任何天數）,photos_qty,-0.022,-0.01
+延遲（任何天數）,desc_len,0.001,0.009
+延遲（任何天數）,name_len,0.022,0.033
+延遲（任何天數）,distance_km,0.233,-0.019
+延遲（任何天數）,same_state,-0.209,0.008
+延遲（任何天數）,seller_prev_n,0.058,-0.013
+延遲（任何天數）,seller_prev_neg_rate,0.07,-0.015
+延遲（任何天數）,customer_prev_orders,-0.028,0.006
+延遲 0–2 天,n_items,-0.032,0.012
+延遲 0–2 天,n_products,-0.072,0.022
+延遲 0–2 天,n_sellers,-0.116,0.018
+延遲 0–2 天,price_total,0.001,-0.018
+延遲 0–2 天,freight_total,-0.013,-0.003
+延遲 0–2 天,freight_ratio,-0.008,0.013
+延遲 0–2 天,price_max,0.008,-0.019
+延遲 0–2 天,payment_value,-0.0,-0.017
+延遲 0–2 天,installments,-0.011,0.027
+延遲 0–2 天,n_payment_types,-0.037,0.0
+延遲 0–2 天,est_days,-0.526,-0.023
+延遲 0–2 天,approve_hours,0.115,-0.036
+延遲 0–2 天,purchase_hour,0.045,-0.008
+延遲 0–2 天,purchase_dow,-0.083,0.0
+延遲 0–2 天,purchase_month,0.046,-0.006
+延遲 0–2 天,weight_g,0.028,0.013
+延遲 0–2 天,volume_cm3,0.006,0.037
+延遲 0–2 天,photos_qty,-0.01,-0.021
+延遲 0–2 天,desc_len,-0.007,0.018
+延遲 0–2 天,name_len,0.017,0.012
+延遲 0–2 天,distance_km,0.032,-0.065
+延遲 0–2 天,same_state,0.044,0.023
+延遲 0–2 天,seller_prev_n,0.044,0.025
+延遲 0–2 天,seller_prev_neg_rate,0.071,-0.02
+延遲 0–2 天,customer_prev_orders,-0.002,-0.024
+延遲 2–5 天,n_items,-0.052,0.031
+延遲 2–5 天,n_products,-0.108,0.027
+延遲 2–5 天,n_sellers,-0.115,0.042
+延遲 2–5 天,price_total,0.003,0.019
+延遲 2–5 天,freight_total,0.033,0.04
+延遲 2–5 天,freight_ratio,0.011,-0.011
+延遲 2–5 天,price_max,0.024,0.015
+延遲 2–5 天,payment_value,0.006,0.022
+延遲 2–5 天,installments,-0.036,0.038
+延遲 2–5 天,n_payment_types,-0.036,-0.005
+延遲 2–5 天,est_days,-0.354,-0.034
+延遲 2–5 天,approve_hours,0.121,0.001
+延遲 2–5 天,purchase_hour,0.04,-0.044
+延遲 2–5 天,purchase_dow,-0.074,0.03
+延遲 2–5 天,purchase_month,-0.049,0.012
+延遲 2–5 天,weight_g,0.041,0.022
+延遲 2–5 天,volume_cm3,0.011,0.004
+延遲 2–5 天,photos_qty,-0.009,0.004
+延遲 2–5 天,desc_len,-0.011,0.036
+延遲 2–5 天,name_len,0.05,0.023
+延遲 2–5 天,distance_km,0.119,-0.01
+延遲 2–5 天,same_state,-0.087,0.054
+延遲 2–5 天,seller_prev_n,0.125,-0.025
+延遲 2–5 天,seller_prev_neg_rate,0.066,-0.01
+延遲 2–5 天,customer_prev_orders,-0.067,-0.032
+延遲 5–10 天,n_items,-0.056,0.057
+延遲 5–10 天,n_products,-0.077,-0.016
+延遲 5–10 天,n_sellers,-0.125,-0.049
+延遲 5–10 天,price_total,0.094,-0.02
+延遲 5–10 天,freight_total,0.12,0.006
+延遲 5–10 天,freight_ratio,0.005,0.038
+延遲 5–10 天,price_max,0.116,-0.026
+延遲 5–10 天,payment_value,0.101,-0.019
+延遲 5–10 天,installments,0.027,-0.03
+延遲 5–10 天,n_payment_types,0.002,-0.04
+延遲 5–10 天,est_days,-0.164,-0.042
+延遲 5–10 天,approve_hours,0.09,-0.042
+延遲 5–10 天,purchase_hour,0.025,-0.001
+延遲 5–10 天,purchase_dow,-0.065,0.021
+延遲 5–10 天,purchase_month,-0.145,0.035
+延遲 5–10 天,weight_g,0.099,-0.029
+延遲 5–10 天,volume_cm3,0.088,-0.012
+延遲 5–10 天,photos_qty,-0.003,-0.013
+延遲 5–10 天,desc_len,0.047,0.004
+延遲 5–10 天,name_len,0.031,-0.006
+延遲 5–10 天,distance_km,0.295,-0.029
+延遲 5–10 天,same_state,-0.269,0.024
+延遲 5–10 天,seller_prev_n,0.059,-0.004
+延遲 5–10 天,seller_prev_neg_rate,0.077,-0.027
+延遲 5–10 天,customer_prev_orders,-0.011,-0.019
+延遲 >10 天,n_items,-0.104,-0.016
+延遲 >10 天,n_products,-0.137,-0.02
+延遲 >10 天,n_sellers,-0.164,0.0
+延遲 >10 天,price_total,0.09,-0.039
+延遲 >10 天,freight_total,0.177,-0.049
+延遲 >10 天,freight_ratio,0.079,-0.009
+延遲 >10 天,price_max,0.106,-0.035
+延遲 >10 天,payment_value,0.104,-0.042
+延遲 >10 天,installments,0.111,-0.029
+延遲 >10 天,n_payment_types,-0.015,-0.006
+延遲 >10 天,est_days,0.082,-0.022
+延遲 >10 天,approve_hours,0.071,0.008
+延遲 >10 天,purchase_hour,0.027,-0.017
+延遲 >10 天,purchase_dow,-0.002,0.045
+延遲 >10 天,purchase_month,-0.189,0.001
+延遲 >10 天,weight_g,0.119,-0.029
+延遲 >10 天,volume_cm3,0.116,-0.022
+延遲 >10 天,photos_qty,-0.059,-0.008
+延遲 >10 天,desc_len,-0.022,-0.011
+延遲 >10 天,name_len,0.002,0.012
+延遲 >10 天,distance_km,0.435,-0.04
+延遲 >10 天,same_state,-0.53,-0.013
+延遲 >10 天,seller_prev_n,0.023,0.036
+延遲 >10 天,seller_prev_neg_rate,0.067,-0.023
+延遲 >10 天,customer_prev_orders,-0.048,0.025
+未送達,n_items,-0.112,0.0
+未送達,n_products,-0.14,0.025
+未送達,n_sellers,-0.148,-0.012
+未送達,price_total,0.057,0.017
+未送達,freight_total,0.003,0.005
+未送達,freight_ratio,-0.102,-0.034
+未送達,price_max,0.062,0.03
+未送達,payment_value,0.152,0.016
+未送達,installments,0.032,-0.028
+未送達,n_payment_types,-0.007,-0.026
+未送達,est_days,0.087,-0.017
+未送達,approve_hours,0.064,0.011
+未送達,purchase_hour,-0.016,-0.034
+未送達,purchase_dow,-0.02,0.01
+未送達,purchase_month,0.002,0.03
+未送達,weight_g,-0.044,0.017
+未送達,volume_cm3,0.009,0.033
+未送達,photos_qty,-0.068,-0.015
+未送達,desc_len,-0.051,-0.005
+未送達,name_len,-0.023,0.009
+未送達,distance_km,-0.012,-0.01
+未送達,same_state,-0.23,0.012
+未送達,seller_prev_n,-0.261,-0.011
+未送達,seller_prev_neg_rate,0.149,-0.004
+未送達,customer_prev_orders,0.029,-0.003

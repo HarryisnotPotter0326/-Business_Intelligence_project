@@ -1,0 +1,107 @@
+{
+  "ext_apply_bert": {
+    "title": "BERT 用在業務資料：3 分評論、隱性不滿",
+    "status": "完成",
+    "start": "11-07 23:42",
+    "minutes": 10.4,
+    "log": "logs\\ext_apply_bert_20261107_234302.log"
+  },
+  "ext_crossdomain": {
+    "title": "跨資料集：5 個資料集 × TF-IDF／BERT／LLM 零樣本",
+    "status": "完成",
+    "start": "11-07 23:53",
+    "minutes": 11.7,
+    "log": "logs\\ext_crossdomain_20261107_235326.log"
+  },
+  "ext_speed": {
+    "title": "推論速度與顯示卡記憶體",
+    "status": "完成",
+    "start": "11-08 00:05",
+    "minutes": 1.7,
+    "log": "logs\\ext_speed_20261108_000505.log"
+  },
+  "llm_zeroshot_val": {
+    "title": "LLM 零樣本（含驗證集）：0.5B／1.5B／3B",
+    "status": "完成",
+    "start": "11-08 00:06",
+    "minutes": 2.9,
+    "log": "logs\\rq2_llm_20261108_000646.log；logs\\rq2_llm_20261108_000712.log；logs\\rq2_llm_20261108_000806.log"
+  },
+  "llm_fewshot4": {
+    "title": "LLM 少樣本 4 則範例：0.5B／1.5B／3B",
+    "status": "完成",
+    "start": "11-08 00:09",
+    "minutes": 29.8,
+    "log": "logs\\rq2_llm_20261108_000940.log；logs\\rq2_llm_20261108_001045.log；logs\\rq2_llm_20261108_001455.log"
+  },
+  "llm_fewshot8": {
+    "title": "LLM 少樣本 8 則範例：0.5B／1.5B／3B",
+    "status": "完成",
+    "start": "11-08 00:39",
+    "minutes": 102.4,
+    "log": "logs\\rq2_llm_20261108_003927.log；logs\\rq2_llm_20261108_004116.log；logs\\rq2_llm_20261108_005958.log"
+  },
+  "lora_0.5b_seeds": {
+    "title": "LoRA 0.5B 全部資料：種子 43、44",
+    "status": "完成",
+    "start": "11-08 02:21",
+    "minutes": 27.9,
+    "log": "logs\\rq2_llm_20261108_022157.log；logs\\rq2_llm_20261108_023600.log"
+  },
+  "lora_1.5b_1000_seeds": {
+    "title": "LoRA 1.5B，1000 筆：種子 43、44",
+    "status": "完成",
+    "start": "11-08 02:49",
+    "minutes": 2.7,
+    "log": "logs\\rq2_llm_20261108_024949.log；logs\\rq2_llm_20261108_025110.log"
+  },
+  "lora_1.5b_5000_seeds": {
+    "title": "LoRA 1.5B，5000 筆：種子 43、44",
+    "status": "完成",
+    "start": "11-08 02:52",
+    "minutes": 8.0,
+    "log": "logs\\rq2_llm_20261108_025232.log；logs\\rq2_llm_20261108_025632.log"
+  },
+  "lora_1.5b_30464_seeds": {
+    "title": "LoRA 1.5B，30464 筆：種子 43、44",
+    "status": "完成",
+    "start": "11-08 03:00",
+    "minutes": 41.7,
+    "log": "logs\\rq2_llm_20261108_030031.log；logs\\rq2_llm_20261108_032120.log"
+  },
+  "lora_3b_1000": {
+    "title": "LoRA 3B，1000 筆",
+    "status": "完成",
+    "start": "11-08 03:42",
+    "minutes": 2.5,
+    "log": "logs\\rq2_llm_20261108_034211.log"
+  },
+  "lora_3b_5000": {
+    "title": "LoRA 3B，5000 筆",
+    "status": "完成",
+    "start": "11-08 03:44",
+    "minutes": 7.7,
+    "log": "logs\\rq2_llm_20261108_034440.log"
+  },
+  "lora_3b_30464": {
+    "title": "LoRA 3B，30464 筆",
+    "status": "完成",
+    "start": "11-08 03:52",
+    "minutes": 41.0,
+    "log": "logs\\rq2_llm_20261108_035224.log"
+  },
+  "ext_llm_calibration": {
+    "title": "LLM 門檻校正",
+    "status": "完成",
+    "start": "11-08 04:33",
+    "minutes": 0.1,
+    "log": "logs\\ext_llm_calibration_20261108_043326.log"
+  },
+  "ext_ensemble_v2": {
+    "title": "集成（納入新的 LLM 預測）",
+    "status": "完成",
+    "start": "11-08 04:33",
+    "minutes": 1.3,
+    "log": "logs\\ext_ensemble_20261108_043330.log"
+  }
+}

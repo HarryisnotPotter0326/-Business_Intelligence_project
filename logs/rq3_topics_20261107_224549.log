@@ -1,0 +1,73 @@
+# 指令：src/rq3_topics.py
+# 開始：2026-11-07 22:45:49
+[22:45:49] 有留言的負評 10,817 則（占全部負評 74.6%）    (CPU 21%  RAM 0.3G  GPU 2%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:49] 詞彙 1,856 個    (CPU 23%  RAM 0.3G  GPU 2%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:49] K=4：UMass -3.058    (CPU 21%  RAM 0.3G  GPU 2%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:49] K=5：UMass -3.129    (CPU 23%  RAM 0.3G  GPU 2%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:50] K=6：UMass -3.095    (CPU 13%  RAM 0.3G  GPU 3%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:50] K=7：UMass -3.106    (CPU 28%  RAM 0.3G  GPU 3%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:51] K=8：UMass -3.176    (CPU 15%  RAM 0.3G  GPU 1%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:51] K=9：UMass -3.084    (CPU 26%  RAM 0.3G  GPU 1%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:51] K=10：UMass -3.129    (CPU 14%  RAM 0.3G  GPU 1%  VRAM 1.1/11.0G  TEMP 43C)
+[22:45:51] 使用 K = 9    (CPU 12%  RAM 0.3G  GPU 1%  VRAM 1.1/11.0G  TEMP 43C)
+
+負評主題：
+ topic                                                                                                                                                                                               關鍵詞  評論數    占比  平均評分   延遲率  未送達率  多賣家訂單比例  多品項訂單比例  平均延遲天數                                                   常見品類
+     7                                                                      compra, pedido, quero, loja, dinheiro, fiz, lannister, nem, volta, aguardando, receber, dinheiro volta, contato, tive, saber 2817 0.260  1.16 0.380 0.246    0.042    0.178    -3.4   bed_bath_table, computers_accessories, health_beauty
+     3                            comprei, dois, apenas, comprei dois, produtos, recebi apenas, duas, comprei produto, unidades, entregaram, dois produtos, comprei duas, produto comprei, nota, somente 1488 0.138  1.18 0.127 0.063    0.092    0.534   -10.8 bed_bath_table, computers_accessories, furniture_decor
+     5                     entrega, prazo, prazo entrega, demora, demora entrega, entrega produto, passou, passou prazo, atraso, data, hoje, entrega recebi, atraso entrega, demorou, aguardando entrega 1277 0.118  1.23 0.616 0.197    0.015    0.111     3.5   bed_bath_table, health_beauty, computers_accessories
+     4                                                    veio, produto veio, defeito, produto, veio defeito, errado, pedi, veio errado, faltando, veio faltando, troca, quebrado, cor, caixa, diferente 1196 0.111  1.28 0.054 0.023    0.045    0.185   -11.8               telephony, watches_gifts, bed_bath_table
+     0     recebi produto, produto, recebi, produto nem, produto errado, produto comprei, errado, produto prazo, avaliar, nem, produto diferente, diferente, comprei produto, produto comprado, comprado 1148 0.106  1.14 0.501 0.198    0.015    0.100    -0.2   health_beauty, computers_accessories, sports_leisure
+     8                              qualidade, pessima, pessima qualidade, produto, gostei, produto pessima, ruim, recomendo, material, foto, baixa, baixa qualidade, loja, diferente, qualidade produto 1061 0.098  1.31 0.094 0.037    0.006    0.079   -10.9         bed_bath_table, furniture_decor, watches_gifts
+     1          entregue, produto entregue, produto, momento, entregue prazo, entregue produto, consta, entregue momento, prazo, pedido entregue, comprado, data, site, entregue recebi, momento produto  711 0.066  1.13 0.414 0.172    0.069    0.186    -2.5          bed_bath_table, sports_leisure, health_beauty
+     2         chegou, produto chegou, produto, chegou prazo, chegou produto, prazo, chegou quebrado, quebrado, chegou residencia, residencia, porem, esperando, pedido chegou, chegou apenas, embalagem  672 0.062  1.19 0.434 0.125    0.057    0.156    -1.3          health_beauty, sports_leisure, bed_bath_table
+     6 recebi, momento, momento recebi, recebi mercadoria, recebi apenas, produto recebi, recebi produto, mercadoria, hoje, hoje recebi, recebi produtos, recebi pedido, paguei, avaliar, recebi somente  447 0.041  1.18 0.312 0.132    0.159    0.342    -6.1 bed_bath_table, furniture_decor, computers_accessories
+
+各主題代表評論（每主題 5 則）：
+ topic  review_score                                                                                                   review_comment_message  is_late  delivered              category
+     0             1                                                                                               Ainda nao recebi o produto      1.0        1.0         health_beauty
+     0             1                                                                                            Ainda não recebi o produto...      0.0        1.0           electronics
+     0             1                                                                                                     Não recebi o produto      1.0        1.0      office_furniture
+     0             1                                                                                            Ainda não recebi o produto :(      0.0        1.0        bed_bath_table
+     0             2                                                                                               Não recebi o produto ainda      NaN        0.0                  auto
+     1             1                                                                                                     Produto não entregue      1.0        1.0            cool_stuff
+     1             1                                                                                               o produto não foi entregue      0.0        1.0               unknown
+     1             1                                                                                           Produto ainda não foi entregue      1.0        1.0        bed_bath_table
+     1             1                                                                                  O produto ainda ainda não foi entregue.      1.0        1.0                  auto
+     1             1                                                      Meu produto não foi entregue e está constatado como entregue...\r\n      0.0        1.0         watches_gifts
+     2             1                                                                                                   meu produto não chegou      NaN        0.0            stationery
+     2             1                                                                                               O produto ainda não chegou      1.0        1.0 computers_accessories
+     2             1                                                                                               O produto ainda não chegou      1.0        1.0        sports_leisure
+     2             1                                                                                                 Produto ainda não chegou      1.0        1.0             telephony
+     2             2                                                                                                    O produto não chegou!      0.0        1.0        bed_bath_table
+     3             1                                                                                    comprei um termostato e não aquecedor      0.0        1.0              pet_shop
+     3             1                                                                                                 Comprei um recibie outro      0.0        1.0         watches_gifts
+     3             1                                                                                   Comprei o Iso X e recebi o Nitro Hard       0.0        1.0        sports_leisure
+     3             1                                                                               Comprei dois cobertores e recebi apenas um      0.0        1.0        bed_bath_table
+     3             1                                                                                              Comprei 02 rolos tecrbi 01.      0.0        1.0       furniture_decor
+     4             2                                                                                  O produto veio com uma lente arranhada.      1.0        1.0             telephony
+     4             1                                                                                                       O produto não veio      0.0        1.0         health_beauty
+     4             1                                                                                                 O produto veio estragado      0.0        1.0 computers_accessories
+     4             2                                                                                    Produto veio torto na ponta onde medi      0.0        1.0          garden_tools
+     4             1                                                                                                       O produto não veio      NaN        0.0         health_beauty
+     5             1                                                                                     O prazo da entrega nao foi comprido.      1.0        1.0          garden_tools
+     5             1                                                                                         Não respeitou o prazo da entrega      1.0        1.0             perfumery
+     5             1                                                    Prazo de entrega gigante e mesmo assim conseguiram atrasar a entrega.      0.0        1.0        bed_bath_table
+     5             1                                                    Prazo de entrega gigante e mesmo assim conseguiram atrasar a entrega.      1.0        1.0        bed_bath_table
+     5             1                                                                                         Ainda esta no prazo para entrega      0.0        1.0                  auto
+     6             1                                                                                                               não recebi      NaN        0.0       furniture_decor
+     6             1                                                                                                         Ainda não recebi      0.0        1.0        bed_bath_table
+     6             1                                                                                                               Não recebi      NaN        0.0                   NaN
+     6             1                                                                                                               Não recebi      0.0        1.0        bed_bath_table
+     6             1                                                                                                         Ainda não recebi      1.0        1.0             perfumery
+     7             1 Nunca tive problemas com esse site e no mesmo mes tive 2 transtornos, não compro mais nada aqui. E quero meu dinheiro...      NaN        0.0       furniture_decor
+     7             1                                                                                            Quero meu dinheiro de volta.       NaN        0.0         health_beauty
+     7             1 Foi a primeira vez que fiz uma compra pela a internet e foi uma péssima esperiencia.Agora quero saber se vou ficar no...      1.0        1.0             telephony
+     7             1                                                                                              Quero meu dinheiro de volta      1.0        1.0             telephony
+     7             1                                                                                             Quero meu dinheiro de volta       NaN        0.0         health_beauty
+     8             1                                                                         Péssima qualidade, estarei devolvendo o produto.      1.0        1.0       furniture_decor
+     8             1                                                                                            Produto de péssima qualidade!      0.0        1.0        bed_bath_table
+     8             1                                                                      O produto de pessima qualidade se pudesse devolvia.      0.0        1.0               unknown
+     8             1                                                                                            Produto de péssima qualidade       0.0        1.0        sports_leisure
+     8             1                                                                                             Produto de péssima qualidade      0.0        1.0            housewares
+[22:45:52] 結果已存到 results/rq3_topic*.csv、figures/rq3_topics.png；記錄檔 C:\商業智慧專案\logs\rq3_topics_20261107_224549.log    (CPU 15%  RAM 0.3G  GPU 1%  VRAM 1.1/11.0G  TEMP 43C)

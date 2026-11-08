@@ -1,0 +1,23 @@
+{
+  "rq3_explain_v2": {
+    "title": "RQ3 重跑：決策樹改用「未送達＝無限延遲」",
+    "status": "完成",
+    "start": "11-07 23:00",
+    "minutes": 0.1,
+    "log": "logs\\rq3_explain_20261107_230046.log"
+  },
+  "rq3_topics_v2": {
+    "title": "RQ3 重跑：負評主題（存下每則負評的主題給 RQ4）",
+    "status": "完成",
+    "start": "11-07 23:00",
+    "minutes": 0.1,
+    "log": "logs\\rq3_topics_20261107_230055.log"
+  },
+  "rq4_decision": {
+    "title": "RQ4：預警時點、成本敏感門檻、預警名單、改善優先順序",
+    "status": "完成",
+    "start": "11-07 23:10",
+    "minutes": 0.2,
+    "log": "logs\\rq4_decision_20261107_231008.log"
+  }
+}

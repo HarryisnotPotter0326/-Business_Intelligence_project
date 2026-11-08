@@ -1,0 +1,66 @@
+﻿類型,review_score,p_pos,is_late,delay_days,category,text
+隱性不滿（4–5 星、文字負面）,4,0.01,,,telephony,Não entregaram o produto
+隱性不滿（4–5 星、文字負面）,4,0.01,1.0,50.1065625,baby,Até agora não recebi o produto. Ninguém me dá um retorno
+隱性不滿（4–5 星、文字負面）,4,0.01,,,home_construction,"Não recebi o produto, enviei mensagem não me responderam, liguei estou esperando até agora o retorno"
+隱性不滿（4–5 星、文字負面）,5,0.01,1.0,9.832314814814815,garden_tools,Produto não entregue.
+隱性不滿（4–5 星、文字負面）,5,0.011,0.0,-16.296979166666667,stationery,Aguardo o meu sofá que comprei antes para entrega para dia 16 até o momento n recebi n consegui fazer o cancelamento nenhuma satisfação acho uma falta de respeito ao cliente se não tem não engana
+隱性不滿（4–5 星、文字負面）,5,0.011,1.0,3.612534722222222,bed_bath_table,"Nao recebi o produto,ja liguei varias vezes estou apreensiva"
+隱性不滿（4–5 星、文字負面）,5,0.011,1.0,7.827685185185185,bed_bath_table,"Comprei e não recebi, tá se tornando rotina, vocês vão perder seus clientes"
+隱性不滿（4–5 星、文字負面）,4,0.011,0.0,-19.20923611111111,computers_accessories,Não posso indicar a loja de ainda não recebi o produto. Estou no aguardo da entrega
+隱性不滿（4–5 星、文字負面）,5,0.011,0.0,-19.247777777777777,health_beauty,"Ainda não recebi minha compra!
+
+Isso é uma falta de vergonha!"
+隱性不滿（4–5 星、文字負面）,5,0.011,,,housewares,Não dão a menor satisfação para o cliente a entrega estava prevista para 13/03/17 e foi a única comunicação que tive enviei email e não fui atendida no dia 10/03 me avisaram q. O pedido seria cancelad
+隱性不滿（4–5 星、文字負面）,4,0.011,0.0,-15.771296296296295,sports_leisure,"Completou um mês que efetuei essa compra, cuja nota fiscal veio incorreta, com o valor bem abaixo do que paguei, prometeram correção e até agora não houve nem sequer um contato da targaryen."
+隱性不滿（4–5 星、文字負面）,5,0.012,0.0,-15.21324074074074,computers_accessories,Adquiri 4 cartuchos 41 Canon e recebi somente 2 até o momento.
+隱性不滿（4–5 星、文字負面）,4,0.012,,,bed_bath_table,Produto não chegou
+隱性不滿（4–5 星、文字負面）,5,0.012,,,electronics,Não foi entregue o meu pedido
+隱性不滿（4–5 星、文字負面）,4,0.012,0.0,-1.1537037037037037,construction_tools_lights,Desde o dia 15 de agosto eu solicitei o cancelamento da compra em questão e até a presente data não obtive retorno.
+隱性不滿（4–5 星、文字負面）,5,0.012,0.0,-18.48953703703704,pet_shop,Ta muito dificil comprar com as lannister levei quase 30 dias pra receber meu produto nao recomendo pela demora
+隱性不滿（4–5 星、文字負面）,5,0.012,0.0,-13.19806712962963,office_furniture,"Ainda não recebi todos os produtos comprados, espero que ainda chegue... Comprei três kits e recebi somente dois."
+隱性不滿（4–5 星、文字負面）,5,0.012,1.0,11.017777777777777,health_beauty,Não recebi o produto
+隱性不滿（4–5 星、文字負面）,4,0.012,0.0,-11.134039351851852,sports_leisure,Aida nao recebi o produto
+隱性不滿（4–5 星、文字負面）,5,0.013,0.0,-8.484444444444444,home_confort,"Foi entregue a toalha marron a vermelha não veio,e a nota estava com a toalha ,como faço agora ,pois preciso da toalha e nada ,fica difícil desta forma continuar cliente de vocês."
+矛盾（1–2 星、文字正面）,2,0.998,0.0,-26.078333333333333,housewares,"SUPER RECOMENDO, VEIO ANTES DO PRAZO ...."
+矛盾（1–2 星、文字正面）,1,0.998,0.0,-0.1620138888888889,fashion_underwear_beach,"Loja de confiança, entrega dentro do prazo."
+矛盾（1–2 星、文字正面）,1,0.998,0.0,-12.02355324074074,telephony,PRODUTO ENTREGUE NO PRAZO COM QUALIDADE
+矛盾（1–2 星、文字正面）,1,0.998,0.0,-20.21207175925926,auto,Minha mercadoria chegou antes do prazo e é exelente
+矛盾（1–2 星、文字正面）,1,0.998,0.0,-12.216608796296295,garden_tools,Produto recebido antes do prazo estabelecido e de acordo com o que foi solicitado.
+矛盾（1–2 星、文字正面）,1,0.998,0.0,-6.262418981481481,health_beauty,Adorei recebi antes do prazo
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-16.049594907407407,stationery,SUPER RECOMENDO
+矛盾（1–2 星、文字正面）,2,0.997,0.0,-13.289537037037038,toys,"Boneca linda!!! e a entrega no prazo , muito satisfeita ."
+矛盾（1–2 星、文字正面）,2,0.997,0.0,-27.259780092592592,auto,Um excelente site. Super recomendo.
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-14.668090277777777,cool_stuff,"Ótima loija produto entregue dentro do prazo,Produto muito bom"
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-12.481423611111111,luggage_accessories,Recebi o produto muito antes do prazo.Isso é excelente. Muito satisfeito.
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-11.22320601851852,bed_bath_table,"Produto de boa qualidade, entrega dentro do prazo"
+矛盾（1–2 星、文字正面）,2,0.997,0.0,-8.620555555555555,telephony,Gostei veio como esperando nota 100 recomendo muito bom legal
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-17.16849537037037,electronics,Entrega super rápida... Produto com ótima qualidade... Super recomendo...
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-17.19611111111111,watches_gifts,"Recebi o produto perfeito
+Grata"
+矛盾（1–2 星、文字正面）,1,0.997,0.0,-9.000011574074074,books_general_interest,"Adorei, chegou super rápido. Perfeito"
+矛盾（1–2 星、文字正面）,2,0.997,0.0,-23.420324074074074,health_beauty,Parabéns para toda equipe.
+矛盾（1–2 星、文字正面）,2,0.996,0.0,-17.377916666666668,electronics,Nada a reclamar recebi com antecencia ao marcado.
+矛盾（1–2 星、文字正面）,2,0.996,0.0,-1.0560532407407408,bed_bath_table,"Entrega no tempo previsto.
+Gostei muito,são bem feito."
+矛盾（1–2 星、文字正面）,2,0.996,0.0,-27.134074074074075,bed_bath_table,Linda.entrega rápida... parabéns
+3 分、文字最負面,3,0.009,0.0,-8.220787037037036,health_beauty,Comprei dois produtos e só foi entregue um !!!!! Esperei até o final do prazo de entrega e o mesmo n chegou !!!
+3 分、文字最負面,3,0.011,,,baby,"Para recomendar preciso ter 99% de certeza. Não recebi o produto até hoje. Vocês não sanaram meu problema. Atendimento confuso a resposta de vocês a minha solicitação não foi precisa, e até hoje nada."
+3 分、文字最負面,3,0.011,0.0,-7.079212962962963,electronics,Comprei 3 itens... recebi apenas 2... e a loja não responde meus contatos...
+3 分、文字最負面,3,0.011,0.0,-17.102708333333332,bed_bath_table,"comprei uma garrafa térmica e uma capa de colchão e não recebi a capa, já tentei entrar em contato mas não tive retorno."
+3 分、文字最負面,3,0.011,,,housewares,tem quase 30 dias e não recebi a entrega estou precisando do produto
+3 分、文字最負面,3,0.011,0.0,-15.410983796296296,bed_bath_table,"Comprei um jogo de 9 peças e só recebi 5 peças, está faltando o jogo da cama, sendo as 2 fronhas o lançou e lençou com elástico, estou aguardando o retorno da atendente para resolver meu poblema!!"
+3 分、文字最負面,3,0.011,0.0,-26.416944444444443,housewares,"Produto entregue divergente do adquirido e não deram resposta a solicitação feita no site. Trata-se de presente e não pude entregar, aguardo troca do mesmo."
+3 分、文字最負面,3,0.011,,,bed_bath_table,Minha mercadoria não chegou e ninguém entrou em contato para resolver nada...
+3 分、文字最負面,3,0.011,0.0,-9.223078703703704,auto,"Comprei 3 produtos e só recebi um.
+Não recebi nenhum contato da empresa para falar sobre a falta dos outros 2 produtos; se vou receber, ou não."
+3 分、文字最負面,3,0.011,1.0,10.942083333333333,furniture_decor,"Meu produto não chegou ainda, há passou do prazo e não recebi."
+3 分、文字最正面,3,0.998,0.0,-12.344872685185186,stationery,O produto foi entregue antes do prazo! Parabéns!
+3 分、文字最正面,3,0.998,0.0,-3.4415046296296294,housewares,Parabéns!!!! Chegou antes mesmo do prazo mencionado. Fiquei muito contente. Obrigado!
+3 分、文字最正面,3,0.998,,,luggage_accessories,"Recebi o produto em excelente estado, dentro do prazo estipulado. Valeu !!"
+3 分、文字最正面,3,0.998,0.0,-14.080104166666667,stationery,Entregue antes do prazo 10 dias. Recomendo demais. E o produto veio exatamente o que comprei.
+3 分、文字最正面,3,0.998,0.0,-11.088217592592592,watches_gifts,"Olá. A entrega chegou rápido, em três dias. Produto muito bom."
+3 分、文字最正面,3,0.998,0.0,-13.127465277777778,baby,"Produto entregue em perfeito estado dentro do prazo estipulado, tudo ok. Grata."
+3 分、文字最正面,3,0.997,1.0,0.9635763888888889,health_beauty,"Recomendo, produto de ótima qualidade. Superou espectativas."
+3 分、文字最正面,3,0.997,0.0,-10.088796296296296,cool_stuff,Produto entregue antes do prazo. Fiquei satisfeito e recomendo a loja.
+3 分、文字最正面,3,0.997,0.0,-20.126435185185183,health_beauty,Recebi antes do prazo previsto !!!!super recomendo
+3 分、文字最正面,3,0.997,0.0,-13.166689814814815,office_furniture,Produto chegou antes do prazo.

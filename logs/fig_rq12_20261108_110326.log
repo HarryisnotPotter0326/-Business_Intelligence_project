@@ -1,0 +1,8 @@
+# 指令：src/fig_rq12.py --only tfidf_gap,error,learning_curve,llm,pareto
+# 開始：2026-11-08 11:03:26
+[11:03:27] 已存 figures/rq1_tfidf_gap.png    (CPU 18%  RAM 0.2G  GPU 7%  VRAM 0.7/11.0G  TEMP 42C)
+[11:03:27] 已存 figures/rq1_error.png    (CPU 17%  RAM 0.2G  GPU 7%  VRAM 0.7/11.0G  TEMP 42C)
+[11:03:28] 已存 figures/rq2_learning_curve.png    (CPU 15%  RAM 0.2G  GPU 7%  VRAM 0.7/11.0G  TEMP 42C)
+[11:03:28] 已存 figures/rq2_llm.png    (CPU 16%  RAM 0.2G  GPU 8%  VRAM 0.7/11.0G  TEMP 42C)
+[11:03:28] 已存 figures/rq2_pareto.png    (CPU 15%  RAM 0.2G  GPU 8%  VRAM 0.7/11.0G  TEMP 42C)
+[11:03:28] 完成；記錄檔 C:\商業智慧專案\logs\fig_rq12_20261108_110326.log    (CPU 0%  RAM 0.2G  GPU 8%  VRAM 0.7/11.0G  TEMP 42C)

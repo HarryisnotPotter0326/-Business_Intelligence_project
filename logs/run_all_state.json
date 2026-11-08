@@ -1,0 +1,86 @@
+{
+  "rq1_ft_base_mbert": {
+    "title": "RQ1 微調 BERTimbau Base + m-BERT（各 3 種子）",
+    "status": "完成",
+    "start": "11-07 00:08",
+    "minutes": 12.6,
+    "log": "logs\\rq1_finetune_20261107_000822.log"
+  },
+  "rq1_ft_large": {
+    "title": "RQ1 微調 BERTimbau Large（3 種子）",
+    "status": "完成",
+    "start": "11-07 00:20",
+    "minutes": 9.4,
+    "log": "logs\\rq1_finetune_20261107_002101.log"
+  },
+  "rq2_curve_classic": {
+    "title": "RQ2 學習曲線：TF-IDF 與凍結 BERT",
+    "status": "完成",
+    "start": "11-07 00:30",
+    "minutes": 2.3,
+    "log": "logs\\rq2_learning_curve_20261107_003023.log"
+  },
+  "rq2_curve_ft_1000": {
+    "title": "RQ2 學習曲線：微調 Base，1000 筆（3 epoch × 3 種子）",
+    "status": "完成",
+    "start": "11-07 00:32",
+    "minutes": 0.9,
+    "log": "logs\\rq1_finetune_20261107_003245.log"
+  },
+  "rq2_curve_ft_5000": {
+    "title": "RQ2 學習曲線：微調 Base，5000 筆（3 epoch × 3 種子）",
+    "status": "完成",
+    "start": "11-07 00:33",
+    "minutes": 2.3,
+    "log": "logs\\rq1_finetune_20261107_003340.log"
+  },
+  "rq2_curve_ft_10000": {
+    "title": "RQ2 學習曲線：微調 Base，10000 筆（3 epoch × 3 種子）",
+    "status": "完成",
+    "start": "11-07 00:35",
+    "minutes": 4.1,
+    "log": "logs\\rq1_finetune_20261107_003559.log"
+  },
+  "rq2_curve_ft_30464": {
+    "title": "RQ2 學習曲線：微調 Base，30464 筆（3 epoch × 3 種子）",
+    "status": "完成",
+    "start": "11-07 00:40",
+    "minutes": 10.7,
+    "log": "logs\\rq1_finetune_20261107_004003.log"
+  },
+  "rq2_llm_zs": {
+    "title": "RQ2 LLM 零樣本：Qwen2.5 0.5B 與 1.5B",
+    "status": "完成",
+    "start": "11-07 00:50",
+    "minutes": 0.9,
+    "log": "logs\\rq2_llm_20261107_005047.log；logs\\rq2_llm_20261107_005105.log"
+  },
+  "rq2_lora_0.5b": {
+    "title": "RQ2 LoRA：Qwen2.5-0.5B，全部訓練資料",
+    "status": "完成",
+    "start": "11-07 00:51",
+    "minutes": 14.1,
+    "log": "logs\\rq2_llm_20261107_005139.log"
+  },
+  "rq2_lora_1.5b_1000": {
+    "title": "RQ2 LoRA：Qwen2.5-1.5B，1000 筆",
+    "status": "完成",
+    "start": "11-07 01:05",
+    "minutes": 1.4,
+    "log": "logs\\rq2_llm_20261107_010544.log"
+  },
+  "rq2_lora_1.5b_5000": {
+    "title": "RQ2 LoRA：Qwen2.5-1.5B，5000 筆",
+    "status": "完成",
+    "start": "11-07 01:07",
+    "minutes": 4.1,
+    "log": "logs\\rq2_llm_20261107_010707.log"
+  },
+  "rq2_lora_1.5b_30464": {
+    "title": "RQ2 LoRA：Qwen2.5-1.5B，30464 筆",
+    "status": "完成",
+    "start": "11-07 01:11",
+    "minutes": 20.9,
+    "log": "logs\\rq2_llm_20261107_011110.log"
+  }
+}

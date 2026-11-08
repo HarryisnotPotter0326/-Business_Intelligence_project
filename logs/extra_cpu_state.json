@@ -1,0 +1,51 @@
+{
+  "ext_tfidf_gap": {
+    "title": "TF-IDF 與論文差 0.9 個百分點的原因",
+    "status": "完成",
+    "start": "11-07 23:42",
+    "minutes": 0.7,
+    "log": "logs\\ext_tfidf_gap_20261107_234239.log"
+  },
+  "ext_error_analysis": {
+    "title": "錯誤分析：最好的模型錯在哪裡",
+    "status": "完成",
+    "start": "11-07 23:43",
+    "minutes": 0.1,
+    "log": "logs\\ext_error_analysis_20261107_234321.log"
+  },
+  "ext_ensemble": {
+    "title": "集成：把不同模型的預測合起來",
+    "status": "完成",
+    "start": "11-07 23:43",
+    "minutes": 1.1,
+    "log": "logs\\ext_ensemble_20261107_234324.log"
+  },
+  "ext_backtest": {
+    "title": "依時間滾動回測（每月重訓 vs 不更新）",
+    "status": "完成",
+    "start": "11-07 23:44",
+    "minutes": 0.4,
+    "log": "logs\\ext_backtest_20261107_234430.log"
+  },
+  "ext_causal": {
+    "title": "因果推論：斷點迴歸、傾向分數配對、AIPW",
+    "status": "完成",
+    "start": "11-07 23:44",
+    "minutes": 0.4,
+    "log": "logs\\ext_causal_20261107_234457.log"
+  },
+  "ext_cluster2": {
+    "title": "用購物經驗重新分群",
+    "status": "完成",
+    "start": "11-07 23:45",
+    "minutes": 1.1,
+    "log": "logs\\ext_cluster2_20261107_234523.log"
+  },
+  "ext_montecarlo": {
+    "title": "成本不確定下的蒙地卡羅模擬",
+    "status": "完成",
+    "start": "11-07 23:46",
+    "minutes": 0.2,
+    "log": "logs\\ext_montecarlo_20261107_234629.log"
+  }
+}

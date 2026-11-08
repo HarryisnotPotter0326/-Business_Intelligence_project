@@ -1,0 +1,20 @@
+# 指令：src/rq3_model.py --quick
+# 開始：2026-11-07 22:36:32
+[22:36:32] 訂單 10,000 筆，負評率 14.7%    (CPU 17%  RAM 0.2G  GPU 24%  VRAM 1.1/11.0G  TEMP 48C)
+[22:36:32] [full/time/neg] LR           驗證 AUC 0.7800  測試 AUC 0.7402  PR-AUC 0.3819  F1 0.3890  0 秒  {'C': 0.01}    (CPU 30%  RAM 0.2G  GPU 22%  VRAM 1.1/11.0G  TEMP 48C)
+
+# 錯誤：
+Traceback (most recent call last):
+  File "C:\商業智慧專案\src\rq3_model.py", line 153, in <module>
+    main()
+  File "C:\商業智慧專案\src\rq3_model.py", line 145, in main
+    out, path = merge_save(run_setting(*s, d, a.quick, bar), out_name, ["features", "split", "label", "model"])
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\商業智慧專案\src\rq3_model.py", line 106, in run_setting
+    model = make(p_final)
+            ^^^^^^^^^^^^^
+  File "C:\商業智慧專案\src\rq3_model.py", line 60, in <lambda>
+    lambda p: lgb.LGBMClassifier(n_estimators=2000, learning_rate=0.05, subsample=0.8, subsample_freq=1,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: lightgbm.sklearn.LGBMClassifier() got multiple values for keyword argument 'n_estimators'
+

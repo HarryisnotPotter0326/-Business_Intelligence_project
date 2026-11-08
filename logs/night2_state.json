@@ -1,0 +1,79 @@
+{
+  "seeds_base_mbert": {
+    "title": "論文設定多跑 5 種子：BERTimbau Base + m-BERT",
+    "status": "完成",
+    "start": "11-07 11:56",
+    "minutes": 20.9,
+    "log": "logs\\rq1_finetune_20261107_115614.log"
+  },
+  "seeds_large": {
+    "title": "論文設定多跑 5 種子：BERTimbau Large",
+    "status": "完成",
+    "start": "11-07 12:17",
+    "minutes": 15.8,
+    "log": "logs\\rq1_finetune_20261107_121715.log"
+  },
+  "significance": {
+    "title": "成對 bootstrap 信賴區間與顯著性檢定",
+    "status": "完成",
+    "start": "11-07 12:32",
+    "minutes": 2.3,
+    "log": "logs\\rq1_significance_20261107_123300.log"
+  },
+  "sweep_base_lr1e-5_do0": {
+    "title": "超參數搜尋 Base：LR 1e-5、dropout 0、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 12:35",
+    "minutes": 26.3,
+    "log": "logs\\rq1_finetune_20261107_123520.log；logs\\rq1_finetune_20261107_123914.log；logs\\rq1_finetune_20261107_124646.log"
+  },
+  "sweep_base_lr1e-5_do0.1": {
+    "title": "超參數搜尋 Base：LR 1e-5、dropout 0.1、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 13:01",
+    "minutes": 25.9,
+    "log": "logs\\rq1_finetune_20261107_130139.log；logs\\rq1_finetune_20261107_130533.log；logs\\rq1_finetune_20261107_131236.log"
+  },
+  "sweep_base_lr2.5e-5_do0": {
+    "title": "超參數搜尋 Base：LR 2.5e-5、dropout 0、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 13:27",
+    "minutes": 26.6,
+    "log": "logs\\rq1_finetune_20261107_132735.log；logs\\rq1_finetune_20261107_133130.log；logs\\rq1_finetune_20261107_133906.log"
+  },
+  "sweep_base_lr2.5e-5_do0.1": {
+    "title": "超參數搜尋 Base：LR 2.5e-5、dropout 0.1、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 13:54",
+    "minutes": 26.1,
+    "log": "logs\\rq1_finetune_20261107_135409.log；logs\\rq1_finetune_20261107_135803.log；logs\\rq1_finetune_20261107_140509.log"
+  },
+  "sweep_base_lr5e-5_do0": {
+    "title": "超參數搜尋 Base：LR 5e-5、dropout 0、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 14:20",
+    "minutes": 26.6,
+    "log": "logs\\rq1_finetune_20261107_142013.log；logs\\rq1_finetune_20261107_142407.log；logs\\rq1_finetune_20261107_143144.log"
+  },
+  "sweep_base_lr5e-5_do0.1": {
+    "title": "超參數搜尋 Base：LR 5e-5、dropout 0.1、epoch 1/2/4",
+    "status": "完成",
+    "start": "11-07 14:46",
+    "minutes": 25.6,
+    "log": "logs\\rq1_finetune_20261107_144648.log；logs\\rq1_finetune_20261107_145043.log；logs\\rq1_finetune_20261107_145821.log"
+  },
+  "sweep_large_lr1e-5": {
+    "title": "超參數搜尋 Large：LR 1e-5、epoch 1/2",
+    "status": "完成",
+    "start": "11-07 15:12",
+    "minutes": 28.0,
+    "log": "logs\\rq1_finetune_20261107_151225.log；logs\\rq1_finetune_20261107_152148.log"
+  },
+  "sweep_large_lr2.5e-5": {
+    "title": "超參數搜尋 Large：LR 2.5e-5、epoch 1/2",
+    "status": "完成",
+    "start": "11-07 15:40",
+    "minutes": 28.0,
+    "log": "logs\\rq1_finetune_20261107_154028.log；logs\\rq1_finetune_20261107_154952.log"
+  }
+}

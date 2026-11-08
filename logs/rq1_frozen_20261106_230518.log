@@ -1,0 +1,37 @@
+# 指令：src/rq1_frozen.py mbert bertimbau-large
+# 開始：2026-11-06 23:05:18
+[23:05:19] 載入模型 google-bert/bert-base-multilingual-cased（fp16，GPU：NVIDIA GeForce RTX 2080 Ti）    (CPU 20%  RAM 0.7G  GPU 0%  VRAM 0.6/11.0G  TEMP 48C)
+[23:05:54] mbert: 向量完成，花了 35 秒；開始訓練邏輯斯迴歸    (CPU 21%  RAM 2.7G  GPU 99%  VRAM 0.8/11.0G  TEMP 55C)
+[23:06:01] mbert            [CLS]            維度   768  C=0.1    驗證 AUC 0.9377  測試 AUC 0.9404    (CPU 67%  RAM 2.7G  GPU 1%  VRAM 0.8/11.0G  TEMP 51C)
+[23:06:08] mbert            mean             維度   768  C=0.1    驗證 AUC 0.9520  測試 AUC 0.9559    (CPU 66%  RAM 2.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 49C)
+[23:06:14] mbert            max              維度   768  C=0.003  驗證 AUC 0.9444  測試 AUC 0.9515    (CPU 60%  RAM 2.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 49C)
+[23:06:31] mbert            [CLS]+mean       維度  1536  C=0.03   驗證 AUC 0.9547  測試 AUC 0.9580    (CPU 73%  RAM 2.8G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:06:47] mbert            mean+max         維度  1536  C=0.01   驗證 AUC 0.9548  測試 AUC 0.9599    (CPU 73%  RAM 2.8G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:07:16] mbert            [CLS]+mean+std   維度  2304  C=0.01   驗證 AUC 0.9580  測試 AUC 0.9621    (CPU 78%  RAM 2.9G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:07:45] mbert            [CLS]+mean+max   維度  2304  C=0.01   驗證 AUC 0.9569  測試 AUC 0.9606    (CPU 78%  RAM 2.9G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:07:52] mbert            [CLS] last4      維度   768  C=0.01   驗證 AUC 0.9326  測試 AUC 0.9391    (CPU 66%  RAM 2.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:07:59] mbert            mean last4       維度   768  C=0.03   驗證 AUC 0.9541  測試 AUC 0.9587    (CPU 66%  RAM 2.7G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:07:59] 載入模型 neuralmind/bert-large-portuguese-cased（fp16，GPU：NVIDIA GeForce RTX 2080 Ti）    (CPU 25%  RAM 2.0G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:10:17] bertimbau-large: 向量完成，花了 138 秒；開始訓練邏輯斯迴歸    (CPU 25%  RAM 3.4G  GPU 98%  VRAM 0.8/11.0G  TEMP 55C)
+[23:10:25] bertimbau-large  [CLS]            維度  1024  C=0.003  驗證 AUC 0.9768  測試 AUC 0.9813    (CPU 65%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 51C)
+[23:10:33] bertimbau-large  mean             維度  1024  C=0.001  驗證 AUC 0.9771  測試 AUC 0.9801    (CPU 64%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 49C)
+[23:10:40] bertimbau-large  max              維度  1024  C=0.001  驗證 AUC 0.9747  測試 AUC 0.9776    (CPU 61%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:11:00] bertimbau-large  [CLS]+mean       維度  2048  C=0.001  驗證 AUC 0.9779  測試 AUC 0.9823    (CPU 74%  RAM 3.5G  GPU 0%  VRAM 0.8/11.0G  TEMP 47C)
+[23:11:20] bertimbau-large  mean+max         維度  2048  C=0.001  驗證 AUC 0.9773  測試 AUC 0.9809    (CPU 73%  RAM 3.5G  GPU 0%  VRAM 0.8/11.0G  TEMP 47C)
+[23:11:55] bertimbau-large  [CLS]+mean+std   維度  3072  C=0.001  驗證 AUC 0.9781  測試 AUC 0.9826    (CPU 78%  RAM 3.6G  GPU 0%  VRAM 0.8/11.0G  TEMP 47C)
+[23:12:32] bertimbau-large  [CLS]+mean+max   維度  3072  C=0.001  驗證 AUC 0.9781  測試 AUC 0.9827    (CPU 77%  RAM 3.6G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:12:40] bertimbau-large  [CLS] last4      維度  1024  C=0.001  驗證 AUC 0.9779  測試 AUC 0.9808    (CPU 63%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 47C)
+[23:12:47] bertimbau-large  mean last4       維度  1024  C=0.003  驗證 AUC 0.9782  測試 AUC 0.9816    (CPU 62%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+[23:12:47] 結果已存到 C:\商業智慧專案\results\rq1_frozen.csv    (CPU 0%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)
+          model       strategy  dim     C  val_auc  test_auc
+bertimbau-large [CLS]+mean+max 3072 0.001   0.9781    0.9827
+bertimbau-large [CLS]+mean+std 3072 0.001   0.9781    0.9826
+bertimbau-large     [CLS]+mean 2048 0.001   0.9779    0.9823
+bertimbau-large     mean last4 1024 0.003   0.9782    0.9816
+bertimbau-large          [CLS] 1024 0.003   0.9768    0.9813
+bertimbau-large       mean+max 2048 0.001   0.9773    0.9809
+bertimbau-large    [CLS] last4 1024 0.001   0.9779    0.9808
+bertimbau-large           mean 1024 0.001   0.9771    0.9801
+ bertimbau-base [CLS]+mean+std 2304 0.003   0.9743    0.9782
+bertimbau-large            max 1024 0.001   0.9747    0.9776
+[23:12:47] 記錄檔 C:\商業智慧專案\logs\rq1_frozen_20261106_230518.log    (CPU 0%  RAM 3.3G  GPU 0%  VRAM 0.8/11.0G  TEMP 48C)

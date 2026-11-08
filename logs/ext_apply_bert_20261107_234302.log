@@ -1,0 +1,105 @@
+# 指令：src/ext_apply_bert.py
+# 開始：2026-11-07 23:43:02
+[23:43:07] 有留言的評論 40,748 則；1–2 分 10,838、3 分 3,537、4–5 分 26,373    (CPU 40%  RAM 0.8G  GPU 25%  VRAM 0.9/11.0G  TEMP 45C)
+[23:43:10] [交叉評分 1/2] 訓練 bertimbau-large：18,754 筆，1 epoch，max_len 60    (CPU 43%  RAM 1.2G  GPU 7%  VRAM 2.3/11.0G  TEMP 46C)
+[23:45:24] 交叉評分 1/2 完成，訓練 1.8 分    (CPU 40%  RAM 1.7G  GPU 99%  VRAM 4.2/11.0G  TEMP 63C)
+[23:45:26] [交叉評分 2/2] 訓練 bertimbau-large：18,457 筆，1 epoch，max_len 60    (CPU 38%  RAM 1.8G  GPU 4%  VRAM 5.0/11.0G  TEMP 58C)
+[23:53:18] 交叉評分 2/2 完成，訓練 4.3 分    (CPU 20%  RAM 1.9G  GPU 100%  VRAM 4.4/11.0G  TEMP 58C)
+[23:53:19] 交叉評分 AUC（1–2 vs 4–5 分）：0.9834    (CPU 17%  RAM 2.0G  GPU 75%  VRAM 4.4/11.0G  TEMP 56C)
+
+各星等的文字情緒：
+              平均正面機率  文字偏負比例     則數
+review_score                       
+1              0.074   0.960   8705
+2              0.205   0.834   2133
+3              0.510   0.504   3537
+4              0.873   0.116   5943
+5              0.974   0.020  20430
+
+3 分評論的文字傾向與物流：
+        則數    延遲率   未送達率  平均延遲天數  多賣家比例
+傾向                                     
+文字偏正  1755  0.079  0.013 -10.854  0.005
+文字偏負  1782  0.167  0.047  -9.159  0.057
+[23:53:19] 隱性不滿：4–5 星評論中文字偏負的比例 4.2%（1,099 則）    (CPU 24%  RAM 2.0G  GPU 75%  VRAM 4.4/11.0G  TEMP 56C)
+          則數    延遲率  平均延遲天數  多賣家比例   平均評分
+隱性不滿                                     
+False  25274  0.033 -12.816  0.007  4.792
+True    1099  0.130 -10.098  0.033  4.370
+[23:53:19] 評分與文字矛盾：1–2 星但文字正面機率 > 0.9 的有 343 則（3.2%）    (CPU 25%  RAM 2.0G  GPU 75%  VRAM 4.4/11.0G  TEMP 56C)
+
+範例：
+              類型  review_score  p_pos  is_late  delay_days                  category                                                                                                 text
+隱性不滿（4–5 星、文字負面）             4  0.010      NaN         NaN                 telephony                                                                             Não entregaram o produto
+隱性不滿（4–5 星、文字負面）             4  0.010      1.0   50.106563                      baby                                             Até agora não recebi o produto. Ninguém me dá um retorno
+隱性不滿（4–5 星、文字負面）             4  0.010      NaN         NaN         home_construction Não recebi o produto, enviei mensagem não me responderam, liguei estou esperando até agora o retorno
+隱性不滿（4–5 星、文字負面）             5  0.010      1.0    9.832315              garden_tools                                                                                Produto não entregue.
+隱性不滿（4–5 星、文字負面）             5  0.011      0.0  -16.296979                stationery Aguardo o meu sofá que comprei antes para entrega para dia 16 até o momento n recebi n consegui f...
+隱性不滿（4–5 星、文字負面）             5  0.011      1.0    3.612535            bed_bath_table                                         Nao recebi o produto,ja liguei varias vezes estou apreensiva
+隱性不滿（4–5 星、文字負面）             5  0.011      1.0    7.827685            bed_bath_table                          Comprei e não recebi, tá se tornando rotina, vocês vão perder seus clientes
+隱性不滿（4–5 星、文字負面）             4  0.011      0.0  -19.209236     computers_accessories                  Não posso indicar a loja de ainda não recebi o produto. Estou no aguardo da entrega
+隱性不滿（4–5 星、文字負面）             5  0.011      0.0  -19.247778             health_beauty                                  Ainda não recebi minha compra!\r\n\r\nIsso é uma falta de vergonha!
+隱性不滿（4–5 星、文字負面）             5  0.011      NaN         NaN                housewares Não dão a menor satisfação para o cliente a entrega estava prevista para 13/03/17 e foi a única c...
+隱性不滿（4–5 星、文字負面）             4  0.011      0.0  -15.771296            sports_leisure Completou um mês que efetuei essa compra, cuja nota fiscal veio incorreta, com o valor bem abaixo...
+隱性不滿（4–5 星、文字負面）             5  0.012      0.0  -15.213241     computers_accessories                                       Adquiri 4 cartuchos 41 Canon e recebi somente 2 até o momento.
+隱性不滿（4–5 星、文字負面）             4  0.012      NaN         NaN            bed_bath_table                                                                                   Produto não chegou
+隱性不滿（4–5 星、文字負面）             5  0.012      NaN         NaN               electronics                                                                        Não foi entregue o meu pedido
+隱性不滿（4–5 星、文字負面）             4  0.012      0.0   -1.153704 construction_tools_lights Desde o dia 15 de agosto eu solicitei o cancelamento da compra em questão e até a presente data n...
+隱性不滿（4–5 星、文字負面）             5  0.012      0.0  -18.489537                  pet_shop Ta muito dificil comprar com as lannister levei quase 30 dias pra receber meu produto nao recomen...
+隱性不滿（4–5 星、文字負面）             5  0.012      0.0  -13.198067          office_furniture Ainda não recebi todos os produtos comprados, espero que ainda chegue... Comprei três kits e rece...
+隱性不滿（4–5 星、文字負面）             5  0.012      1.0   11.017778             health_beauty                                                                                 Não recebi o produto
+隱性不滿（4–5 星、文字負面）             4  0.012      0.0  -11.134039            sports_leisure                                                                            Aida nao recebi o produto
+隱性不滿（4–5 星、文字負面）             5  0.013      0.0   -8.484444              home_confort Foi entregue a toalha marron a vermelha não veio,e a nota estava com a toalha ,como faço agora ,p...
+  矛盾（1–2 星、文字正面）             2  0.998      0.0  -26.078333                housewares                                                            SUPER RECOMENDO, VEIO ANTES DO PRAZO ....
+  矛盾（1–2 星、文字正面）             1  0.998      0.0   -0.162014   fashion_underwear_beach                                                          Loja de confiança, entrega dentro do prazo.
+  矛盾（1–2 星、文字正面）             1  0.998      0.0  -12.023553                 telephony                                                              PRODUTO ENTREGUE NO PRAZO COM QUALIDADE
+  矛盾（1–2 星、文字正面）             1  0.998      0.0  -20.212072                      auto                                                  Minha mercadoria chegou antes do prazo e é exelente
+  矛盾（1–2 星、文字正面）             1  0.998      0.0  -12.216609              garden_tools                   Produto recebido antes do prazo estabelecido e de acordo com o que foi solicitado.
+  矛盾（1–2 星、文字正面）             1  0.998      0.0   -6.262419             health_beauty                                                                         Adorei recebi antes do prazo
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -16.049595                stationery                                                                                      SUPER RECOMENDO
+  矛盾（1–2 星、文字正面）             2  0.997      0.0  -13.289537                      toys                                            Boneca linda!!! e a entrega no prazo , muito satisfeita .
+  矛盾（1–2 星、文字正面）             2  0.997      0.0  -27.259780                      auto                                                                  Um excelente site. Super recomendo.
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -14.668090                cool_stuff                                       Ótima loija produto entregue dentro do prazo,Produto muito bom
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -12.481424       luggage_accessories                            Recebi o produto muito antes do prazo.Isso é excelente. Muito satisfeito.
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -11.223206            bed_bath_table                                                    Produto de boa qualidade, entrega dentro do prazo
+  矛盾（1–2 星、文字正面）             2  0.997      0.0   -8.620556                 telephony                                        Gostei veio como esperando nota 100 recomendo muito bom legal
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -17.168495               electronics                            Entrega super rápida... Produto com ótima qualidade... Super recomendo...
+  矛盾（1–2 星、文字正面）             1  0.997      0.0  -17.196111             watches_gifts                                                                   Recebi o produto perfeito\r\nGrata
+  矛盾（1–2 星、文字正面）             1  0.997      0.0   -9.000012    books_general_interest                                                                Adorei, chegou super rápido. Perfeito
+  矛盾（1–2 星、文字正面）             2  0.997      0.0  -23.420324             health_beauty                                                                           Parabéns para toda equipe.
+  矛盾（1–2 星、文字正面）             2  0.996      0.0  -17.377917               electronics                                                    Nada a reclamar recebi com antecencia ao marcado.
+  矛盾（1–2 星、文字正面）             2  0.996      0.0   -1.056053            bed_bath_table                                            Entrega no tempo previsto.\r\nGostei muito,são bem feito.
+  矛盾（1–2 星、文字正面）             2  0.996      0.0  -27.134074            bed_bath_table                                                                     Linda.entrega rápida... parabéns
+       3 分、文字最負面             3  0.009      0.0   -8.220787             health_beauty Comprei dois produtos e só foi entregue um !!!!! Esperei até o final do prazo de entrega e o mesm...
+       3 分、文字最負面             3  0.011      NaN         NaN                      baby Para recomendar preciso ter 99% de certeza. Não recebi o produto até hoje. Vocês não sanaram meu ...
+       3 分、文字最負面             3  0.011      0.0   -7.079213               electronics                         Comprei 3 itens... recebi apenas 2... e a loja não responde meus contatos...
+       3 分、文字最負面             3  0.011      0.0  -17.102708            bed_bath_table comprei uma garrafa térmica e uma capa de colchão e não recebi a capa, já tentei entrar em contat...
+       3 分、文字最負面             3  0.011      NaN         NaN                housewares                                 tem quase 30 dias e não recebi a entrega estou precisando do produto
+       3 分、文字最負面             3  0.011      0.0  -15.410984            bed_bath_table Comprei um jogo de 9 peças e só recebi 5 peças, está faltando o jogo da cama, sendo as 2 fronhas ...
+       3 分、文字最負面             3  0.011      0.0  -26.416944                housewares Produto entregue divergente do adquirido e não deram resposta a solicitação feita no site. Trata-...
+       3 分、文字最負面             3  0.011      NaN         NaN            bed_bath_table                        Minha mercadoria não chegou e ninguém entrou em contato para resolver nada...
+       3 分、文字最負面             3  0.011      0.0   -9.223079                      auto Comprei 3 produtos e só recebi um.\r\nNão recebi nenhum contato da empresa para falar sobre a fal...
+       3 分、文字最負面             3  0.011      1.0   10.942083           furniture_decor                                       Meu produto não chegou ainda, há passou do prazo e não recebi.
+       3 分、文字最正面             3  0.998      0.0  -12.344873                stationery                                                     O produto foi entregue antes do prazo! Parabéns!
+       3 分、文字最正面             3  0.998      0.0   -3.441505                housewares                Parabéns!!!! Chegou antes mesmo do prazo mencionado. Fiquei muito contente. Obrigado!
+       3 分、文字最正面             3  0.998      NaN         NaN       luggage_accessories                           Recebi o produto em excelente estado, dentro do prazo estipulado. Valeu !!
+       3 分、文字最正面             3  0.998      0.0  -14.080104                stationery        Entregue antes do prazo 10 dias. Recomendo demais. E o produto veio exatamente o que comprei.
+       3 分、文字最正面             3  0.998      0.0  -11.088218             watches_gifts                                       Olá. A entrega chegou rápido, em três dias. Produto muito bom.
+       3 分、文字最正面             3  0.998      0.0  -13.127465                      baby                      Produto entregue em perfeito estado dentro do prazo estipulado, tudo ok. Grata.
+       3 分、文字最正面             3  0.997      1.0    0.963576             health_beauty                                         Recomendo, produto de ótima qualidade. Superou espectativas.
+       3 分、文字最正面             3  0.997      0.0  -10.088796                cool_stuff                               Produto entregue antes do prazo. Fiquei satisfeito e recomendo a loja.
+       3 分、文字最正面             3  0.997      0.0  -20.126435             health_beauty                                                   Recebi antes do prazo previsto !!!!super recomendo
+       3 分、文字最正面             3  0.997      0.0  -13.166690          office_furniture                                                                       Produto chegou antes do prazo.
+
+延遲 vs 文字情緒：
+        全部評論_平均正面機率  4–5星_平均正面機率  4–5星_隱性不滿比例     則數
+延遲分組                                                
+提早>10         0.774        0.959        0.034  22848
+提早5–10        0.768        0.955        0.037   8492
+提早2–5         0.716        0.942        0.053   2190
+提早0–2         0.718        0.942        0.047   1090
+延遲0–2         0.651        0.920        0.072    844
+延遲2–5         0.338        0.875        0.118    787
+延遲5–10        0.156        0.733        0.271   1157
+延遲>10         0.125        0.684        0.314   1470
+[23:53:20] 結果已存到 results/ext_apply_*.csv、figures/ext_apply_bert.png；記錄檔 C:\商業智慧專案\logs\ext_apply_bert_20261107_234302.log    (CPU 23%  RAM 2.0G  GPU 0%  VRAM 4.4/11.0G  TEMP 56C)
