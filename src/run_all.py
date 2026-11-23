@@ -108,7 +108,7 @@ def main():
     pending = [s for s in todo if a.only or st.get(s[0], {}).get("status") != "完成"]
     total_est = sum(s[3] for s in pending)
     banner(f"[run_all] 共 {len(pending)} 段，預估約 {total_est} 分鐘（{total_est / 60:.1f} 小時）。"
-           f"\n每段完成後會更新：自動結果摘要.md、logs/run_all_state.json")
+           f"\n每段完成後會更新：自動結果摘要.md、logs/{STATE.name}")
     keep_awake(True)
     t_all = time.time()
     try:

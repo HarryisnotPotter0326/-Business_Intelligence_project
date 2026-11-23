@@ -26,7 +26,9 @@ N = 10000
 POLICIES = [0.01, 0.02, 0.05, 0.10]
 
 
-def main():
+def main(moments=None, sfx=""):
+    """moments：各時點的特徵（預設 RQ4 原本的 MOMENTS）；sfx：輸出檔名後綴（11/20 補做 preship2 用 "_v2"）。"""
+    moments = moments or R4.MOMENTS
     rng = np.random.default_rng(42)
     contact = rng.uniform(5, 20, N)
     neg = rng.triangular(30, 60, 150, N)
@@ -36,7 +38,7 @@ def main():
     d = R4.add_features(rq3_data.load())
     tr, va, te = rq3_data.split(d, "time")
     rows, dist = [], {}
-    for name, num in Bar(list(R4.MOMENTS.items()), desc="預警時點", unit="個"):
+    for name, num in Bar(list(moments.items()), desc="預警時點", unit="個"):
         _, pva, pte, _ = R4.fit_moment(num, tr, va, te)
         tpv = np.cumsum(va.neg.values[np.argsort(-pva)])
         tpt = np.cumsum(te.neg.values[np.argsort(-pte)])
@@ -57,15 +59,15 @@ def main():
                          P5=round(np.percentile(v, 5), 1), P95=round(np.percentile(v, 95), 1),
                          淨效益為正的機率=round((v > 0).mean(), 3), 平均=round(v.mean(), 1)))
     out = pd.DataFrame(rows)
-    out.to_csv(RESULTS / "ext_montecarlo.csv", index=False)
+    out.to_csv(RESULTS / f"ext_montecarlo{sfx}.csv", index=False)
     pd.DataFrame(dict(聯繫成本=contact, 負評損失=neg, 成功率=succ, 價值成本比=ratio)).describe().round(3).to_csv(
-        RESULTS / "ext_montecarlo_inputs.csv")
+        RESULTS / f"ext_montecarlo_inputs{sfx}.csv")
     log(f"價值成本比的分布：中位數 {np.median(ratio):.2f}，90% 區間 {np.percentile(ratio, 5):.2f}–{np.percentile(ratio, 95):.2f}，"
         f"> 1 的機率 {(ratio > 1).mean():.1%}")
     log_text("\n各政策的淨效益（R$／每 1,000 筆訂單；成本隨機變動 10,000 次）：\n" + out.to_string(index=False))
 
     fig, axes = plt.subplots(1, 3, figsize=(14, 4), sharey=True)
-    for ax, name in zip(axes, R4.MOMENTS):
+    for ax, name in zip(axes, moments):
         for pol, col in [("依成本調整名單", "#3b6ea5"), ("固定聯繫前 5%", "#d9822b"), ("固定聯繫前 10%", "#b03a2e")]:
             v = dist[(name, pol)]
             ax.hist(np.clip(v, -400, 400), bins=60, alpha=0.5, color=col, label=pol)
@@ -75,7 +77,7 @@ def main():
     axes[0].legend(fontsize=8)
     fig.suptitle("成本不確定下的淨效益分布：依成本調整名單長度，幾乎不會虧錢")
     fig.tight_layout()
-    fig.savefig(FIGURES / "ext_montecarlo.png", dpi=200)
+    fig.savefig(FIGURES / f"ext_montecarlo{sfx}.png", dpi=200)
     plt.close(fig)
     log(f"結果已存到 results/ext_montecarlo*.csv、figures/ext_montecarlo.png；記錄檔 {LOG_PATH}")
 

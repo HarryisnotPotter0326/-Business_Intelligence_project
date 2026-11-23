@@ -15,7 +15,8 @@ STATES = {"第一晚 run_all.py": ROOT / "logs" / "run_all_state.json", "第二�
           "RQ3 run_rq3.py": ROOT / "logs" / "rq3_state.json",
           "RQ4 run_rq4.py": ROOT / "logs" / "rq4_state.json",
           "加深・白天 run_extra_cpu.py": ROOT / "logs" / "extra_cpu_state.json",
-          "加深・晚上 run_extra_gpu.py": ROOT / "logs" / "extra_gpu_state.json"}
+          "加深・晚上 run_extra_gpu.py": ROOT / "logs" / "extra_gpu_state.json",
+          "第四晚 run_night4.py（11/20 補做）": ROOT / "logs" / "night4_state.json"}
 PAPER = {"TF-IDF + LR": "96.5%", "bertimbau-large 凍結": "98.1%", "bertimbau-large 微調": "97.9%"}
 
 
@@ -34,6 +35,53 @@ def read(name):
 
 def last_epoch(ft):
     return ft.sort_values("epoch").groupby(["model", "train_size", "lr", "dropout", "epochs", "seed"]).tail(1)
+
+
+def pick_epoch(df, group):
+    """每個設定依「各種子平均的驗證 AUC」挑 epoch；回報每個 epoch 的平均，以及挑到的那一列。"""
+    g = (df.groupby(group + ["epoch"]).agg(種子數=("seed", "nunique"), train_loss=("train_loss", "mean"),
+                                          val_auc=("val_auc", "mean"), test_auc=("test_auc", "mean"),
+                                          test_sd=("test_auc", "std")).reset_index())
+    return g, g.loc[g.groupby(group).val_auc.idxmax()]
+
+
+def section_night4():
+    lines = ["## 第四晚（11/20 補做）：重跑第一次沒做好的實驗"]
+    m = read("ext_preship_models.csv")
+    if m is not None:
+        lines += ["\n### 出貨前特徵比較：測試 AUC（依時間切分）",
+                  md(m.pivot(index="model", columns="特徵組", values="test_auc").reset_index())]
+        lines += ["\n### 出貨前特徵比較：LightGBM 明細",
+                  md(m[m.model == "LightGBM"][["特徵組", "特徵數", "val_auc", "test_auc", "test_ap", "P@1%", "P@5%", "P@10%"]])]
+    w = read("ext_preship_warning.csv")
+    if w is not None:
+        lines += ["\n### 預警時點：原本 vs 加入延遲歷史",
+                  md(w[["版本", "時點", "test_auc", "test_pr_auc", "P@1%", "P@5%", "Lift@5%", "驗證集選的名單比例", "測試集淨效益_每千筆"]])]
+    b = read("ext_preship_backtest.csv")
+    if b is not None:
+        lines += ["\n### 每月滾動回測（每月重訓的測試 AUC）",
+                  md(b.groupby("特徵組").auc_每月重訓.agg(["mean", "std", "min", "max"]).round(4).reset_index())]
+    mc = read("ext_montecarlo_v2.csv")
+    if mc is not None:
+        lines += ["\n### 蒙地卡羅（加入延遲歷史）", md(mc)]
+    ft = read("rq2_finetune.csv")
+    if ft is not None and (ft.epochs == 8).any():
+        g, best = pick_epoch(ft[ft.epochs == 8], ["train_size"])
+        _, old = pick_epoch(ft[ft.epochs == 3], ["train_size"])
+        lines += ["\n### BERT Base 微調 8 epoch：各 epoch 平均", md(g.round(4))]
+        cmp = best[["train_size", "epoch", "val_auc", "test_auc", "test_sd"]].merge(
+            old[["train_size", "epoch", "val_auc", "test_auc"]], on="train_size", suffixes=("_8ep", "_3ep"))
+        lines += ["\n### 依驗證集挑 epoch：8 epoch 排程 vs 原本 3 epoch 排程", md(cmp.round(4))]
+    v = read("rq2_llm_v2.csv")
+    if v is not None:
+        g, best = pick_epoch(v, ["model", "train_size", "lr", "epochs"])
+        def keep_lr(x):  # 學習率不要四捨五入（5e-5 會變成 0）
+            return x.round(4).assign(lr=x.lr.map(lambda r: f"{r:g}"))
+        lines += ["\n### LoRA 逐 epoch 評估：各設定 × epoch 平均", md(keep_lr(g))]
+        lines += ["\n### LoRA：依驗證集挑 epoch 後", md(keep_lr(best))]
+    if len(lines) == 1:
+        lines.append("（尚未執行）")
+    return "\n".join(lines) + "\n"
 
 
 def section_status():
@@ -138,6 +186,7 @@ def section_rq2_curve():
         parts.append(lc.groupby(["train_size", "method"]).test_auc.mean().unstack())
     ft = read("rq2_finetune.csv")
     if ft is not None:
+        ft = ft[ft.epochs == 3]  # 第四晚另跑的 8 epoch 排程列在「第四晚」段落
         for ep, g in ft.groupby("epoch"):
             parts.append(g.groupby(["train_size", "model"]).test_auc.mean().unstack()
                          .add_suffix(f" 微調（第 {ep} epoch）"))
@@ -257,7 +306,7 @@ def section_extra():
 def main():
     text = [f"# 自動結果摘要\n\n> 由 `src/summarize.py` 自動產生，最後更新：{time.strftime('%Y-%m-%d %H:%M:%S')}。"
             "\n> 原始數字在 `results/`，完整輸出在 `logs/`。人工整理與觀察寫在 [實驗紀錄.md](實驗紀錄.md)。\n"]
-    for f in [section_status, section_rq1, section_dropout, section_significance, section_sweep, section_rq2_curve, section_rq2_llm, section_rq3, section_rq4, section_extra]:
+    for f in [section_status, section_night4, section_rq1, section_dropout, section_significance, section_sweep, section_rq2_curve, section_rq2_llm, section_rq3, section_rq4, section_extra]:
         try:
             text.append(f())
         except Exception as e:  # 某一段整理失敗不影響其他段

@@ -1,0 +1,7 @@
+# 指令：fig_rq12.py --only forest,learning_curve,llm,pareto
+# 開始：2026-11-23 10:18:36
+[10:21:34] 已存 figures/rq1_forest.png    (CPU 27%  RAM 0.2G  GPU 23%  VRAM 0.9/11.0G  TEMP 37C)
+[10:21:35] 已存 figures/rq2_learning_curve.png    (CPU 26%  RAM 0.2G  GPU 25%  VRAM 0.9/11.0G  TEMP 37C)
+[10:21:35] 已存 figures/rq2_llm.png    (CPU 25%  RAM 0.2G  GPU 25%  VRAM 0.9/11.0G  TEMP 37C)
+[10:21:35] 已存 figures/rq2_pareto.png    (CPU 22%  RAM 0.3G  GPU 25%  VRAM 0.9/11.0G  TEMP 37C)
+[10:21:35] 完成；記錄檔 C:\商業智慧專案\logs\fig_rq12_20261123_101836.log    (CPU 0%  RAM 0.3G  GPU 25%  VRAM 0.9/11.0G  TEMP 37C)

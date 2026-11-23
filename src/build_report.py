@@ -467,6 +467,45 @@ def gen_errors():
     return ["#", "錯誤類型", "星等", "p(正面)", "評論原文（葡萄牙文）", "歸類", "理由"], rows, ["c", "c", "c", "c", "l", "l", "l"]
 
 
+def _best_epoch(df, key):
+    """每個設定依「各種子平均的驗證 AUC」挑 epoch（第二輪補做的選 epoch 規則）。"""
+    m = df.groupby(key + ["epoch"]).val_auc.mean().reset_index()
+    return m.loc[m.groupby(key).val_auc.idxmax(), key + ["epoch"]].assign(選用=True)
+
+
+def gen_lora_v2():
+    v = pd.read_csv(RESULTS / "rq2_llm_v2.csv")
+    key = ["model", "train_size", "lr", "epochs"]
+    v = v.merge(_best_epoch(v, key), on=key + ["epoch"], how="left")
+    rows = []
+    for _, r in v.sort_values(["model", "train_size", "lr", "seed", "epoch"]).iterrows():
+        rows.append([r.model.replace("qwen-", "Qwen-").replace("b", "B"), f"{int(r.train_size):,}", f"{r.lr:.0e}".replace("e-0", "e-"), str(int(r.batch)),
+                     str(int(r.seed)), f"{int(r.epoch)}／{int(r.epochs)}", f"{r.train_loss:.3f}", f"{100 * r.val_auc:.2f}",
+                     f"{100 * r.test_auc:.2f}", f"{100 * r.test_acc:.2f}", "✓" if pd.notna(r.選用) else ""])
+    return ["模型", "訓練筆數", "學習率", "批次", "種子", "epoch", "訓練損失", "驗證 AUC", "測試 AUC", "準確率", "選用"], rows, \
+        ["l", "r", "c", "c", "c", "c", "c", "c", "c", "c", "c"]
+
+
+def gen_ft8():
+    f = pd.read_csv(RESULTS / "rq2_finetune.csv")
+    f = f[(f.model == "bertimbau-base") & (f.epochs == 8)]
+    g = f.groupby(["train_size", "epoch"]).agg(loss=("train_loss", "mean"), val=("val_auc", "mean"), auc=("test_auc", "mean"),
+                                               sd=("test_auc", "std")).reset_index()
+    g = g.merge(_best_epoch(f, ["train_size"]), on=["train_size", "epoch"], how="left")
+    rows = [[f"{int(r.train_size):,}", str(int(r.epoch)), f"{r.loss:.3f}", f"{100 * r.val:.2f}",
+             f"{100 * r.auc:.2f} ± {100 * r.sd:.2f}", "✓" if pd.notna(r.選用) else ""] for _, r in g.iterrows()]
+    return ["訓練筆數", "epoch", "訓練損失", "驗證 AUC", "測試 AUC（平均 ± 標準差）", "選用"], rows, None
+
+
+def gen_preship_backtest():
+    b = pd.read_csv(RESULTS / "ext_preship_backtest.csv")
+    w = b.pivot(index="month", columns="features", values="auc_每月重訓")
+    n = b[b.features == "preship"].set_index("month")
+    rows = [[m, f"{int(n.n_test[m]):,}", f"{100 * n.負評率[m]:.1f}", f"{w.preship[m]:.3f}", f"{w.preship2[m]:.3f}",
+             f"{100 * (w.preship2[m] - w.preship[m]):+.1f}".replace("-", "−")] for m in w.index]
+    return ["測試月份", "訂單數", "負評率 %", "原本", "改良版", "差距（百分點）"], rows, None
+
+
 def gen_files():
     rows = [
         ["common.py／monitor.py", "共用設定（路徑、離線模式、隨機種子）；進度條與 CPU／GPU 監控、記錄檔"],
@@ -494,6 +533,9 @@ def gen_files():
         ["ext_crossdomain.py", "跨資料集 5×5（TF-IDF、BERT、Qwen 零樣本）"],
         ["ext_speed.py、ext_llm_calibration.py", "推論速度與記憶體；LLM 門檻校正"],
         ["run_extra_cpu.py、run_extra_gpu.py", "加深實驗批次流程"],
+        ["run_night4.py", "第二輪補做的批次流程（學習曲線延長訓練、Qwen-3B 學習率、出貨前特徵改良）"],
+        ["ext_preship.py", "出貨前特徵改良：延遲歷史特徵的消融比較、SHAP、預警時點、蒙地卡羅、滾動回測"],
+        ["ext_error_blind.py、ext_error_recode.py、ext_error_kappa.py", "錯誤歸類的盲測表、第二次獨立歸類與 Cohen's κ"],
         ["fig_eda.py、fig_rq12.py", "報告用圖（研究流程、EDA、RQ1／RQ2）"],
         ["summarize.py、build_report.py", "自動結果摘要；產生本報告的 Word 與 PDF"],
     ]
@@ -501,7 +543,8 @@ def gen_files():
 
 
 GEN_TABLES = {"frozen": gen_frozen, "sweep": gen_sweep, "llm": gen_llm, "calib": gen_calib, "cross_tfidf": gen_cross_tfidf,
-              "backtest": gen_backtest, "errors": gen_errors, "files": gen_files}
+              "backtest": gen_backtest, "errors": gen_errors, "files": gen_files, "lora_v2": gen_lora_v2, "ft8": gen_ft8,
+              "preship_backtest": gen_preship_backtest}
 
 
 # ============================================================ 解析與輸出

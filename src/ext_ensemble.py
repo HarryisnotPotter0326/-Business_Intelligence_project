@@ -35,9 +35,9 @@ def collect():
         "Base 微調": "finetune_bertimbau-base_n30464_lr2.5e-05_do0.1_E1_s*_ep1.npy",
         "Large 微調": "finetune_bertimbau-large_n30464_lr2.5e-05_do0.1_E1_s*_ep1.npy",
         "m-BERT 微調": "finetune_mbert_n30464_lr2.5e-05_do0_E2_s*_ep2.npy",
-        "Qwen-0.5B LoRA": "llm_qwen-0.5b_lora_n30464_s*.npy",
-        "Qwen-1.5B LoRA": "llm_qwen-1.5b_lora_n30464_s*.npy",
-        "Qwen-3B LoRA": "llm_qwen-3b_lora_n30464_s*.npy",
+        "Qwen-0.5B LoRA": "llm_qwen-0.5b_lora_n30464_s??.npy",
+        "Qwen-1.5B LoRA": "llm_qwen-1.5b_lora_n30464_s??.npy",
+        "Qwen-3B LoRA": "llm_qwen-3b_lora_n30464_s??.npy",  # 第一次（學習率 2e-4）；第二輪的檔名多了 _lr…_E1_ep1
         "Qwen-1.5B 零樣本": "llm_qwen-1.5b_zeroshot_n0_s42.npy",
         "Qwen-3B 零樣本": "llm_qwen-3b_zeroshot_n0_s42.npy",
     }

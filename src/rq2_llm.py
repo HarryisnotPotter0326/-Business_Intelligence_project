@@ -7,11 +7,16 @@
 用法：
   python src/rq2_llm.py qwen-1.5b --mode zeroshot
   python src/rq2_llm.py qwen-1.5b --mode lora --train_size 5000
+  （11/20 補做）每個 epoch 結束都評估驗證集與測試集，之後用驗證集挑 epoch：
+  python src/rq2_llm.py qwen-1.5b --mode lora --train_size 1000 --epochs 3 --eval_each_epoch --out rq2_llm_v2.csv
+  （11/20 補做）學習率改用「種子 42、指定訓練筆數」中驗證 AUC 最高的那個：
+  python src/rq2_llm.py qwen-3b --mode lora --batch 8 --seed 43 --eval_each_epoch --lr_from 30464 --out rq2_llm_v2.csv
 """
 import argparse
 import time
 
 import numpy as np
+import pandas as pd
 import torch
 
 from common import RESULTS, load_olist, merge_save, set_seed, subsample_idx  # 要在 transformers 之前匯入
@@ -27,6 +32,7 @@ MODELS = {
 }
 LABELS = ["negative", "positive"]
 MAX_CHARS = 400  # 評論太長時截斷（Olist 評論平均只有 7 個字）
+MAX_BAD_RUN = 20  # 連續這麼多步 loss 為 NaN／inf 就判定發散、中止訓練
 PRED_DIR = RESULTS / "preds"
 PRED_DIR.mkdir(exist_ok=True)
 
@@ -89,7 +95,8 @@ def score(model, tok, label_ids, texts, desc, batch=32):
     return scores
 
 
-def train_lora(model, tok, label_ids, df, a):
+def train_lora(model, tok, label_ids, df, a, on_epoch=None):
+    """on_epoch(ep, model, loss, n_train)：每個 epoch 結束時呼叫（逐 epoch 評估用）。"""
     cfg = LoraConfig(r=a.r, lora_alpha=2 * a.r, lora_dropout=0.05, task_type="CAUSAL_LM",
                      target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"])
     # 11 GB 顯示卡放不下 1.5B 的完整中間結果：用 gradient checkpointing（多花約 30% 時間，省大量記憶體）
@@ -110,7 +117,9 @@ def train_lora(model, tok, label_ids, df, a):
     g = torch.Generator().manual_seed(a.seed)
     model.train()
     run_loss = None
+    bad_total = bad_run = 0  # NaN 步數：累計、連續
     for ep in range(1, a.epochs + 1):
+        model.train()  # 逐 epoch 評估時 score() 會切成 eval 模式，每個 epoch 開始要切回來
         order = torch.randperm(len(texts), generator=g)
         bar = Bar(total=(len(texts) + a.batch - 1) // a.batch, desc=f"LoRA epoch {ep}/{a.epochs}", unit="步")
         for i in range(0, len(texts), a.batch):
@@ -126,14 +135,62 @@ def train_lora(model, tok, label_ids, df, a):
             scaler.step(opt)
             scaler.update()
             sched.step()
+            # fp16 可能溢位：偶爾一步 NaN 時 GradScaler 會跳過那一步；連續 NaN 代表已經發散，
+            # 直接中止，讓批次流程立刻改用備援設定（11/20 第四晚：種子 42、學習率 1e-4、batch 8 曾空轉 26 分鐘）
             if not torch.isfinite(loss):
-                log("警告：loss 出現 NaN／inf")
+                bad_total += 1
+                bad_run += 1
+                if bad_total in (1, 10, 100):
+                    log(f"警告：loss 出現 NaN／inf（第 {ep} 個 epoch 第 {i // a.batch + 1} 步，累計 {bad_total} 步）")
+                if bad_run >= MAX_BAD_RUN:
+                    bar.close()
+                    raise RuntimeError(f"訓練發散：連續 {bad_run} 步 loss 為 NaN／inf（學習率 {a.lr:g}、batch {a.batch}）")
+                bar.update(1)
+                continue  # NaN 不計入平均 loss
+            bad_run = 0
             run_loss = loss.item() if run_loss is None else 0.98 * run_loss + 0.02 * loss.item()
             bar.extra = {"loss": f"{run_loss:.4f}"}
             bar.update(1)
         bar.close()
         log(f"LoRA epoch {ep} 完成，loss {run_loss:.4f}")
+        if on_epoch:
+            on_epoch(ep, model, run_loss, n_train)
     return model, n_train, run_loss
+
+
+def run_each_epoch(model, tok, label_ids, tr, val, test, a, t0):
+    """LoRA 訓練，每個 epoch 結束都評估驗證集與測試集，逐 epoch 存檔（之後用驗證 AUC 挑 epoch）。"""
+    rows, eval_sec = [], [0.0]
+    keys = ["model", "mode", "train_size", "seed", "epochs", "epoch", "lr", "batch", "n_test"]
+
+    def on_epoch(ep, m, loss, n_train):
+        t1 = time.time()
+        sv = score(m, tok, label_ids, val.review_text.tolist(), desc=f"epoch {ep} 評估驗證集")
+        t2 = time.time()
+        st = score(m, tok, label_ids, test.review_text.tolist(), desc=f"epoch {ep} 評估測試集")
+        infer = time.time() - t2
+        eval_sec[0] += time.time() - t1
+        y = test.label.values
+        tag = f"llm_{a.model}_lora_n{len(tr)}_s{a.seed}_lr{a.lr:g}_E{a.epochs}_ep{ep}"
+        np.save(PRED_DIR / f"{tag}.npy", st)
+        np.save(PRED_DIR / f"{tag}_val.npy", sv)
+        rows.append(dict(model=a.model, mode="lora", train_size=len(tr), seed=a.seed, epochs=a.epochs, epoch=ep,
+                         lr=a.lr, batch=a.batch, lora_r=a.r, trainable_params=n_train, train_loss=round(loss, 4),
+                         val_auc=round(roc_auc_score(val.label.values, sv), 4), test_auc=round(roc_auc_score(y, st), 4),
+                         test_acc=round(accuracy_score(y, st > 0), 4), test_f1_neg=round(f1_score(y, st > 0, pos_label=0), 4),
+                         pred_pos_rate=round(float((st > 0).mean()), 4),
+                         train_minutes=round((time.time() - t0 - eval_sec[0]) / 60, 2),
+                         infer_sec_per_1k=round(infer / len(test) * 1000, 1), n_test=len(test)))
+        r = rows[-1]
+        log(f"{a.model} LoRA n={len(tr)} seed={a.seed} epoch {ep}/{a.epochs}：loss {loss:.4f}  驗證 AUC {r['val_auc']:.4f}  "
+            f"測試 AUC {r['test_auc']:.4f}  準確率 {r['test_acc']:.4f}  累計訓練 {r['train_minutes']:.1f} 分")
+        merge_save(rows, a.out, keys)  # 每個 epoch 都存，中斷也不會白跑
+
+    train_lora(model, tok, label_ids, tr, a, on_epoch=on_epoch)
+    out, path = merge_save(rows, a.out, keys)
+    log(f"結果已存到 {path}")
+    log_text(pd.DataFrame(rows)[["epoch", "train_loss", "val_auc", "test_auc", "test_acc", "train_minutes"]].to_string(index=False))
+    log(f"記錄檔 {LOG_PATH}")
 
 
 def main():
@@ -150,7 +207,18 @@ def main():
     ap.add_argument("--out", default="rq2_llm.csv")
     ap.add_argument("--shots", type=int, default=0, help="零樣本模式下，在提示裡放幾則範例（少樣本提示）")
     ap.add_argument("--score_val", action="store_true", help="另外對驗證集評分並存檔（給門檻校正用）")
+    ap.add_argument("--eval_each_epoch", action="store_true", help="LoRA：每個 epoch 結束都評估驗證集與測試集")
+    ap.add_argument("--lr_from", type=int, help="LoRA：學習率改用 --out 檔中「種子 42、這個訓練筆數」驗證 AUC 最高者")
     a = ap.parse_args()
+    if a.lr_from:
+        r = pd.read_csv(RESULTS / a.out)
+        r = r[(r.model == a.model) & (r["mode"] == "lora") & (r.train_size == a.lr_from) & (r.seed == 42)
+              & r.val_auc.notna()]
+        if r.empty:
+            raise SystemExit(f"--lr_from：{a.out} 裡找不到 {a.model}、{a.lr_from} 筆、種子 42 的驗證結果")
+        cand = r.groupby("lr").val_auc.max()
+        a.lr = float(cand.idxmax())
+        log(f"依驗證 AUC 選學習率：{a.lr:g}（候選 {', '.join(f'{k:g}→{v:.4f}' for k, v in cand.items())}）")
 
     set_seed(a.seed)
     train, val, test = load_olist()
@@ -174,6 +242,9 @@ def main():
         tr = train.loc[subsample_idx(train, a.train_size, a.seed)].reset_index(drop=True)
         size = len(tr)
         log(f"LoRA 訓練 {size} 筆，{a.epochs} epoch，LR {a.lr}，batch {a.batch}")
+        if a.eval_each_epoch:
+            run_each_epoch(model, tok, label_ids, tr, val, test, a, t0)
+            return
         model, n_train, loss = train_lora(model, tok, label_ids, tr, a)
     train_min = (time.time() - t0) / 60
 

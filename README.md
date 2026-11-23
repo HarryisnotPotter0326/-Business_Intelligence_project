@@ -62,8 +62,9 @@ python src/download_models.py qwen-0.5b qwen-1.5b qwen-3b      # Qwen2.5，約 1
 | 2 | `python src/run_night2.py --redo`<br>`python src/run_night3.py --redo` | RQ1、RQ2 補充實驗（超參數搜尋、多種子、LLM） |
 | 3 | `python src/run_rq3.py --redo`<br>`python src/run_rq4.py --redo` | RQ3 資料探勘、RQ4 決策分析 |
 | 4 | `python src/run_extra_cpu.py --redo`<br>`python src/run_extra_gpu.py --redo` | 加深實驗（因果推論、回測、跨資料集、錯誤分析等） |
-| 5 | `python src/fig_eda.py`<br>`python src/fig_rq12.py` | 報告用圖 |
-| 6 | `python src/build_report.py` | 產生報告的 Word 與 PDF（PDF 需要 Word 或 LibreOffice） |
+| 5 | `python src/run_night4.py --redo`<br>`python src/ext_error_recode.py` | 第二輪補做（學習曲線延長訓練、Qwen-3B 學習率、出貨前特徵改良、錯誤歸類的重測信度） |
+| 6 | `python src/fig_eda.py`<br>`python src/fig_rq12.py` | 報告用圖 |
+| 7 | `python src/build_report.py` | 產生報告的 Word 與 PDF（PDF 需要 Word 或 LibreOffice） |
 
 說明：
 
@@ -98,6 +99,9 @@ python src/download_models.py qwen-0.5b qwen-1.5b qwen-3b      # Qwen2.5，約 1
 | `ext_causal.py` | 斷點迴歸、傾向分數配對、AIPW |
 | `ext_cluster2.py` | 購物經驗分群（K-means、GMM） |
 | `ext_montecarlo.py` | 成本不確定下的蒙地卡羅模擬 |
+| `run_night4.py` | 第二輪補做的批次流程 |
+| `ext_preship.py` | 出貨前特徵改良：延遲歷史特徵的消融比較、SHAP、預警時點、蒙地卡羅、滾動回測 |
+| `ext_error_blind.py`、`ext_error_recode.py`、`ext_error_kappa.py` | 錯誤歸類的盲測表、第二次獨立歸類與 Cohen's κ |
 | `ext_apply_bert.py` | BERT 交叉評分有留言的評論（3 星、隱性不滿） |
 | `ext_crossdomain.py` | 跨資料集 5×5（TF-IDF、BERT、Qwen 零樣本） |
 | `ext_speed.py`、`ext_llm_calibration.py` | 推論速度與記憶體；LLM 門檻校正 |

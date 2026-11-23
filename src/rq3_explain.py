@@ -36,7 +36,13 @@ ZH = {
     "delivered": "已送達", "delivery_days": "實際配送天數", "delay_days": "延遲天數（實際−預計）", "is_late": "是否延遲",
     "carrier_days": "交給物流天數", "seller_late_handover": "賣家逾期出貨",
     "category": "商品品類", "customer_state": "顧客所在州", "seller_state": "賣家所在州", "payment_type": "付款方式",
+    # 延遲歷史（11/20 補做）
+    "seller_prev_deliv_n": "賣家過去送達數", "seller_prev_late_rate": "賣家過去延遲率",
+    "seller_prev_handover_late_rate": "賣家過去逾期出貨率", "route_prev_late_rate": "路線過去延遲率",
+    "route_est_margin": "承諾天數−路線平均天數", "platform_late_rate_14d": "全站近 14 天延遲率",
+    "state_late_rate_30d": "顧客州近 30 天延遲率", "seller_orders_7d": "賣家近 7 天訂單數",
 }
+FEAT_TITLE = {"full": "含配送結果", "preship": "出貨前特徵", "preship2": "出貨前特徵＋延遲歷史"}
 
 
 def group_of(name, cats):
@@ -68,7 +74,7 @@ def shap_analysis(feat, d):
     fig, ax = plt.subplots(figsize=(7, 5.5))
     ax.barh(top["特徵"], top.mean_abs_shap, color="#3b6ea5")
     ax.set_xlabel("平均 |SHAP|（對負評機率 log-odds 的影響）")
-    ax.set_title(f"負評的重要因素（LightGBM，{'含配送結果' if feat == 'full' else '出貨前特徵'}）")
+    ax.set_title(f"負評的重要因素（LightGBM，{FEAT_TITLE.get(feat, feat)}）")
     fig.tight_layout()
     fig.savefig(FIGURES / f"rq3_shap_bar_{feat}.png", dpi=200)
     plt.close(fig)
@@ -79,7 +85,7 @@ def shap_analysis(feat, d):
                           feature_names=[ZH.get(names[i][5:], names[i][5:]) for i in num_idx])
     plt.figure()
     shap.plots.beeswarm(ex, max_display=12, show=False)
-    plt.title(f"SHAP 分布（{'含配送結果' if feat == 'full' else '出貨前特徵'}）")
+    plt.title(f"SHAP 分布（{FEAT_TITLE.get(feat, feat)}）")
     plt.tight_layout()
     plt.savefig(FIGURES / f"rq3_shap_beeswarm_{feat}.png", dpi=200)
     plt.close("all")

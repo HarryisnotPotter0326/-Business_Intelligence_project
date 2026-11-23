@@ -37,12 +37,18 @@ from rq3_model import preprocessor  # noqa: E402
 plt.rcParams["font.family"] = ["Microsoft JhengHei", "sans-serif"]
 plt.rcParams["axes.unicode_minus"] = False
 
+def moments(feat="preship"):
+    """三個預警時點的特徵；feat＝時點 A 使用的特徵組（11/20 補做 preship2）。"""
+    num, _ = rq3_data.FEATURES[feat]
+    return {
+        "A 下單時": num,
+        "B 出貨期限日": num + ["late_handover_at_limit"],
+        "C 預計送達日": num + ["late_handover_at_limit", "late_at_est"],
+    }
+
+
 NUM_A, CAT = rq3_data.FEATURES["preship"]
-MOMENTS = {
-    "A 下單時": NUM_A,
-    "B 出貨期限日": NUM_A + ["late_handover_at_limit"],
-    "C 預計送達日": NUM_A + ["late_handover_at_limit", "late_at_est"],
-}
+MOMENTS = moments("preship")
 ZH = {**ZH, "late_at_est": "預計送達日仍未送到", "late_handover_at_limit": "出貨期限仍未交物流"}
 KS = [0.01, 0.02, 0.05, 0.10, 0.20]
 
@@ -97,10 +103,11 @@ def benefit_curve(y, p, a):
     return n / len(y), gain / len(y) * 1000
 
 
-def warning_and_cost(d, a):
+def warning_and_cost(d, a, moments=None, sfx=""):
+    """moments：各時點的特徵（預設 MOMENTS）；sfx：輸出檔名的後綴（例如 "_v2"），不覆蓋原本的結果。"""
     tr, va, te = rq3_data.split(d, "time")
     rows, curves, cost_rows, fitted = [], {}, [], {}
-    for name, num in MOMENTS.items():
+    for name, num in (moments or MOMENTS).items():
         pipe, pva, pte, it = fit_moment(num, tr, va, te)
         fitted[name] = (pipe, num, pte)
         y = te.neg.values
@@ -122,9 +129,9 @@ def warning_and_cost(d, a):
         log(f"{name}：AUC {r['test_auc']:.4f}  PR-AUC {r['test_pr_auc']:.4f}  P@5% {r['P@5%']:.3f}  "
             f"Lift@5% {r['Lift@5%']:.2f}  淨效益 {gt[i]:.1f} R$／千筆（名單 {best_frac:.1%}）")
     w = pd.DataFrame(rows)
-    w.to_csv(RESULTS / "rq4_warning.csv", index=False)
+    w.to_csv(RESULTS / f"rq4_warning{sfx}.csv", index=False)
     c = pd.DataFrame(cost_rows)
-    c.to_csv(RESULTS / "rq4_cost.csv", index=False)
+    c.to_csv(RESULTS / f"rq4_cost{sfx}.csv", index=False)
     log_text("\n預警時點比較（測試集，依時間切分）：\n" + w.to_string(index=False))
     log_text(f"\n成本設定：聯繫成本 R${a.contact_cost}、負評損失 R${a.neg_cost}、介入成功率 {a.success:.0%}\n" + c.to_string(index=False))
 
@@ -144,7 +151,7 @@ def warning_and_cost(d, a):
     for ax in axes:
         ax.legend()
     fig.tight_layout()
-    fig.savefig(FIGURES / "rq4_warning.png", dpi=200)
+    fig.savefig(FIGURES / f"rq4_warning{sfx}.png", dpi=200)
     plt.close(fig)
 
     # 敏感度：「每則負評的期望可挽回價值 ÷ 聯繫成本」從 0.5 到 10
@@ -159,7 +166,7 @@ def warning_and_cost(d, a):
             sens.append(dict(時點=name, 價值成本比=ratio, 最佳名單比例=round((j + 1) / len(y), 4) if g[j] > 0 else 0.0,
                              淨效益_聯繫成本單位_每千筆=round(max(g[j], 0) / len(y) * 1000, 1)))
     s = pd.DataFrame(sens)
-    s.to_csv(RESULTS / "rq4_cost_sensitivity.csv", index=False)
+    s.to_csv(RESULTS / f"rq4_cost_sensitivity{sfx}.csv", index=False)
     log_text("\n敏感度分析（價值成本比 = 負評損失 × 成功率 ÷ 聯繫成本）：\n" + s.pivot(index="價值成本比", columns="時點", values="最佳名單比例").to_string())
     return te, fitted
 

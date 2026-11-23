@@ -1,0 +1,14 @@
+# 指令：src/rq2_llm.py qwen-1.5b --mode lora --train_size 10000 --epochs 2 --seed 44 --eval_each_epoch --out rq2_llm_v2.csv
+# 開始：2026-11-20 18:07:20
+[18:07:25] GPU：NVIDIA GeForce RTX 2080 Ti；載入 Qwen/Qwen2.5-1.5B-Instruct（fp16）    (CPU 22%  RAM 0.8G  GPU 0%  VRAM 1.3/11.0G  TEMP 55C)
+[18:07:29] LoRA 訓練 10000 筆，2 epoch，LR 0.0002，batch 16    (CPU 79%  RAM 3.9G  GPU 12%  VRAM 4.5/11.0G  TEMP 56C)
+[18:07:29] LoRA r=16：可訓練參數 18.5M（占全部 1.18%）    (CPU 96%  RAM 3.9G  GPU 42%  VRAM 4.6/11.0G  TEMP 56C)
+[18:14:07] LoRA epoch 1 完成，loss 0.1682    (CPU 23%  RAM 1.8G  GPU 97%  VRAM 6.6/11.0G  TEMP 66C)
+[18:15:06] qwen-1.5b LoRA n=10000 seed=44 epoch 1/2：loss 0.1682  驗證 AUC 0.9801  測試 AUC 0.9818  準確率 0.9488  累計訓練 6.6 分    (CPU 20%  RAM 1.8G  GPU 98%  VRAM 6.9/11.0G  TEMP 66C)
+[18:21:44] LoRA epoch 2 完成，loss 0.0784    (CPU 0%  RAM 1.8G  GPU 98%  VRAM 6.9/11.0G  TEMP 64C)
+[18:22:43] qwen-1.5b LoRA n=10000 seed=44 epoch 2/2：loss 0.0784  驗證 AUC 0.9799  測試 AUC 0.9841  準確率 0.9454  累計訓練 13.3 分    (CPU 27%  RAM 1.8G  GPU 98%  VRAM 6.9/11.0G  TEMP 66C)
+[18:22:43] 結果已存到 C:\商業智慧專案\results\rq2_llm_v2.csv    (CPU 38%  RAM 1.8G  GPU 98%  VRAM 6.9/11.0G  TEMP 66C)
+ epoch  train_loss  val_auc  test_auc  test_acc  train_minutes
+     1      0.1682   0.9801    0.9818    0.9488           6.64
+     2      0.0784   0.9799    0.9841    0.9454          13.27
+[18:22:43] 記錄檔 C:\商業智慧專案\logs\rq2_llm_20261120_180720.log    (CPU 0%  RAM 1.8G  GPU 98%  VRAM 6.9/11.0G  TEMP 66C)

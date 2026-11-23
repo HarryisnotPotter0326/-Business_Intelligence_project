@@ -70,9 +70,10 @@ FOREST = [  # （名稱, 類別色, 預測檔樣式）
     ("BERTimbau Large 微調", C_FT, "finetune_bertimbau-large_n30464_lr2.5e-05_do0.1_E1_s*_ep1.npy"),
     ("Qwen-1.5B 零樣本", C_LLM, "llm_qwen-1.5b_zeroshot_n0_s42.npy"),
     ("Qwen-3B 零樣本", C_LLM, "llm_qwen-3b_zeroshot_n0_s42.npy"),
-    ("Qwen-0.5B LoRA", C_LLM, "llm_qwen-0.5b_lora_n30464_s*.npy"),
-    ("Qwen-1.5B LoRA", C_LLM, "llm_qwen-1.5b_lora_n30464_s*.npy"),
-    ("Qwen-3B LoRA", C_LLM, "llm_qwen-3b_lora_n30464_s*.npy"),
+    ("Qwen-0.5B LoRA", C_LLM, "llm_qwen-0.5b_lora_n30464_s??.npy"),
+    ("Qwen-1.5B LoRA", C_LLM, "llm_qwen-1.5b_lora_n30464_s??.npy"),
+    # 3B：第二輪（11/20）學習率 1e-4 的 3 個種子；第一次（學習率 2e-4）的預測檔是 llm_qwen-3b_lora_n30464_s42.npy
+    ("Qwen-3B LoRA", C_LLM, "llm_qwen-3b_lora_n30464_s??_lr0.0001_E1_ep1.npy"),
 ]
 
 
@@ -247,11 +248,33 @@ def fig_error():
     save(fig, "rq1_error.png")
 
 
+# ---------------------------------------------------------------- LLM 結果（含第二輪補做）
+V2_LR_3B = 1e-4  # 第二輪依「種子 42 的驗證 AUC」選定的 3B 學習率
+
+
+def lora_v2():
+    """rq2_llm_v2.csv：每個設定依各種子平均的驗證 AUC 挑 epoch，回傳挑到的那個 epoch 的各種子結果。"""
+    v = pd.read_csv(RESULTS / "rq2_llm_v2.csv")
+    key = ["model", "train_size", "lr", "epochs"]
+    m = v.groupby(key + ["epoch"]).val_auc.mean().reset_index()
+    best = m.loc[m.groupby(key).val_auc.idxmax(), key + ["epoch"]]
+    return v.merge(best, on=key + ["epoch"])
+
+
+def llm_results():
+    """rq2_llm.csv，但 Qwen-3B LoRA 換成第二輪（學習率 1e-4）的結果；第一次用 2e-4，學習率沒調好。"""
+    llm = pd.read_csv(RESULTS / "rq2_llm.csv")
+    v = lora_v2()
+    v3 = v[(v.model == "qwen-3b") & np.isclose(v.lr, V2_LR_3B)]
+    llm = llm[~((llm.model == "qwen-3b") & (llm["mode"] == "lora"))]
+    return pd.concat([llm, v3[[c for c in llm.columns if c in v3.columns]]], ignore_index=True)
+
+
 # ---------------------------------------------------------------- 5. 學習曲線
 def ft_curve():
     """Base 微調：每個資料量依驗證 AUC 選 epoch（3 個種子平均）。"""
     f = pd.read_csv(RESULTS / "rq2_finetune.csv")
-    f = f[f.model == "bertimbau-base"]
+    f = f[(f.model == "bertimbau-base") & (f.epochs == 3)]  # epochs＝8 是第二輪檢查「是否訓練不足」的補做（附錄表 A-10）
     g = f.groupby(["train_size", "epoch"]).agg(val=("val_auc", "mean"), auc=("test_auc", "mean"), sd=("test_auc", "std"))
     best = g.loc[g.groupby(level=0).val.idxmax()].reset_index()
     best[["auc", "sd"]] *= 100
@@ -263,7 +286,9 @@ def fig_learning_curve():
     lc = lc.groupby(["method", "train_size"]).test_auc.agg(["mean", "std"]).reset_index()
     lc[["mean", "std"]] *= 100
     ft = ft_curve()
-    llm = pd.read_csv(RESULTS / "rq2_llm.csv")
+    llm = llm_results()
+    v = lora_v2()  # Qwen-1.5B 的 10,000 筆是第二輪補做的（2 epoch，依驗證集選 epoch）
+    llm = pd.concat([llm, v[(v.model == "qwen-1.5b") & (v.train_size == 10000)]], ignore_index=True)
     lora = llm[llm["mode"] == "lora"].groupby(["model", "train_size"]).test_auc.agg(["mean", "std", "count"]).reset_index()
     lora[["mean", "std"]] *= 100
     fin = pd.read_csv(RESULTS / "rq1_finetune.csv")
@@ -292,7 +317,7 @@ def fig_learning_curve():
     line(ax, ft.train_size, ft.auc, ft.sd, C_FT, "o", "BERTimbau Base 微調", direct=False)
     ax.errorbar(30464, large["mean"], yerr=large["std"], fmt="D", c=C_FT, ms=7, capsize=3, mec="white",
                 label="BERTimbau Large 微調（只跑全部資料）")
-    for m, mk, ls, lab in [("qwen-1.5b", "o", "-", "Qwen-1.5B LoRA"), ("qwen-3b", "s", "--", "Qwen-3B LoRA（1 個種子）")]:
+    for m, mk, ls, lab in [("qwen-1.5b", "o", "-", "Qwen-1.5B LoRA"), ("qwen-3b", "s", "--", "Qwen-3B LoRA（1k／5k 為 1 個種子）")]:
         d = lora[lora.model == m].sort_values("train_size")
         line(ax, d.train_size, d["mean"], d["std"].fillna(0), C_LLM, mk, lab, ls=ls, direct=False)
     d = lora[lora.model == "qwen-0.5b"]
@@ -312,7 +337,8 @@ def fig_learning_curve():
         ax.set_xlabel("訓練資料筆數（對數尺度）")
     fig.suptitle("RQ2 學習曲線：資料越少，預訓練模型的優勢越大；LLM 用 1,000 筆做 LoRA 就達到 BERT 用 5,000 筆的水準",
                  x=0.01, ha="left", fontsize=11.5, fontweight="bold")
-    fig.text(0.01, -0.03, "誤差線＝3 個種子的標準差（全部資料的 TF-IDF／凍結模型只跑 1 次）。Base 微調每個資料量依驗證 AUC 選 epoch。",
+    fig.text(0.01, -0.03, "誤差線＝3 個種子的標準差（全部資料的 TF-IDF／凍結模型只跑 1 次）。Base 微調每個資料量依驗證 AUC 選 epoch。"
+             "Qwen-1.5B 的 10,000 筆與 Qwen-3B（學習率 1e-4）為第二輪補做，依驗證 AUC 選 epoch。",
              fontsize=8, color=MUTED)
     fig.tight_layout()
     save(fig, "rq2_learning_curve.png")
@@ -320,7 +346,7 @@ def fig_learning_curve():
 
 # ---------------------------------------------------------------- 6. LLM 比較與門檻校正
 def fig_llm():
-    llm = pd.read_csv(RESULTS / "rq2_llm.csv")
+    llm = llm_results()
     cal = pd.read_csv(RESULTS / "ext_llm_calibration.csv")
     fin = pd.read_csv(RESULTS / "rq1_finetune.csv")
     fin = fin[(fin.model == "bertimbau-large") & (fin.epoch == fin.epochs)]
@@ -388,7 +414,7 @@ def fig_llm():
 def fig_pareto():
     sp = pd.read_csv(RESULTS / "ext_speed.csv").set_index("method").sec_per_1k
     t = forest_table().set_index("method").auc
-    llm = pd.read_csv(RESULTS / "rq2_llm.csv")
+    llm = llm_results()
     pts = [  # （標籤, 秒／千則, AUC, 顏色, 標記, 實心, 標籤位移）
         ("TF-IDF", sp["TF-IDF ＋ LR"], t["TF-IDF ＋ LR"], C_TFIDF, "o", True, (0, -14)),
         ("m-BERT 凍結", sp["mbert"], t["m-BERT 凍結"], C_FROZEN, "^", True, (8, -4)),
@@ -400,7 +426,7 @@ def fig_pareto():
     ]
     off = {("qwen-0.5b", "zeroshot"): (8, -4), ("qwen-1.5b", "zeroshot"): (-9, 0), ("qwen-3b", "zeroshot"): (8, -6),
            ("qwen-0.5b", "fewshot8"): (8, -4), ("qwen-1.5b", "fewshot8"): (-9, -6), ("qwen-3b", "fewshot8"): (0, 13),
-           ("qwen-0.5b", "lora"): (8, -4), ("qwen-1.5b", "lora"): (8, 4), ("qwen-3b", "lora"): (8, -4)}
+           ("qwen-0.5b", "lora"): (8, -4), ("qwen-1.5b", "lora"): (6, -12), ("qwen-3b", "lora"): (8, 10)}
     nm = {"qwen-0.5b": "0.5B", "qwen-1.5b": "1.5B", "qwen-3b": "3B"}
     md = {"zeroshot": ("零樣本", "o", False), "fewshot8": ("8 則範例", "s", False), "lora": ("LoRA", "o", True)}
     for (m, mode), o in off.items():
@@ -428,7 +454,7 @@ def fig_pareto():
     ax.set_xlim(0.008, 2000)
     ax.set_xticks([0.01, 0.1, 1, 10, 100, 1000], ["0.01", "0.1", "1", "10", "100", "1,000"])
     ax.set(xlabel="推論時間：每 1,000 則評論的秒數（對數尺度；TF-IDF 用 CPU，其餘用 RTX 2080 Ti）", ylabel="測試 AUC（%）")
-    ax.set_title("RQ2：準確度與速度的取捨——BERT Base 微調只要最佳 LLM 的 1/26 時間，AUC 只低 0.3 個百分點")
+    ax.set_title("RQ2：準確度與速度的取捨——BERT Base 微調只要 Qwen-1.5B LoRA 的 1/26 時間，AUC 只低 0.3 個百分點")
     handles = [Line2D([], [], marker="o", ls="", c=c, mec="white", ms=8, label=l) for l, c in
                [("TF-IDF", C_TFIDF), ("BERT 凍結＋LR", C_FROZEN), ("BERT 微調", C_FT), ("LLM（實心＝LoRA、空心＝提示）", C_LLM)]]
     ax.legend(handles=handles, loc="lower left", fontsize=8.5)

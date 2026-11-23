@@ -1,0 +1,142 @@
+{
+  "preship_v2": {
+    "title": "出貨前預警：加入延遲歷史特徵（CPU）",
+    "status": "完成",
+    "start": "11-20 16:29",
+    "minutes": 3.1,
+    "log": "logs\\ext_preship_20261120_162939.log"
+  },
+  "curve_ft_1000_8ep": {
+    "title": "學習曲線：BERT Base 微調 1000 筆，8 epoch × 3 種子",
+    "status": "完成",
+    "start": "11-20 16:32",
+    "minutes": 2.1,
+    "log": "logs\\rq1_finetune_20261120_163247.log"
+  },
+  "curve_ft_5000_8ep": {
+    "title": "學習曲線：BERT Base 微調 5000 筆，8 epoch × 3 種子",
+    "status": "完成",
+    "start": "11-20 16:34",
+    "minutes": 5.8,
+    "log": "logs\\rq1_finetune_20261120_163451.log"
+  },
+  "lora15_1000_s42": {
+    "title": "學習曲線：Qwen-1.5B LoRA 1000 筆，3 epoch，種子 42",
+    "status": "完成",
+    "start": "11-20 16:40",
+    "minutes": 5.3,
+    "log": "logs\\rq2_llm_20261120_164039.log"
+  },
+  "lora15_1000_s43": {
+    "title": "學習曲線：Qwen-1.5B LoRA 1000 筆，3 epoch，種子 43",
+    "status": "完成",
+    "start": "11-20 16:45",
+    "minutes": 5.2,
+    "log": "logs\\rq2_llm_20261120_164555.log"
+  },
+  "lora15_1000_s44": {
+    "title": "學習曲線：Qwen-1.5B LoRA 1000 筆，3 epoch，種子 44",
+    "status": "完成",
+    "start": "11-20 16:51",
+    "minutes": 5.2,
+    "log": "logs\\rq2_llm_20261120_165105.log"
+  },
+  "lora15_5000_s42": {
+    "title": "學習曲線：Qwen-1.5B LoRA 5000 筆，3 epoch，種子 42",
+    "status": "完成",
+    "start": "11-20 16:56",
+    "minutes": 13.2,
+    "log": "logs\\rq2_llm_20261120_165615.log"
+  },
+  "lora15_5000_s43": {
+    "title": "學習曲線：Qwen-1.5B LoRA 5000 筆，3 epoch，種子 43",
+    "status": "完成",
+    "start": "11-20 17:09",
+    "minutes": 13.1,
+    "log": "logs\\rq2_llm_20261120_170930.log"
+  },
+  "lora15_5000_s44": {
+    "title": "學習曲線：Qwen-1.5B LoRA 5000 筆，3 epoch，種子 44",
+    "status": "完成",
+    "start": "11-20 17:22",
+    "minutes": 13.1,
+    "log": "logs\\rq2_llm_20261120_172238.log"
+  },
+  "lora15_10000_s42": {
+    "title": "學習曲線：Qwen-1.5B LoRA 10000 筆，2 epoch，種子 42",
+    "status": "完成",
+    "start": "11-20 17:35",
+    "minutes": 15.5,
+    "log": "logs\\rq2_llm_20261120_173544.log"
+  },
+  "lora15_10000_s43": {
+    "title": "學習曲線：Qwen-1.5B LoRA 10000 筆，2 epoch，種子 43",
+    "status": "完成",
+    "start": "11-20 17:51",
+    "minutes": 16.1,
+    "log": "logs\\rq2_llm_20261120_175119.log"
+  },
+  "lora15_10000_s44": {
+    "title": "學習曲線：Qwen-1.5B LoRA 10000 筆，2 epoch，種子 44",
+    "status": "完成",
+    "start": "11-20 18:07",
+    "minutes": 15.5,
+    "log": "logs\\rq2_llm_20261120_180720.log"
+  },
+  "lora3b_30k_lr1e-4": {
+    "title": "Qwen-3B LoRA 全部資料，學習率 1e-4，種子 42",
+    "status": "完成",
+    "start": "11-20 18:22",
+    "minutes": 131.3,
+    "log": "logs\\rq2_llm_20261120_182252.log；logs\\rq2_llm_20261120_190610.log"
+  },
+  "lora3b_30k_lr5e-5": {
+    "title": "Qwen-3B LoRA 全部資料，學習率 5e-5，種子 42",
+    "status": "完成",
+    "start": "11-20 20:34",
+    "minutes": 42.8,
+    "log": "logs\\rq2_llm_20261120_203406.log"
+  },
+  "lora3b_30k_s43": {
+    "title": "Qwen-3B LoRA 全部資料，種子 43（學習率依驗證 AUC 選定）",
+    "status": "完成",
+    "start": "11-20 21:16",
+    "minutes": 42.7,
+    "log": "logs\\rq2_llm_20261120_211653.log"
+  },
+  "lora3b_30k_s44": {
+    "title": "Qwen-3B LoRA 全部資料，種子 44（學習率依驗證 AUC 選定）",
+    "status": "完成",
+    "start": "11-20 21:59",
+    "minutes": 42.7,
+    "log": "logs\\rq2_llm_20261120_215936.log"
+  },
+  "lora3b_1000": {
+    "title": "Qwen-3B LoRA 1000 筆，3 epoch，種子 42（學習率同上）",
+    "status": "完成",
+    "start": "11-20 22:42",
+    "minutes": 9.6,
+    "log": "logs\\rq2_llm_20261120_224218.log"
+  },
+  "lora3b_5000": {
+    "title": "Qwen-3B LoRA 5000 筆，3 epoch，種子 42（學習率同上）",
+    "status": "完成",
+    "start": "11-20 22:51",
+    "minutes": 25.5,
+    "log": "logs\\rq2_llm_20261120_225156.log"
+  },
+  "lora3b_30k_lr5e-5_s43": {
+    "title": "Qwen-3B LoRA 全部資料，學習率 5e-5，種子 43（11/22 補跑）",
+    "status": "完成",
+    "start": "11-22 10:23",
+    "minutes": 42.5,
+    "log": "logs\\rq2_llm_20261122_102308.log"
+  },
+  "lora3b_30k_lr5e-5_s44": {
+    "title": "Qwen-3B LoRA 全部資料，學習率 5e-5，種子 44（11/22 補跑）",
+    "status": "完成",
+    "start": "11-22 11:05",
+    "minutes": 42.5,
+    "log": "logs\\rq2_llm_20261122_110537.log"
+  }
+}
