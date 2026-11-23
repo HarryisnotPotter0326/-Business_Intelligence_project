@@ -2,7 +2,7 @@
 
 國立中央大學「商業智慧」期中報告《以預訓練語言模型重現與延伸電商評論情感分析：Olist 巴西電商的負評成因、預警與改善決策》的程式碼、實驗結果與報告。
 
-- 報告：[`報告/`](報告/)（Word 與 PDF）
+- 報告：[`報告/`](報告/)（完整版 Word 與 PDF，98 頁）；[`報告/精簡版/`](報告/精簡版/)（精簡版，40 頁，只留主要結果）
 - 資料：因檔案太大（最大 1.1 GB）未放入 repo，請依 [`datasets/README.md`](datasets/README.md) 下載
 
 ## 內容
@@ -14,6 +14,7 @@
 | `figures/` | 報告中的圖 |
 | `logs/` | 每次執行的記錄檔，含當時的 CPU／GPU 使用情形。`*_state.json` 記錄批次流程完成到哪一段 |
 | `report/` | 報告原稿（Markdown，每章一個檔），`build_report.py` 由此產生 Word 與 PDF |
+| `report_精簡版/` | 精簡版報告原稿（格式同上） |
 | `實驗紀錄.md` | 每段實驗的結果與解讀 |
 | `自動結果摘要.md` | 批次流程每段完成後自動彙整的結果 |
 | `requirements.txt` | Python 套件與版本 |
@@ -64,7 +65,7 @@ python src/download_models.py qwen-0.5b qwen-1.5b qwen-3b      # Qwen2.5，約 1
 | 4 | `python src/run_extra_cpu.py --redo`<br>`python src/run_extra_gpu.py --redo` | 加深實驗（因果推論、回測、跨資料集、錯誤分析等） |
 | 5 | `python src/run_night4.py --redo`<br>`python src/ext_error_recode.py` | 第二輪補做（學習曲線延長訓練、Qwen-3B 學習率、出貨前特徵改良、錯誤歸類的重測信度） |
 | 6 | `python src/fig_eda.py`<br>`python src/fig_rq12.py` | 報告用圖 |
-| 7 | `python src/build_report.py` | 產生報告的 Word 與 PDF（PDF 需要 Word 或 LibreOffice） |
+| 7 | `python src/build_report.py`<br>`python src/build_report.py --src report_精簡版 --out 報告/精簡版 --name 商業智慧期中報告_Olist評論情感分析與負評決策_精簡版` | 產生報告的 Word 與 PDF（完整版、精簡版；PDF 需要 Word 或 LibreOffice） |
 
 說明：
 

@@ -15,3 +15,5 @@ datasets/*
 報告/*.zip
 report/_tmp_*.md
 logs/-c_*.log
+報告/精簡版/_build/
+report_精簡版/_tmp_*.md

@@ -19,6 +19,8 @@
 
 用法：python src/build_report.py              （產生 Word ＋ PDF）
       python src/build_report.py --no-pdf     （只產生 Word）
+      python src/build_report.py --src report_精簡版 --out 報告/精簡版 --name 商業智慧期中報告_Olist評論情感分析與負評決策_精簡版
+                                              （精簡版）
 """
 import argparse
 import re
@@ -967,12 +969,17 @@ def find_pages(pdf, probe, front_titles):
 
 
 def main():
+    global SRC, OUT, NAME
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-pdf", action="store_true")
     ap.add_argument("--engine", choices=["auto", "word", "libreoffice"], default="auto",
                     help="PDF 轉檔：auto＝有 Word 用 Word，否則用 LibreOffice")
+    ap.add_argument("--src", default="report", help="章節 .md 所在資料夾（相對於專案根目錄）")
+    ap.add_argument("--out", default="報告", help="輸出資料夾（相對於專案根目錄）")
+    ap.add_argument("--name", default=NAME, help="輸出檔名（不含副檔名）")
     a = ap.parse_args()
-    OUT.mkdir(exist_ok=True)
+    SRC, OUT, NAME = ROOT / a.src, ROOT / a.out, a.name
+    OUT.mkdir(parents=True, exist_ok=True)
     tmpdir = OUT / "_build"
     tmpdir.mkdir(exist_ok=True)
     front_titles = [f.read_text(encoding="utf-8").splitlines()[0].lstrip("#! ").strip() for f in sorted(SRC.glob("0*.md"))]
