@@ -12,7 +12,8 @@ import pandas as pd
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.patches import FancyArrowPatch, FancyBboxPatch  # noqa: E402
+from matplotlib.patches import Ellipse, FancyArrowPatch, PathPatch, Rectangle  # noqa: E402
+from matplotlib.path import Path  # noqa: E402
 
 from common import DATA, FIGURES, RESULTS  # noqa: E402
 from monitor import LOG_PATH, log, log_text  # noqa: E402
@@ -36,45 +37,131 @@ def save(fig, name):
 
 
 def fig_flow():
-    fig, ax = plt.subplots(figsize=(12, 5.4))
-    ax.set_xlim(0, 12)
-    ax.set_ylim(0, 5.4)
+    """研究架構圖：泳道式（兩條主線 × 資料來源→研究問題→研究產出），採標準流程圖符號
+    （圓柱＝資料、矩形＝分析、文件形＝產出）。以實際列印尺寸（約 16 cm 寬）繪製，座標單位為英吋。"""
+    W, H = 6.3, 3.42
+    fig = plt.figure(figsize=(W, H))
+    ax = fig.add_axes([0, 0, 1, 1])
+    ax.set_xlim(0, W)
+    ax.set_ylim(0, H)
     ax.axis("off")
+    ACC, LINE, TXT, TXT2 = "#1f3a5f", "#3a3a3a", "#1a1a1a", "#3f3f3f"
+    BAND, HEAD = "#f4f5f7", "#e3e6ea"
+    LW = 0.7
 
-    def box(x, y, w, h, title, body, fc, ec):
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.02,rounding_size=0.12", fc=fc, ec=ec, lw=1.4))
-        ax.text(x + 0.15, y + h - 0.2, title, ha="left", va="top", fontsize=10.5, fontweight="bold", color=INK)
-        ax.text(x + 0.15, y + h - 0.58, body, ha="left", va="top", fontsize=8.6, color=INK2, linespacing=1.45)
+    def rect(x, y, w, h, fc, ec="none", lw=LW, z=1):
+        ax.add_patch(Rectangle((x, y), w, h, fc=fc, ec=ec, lw=lw, zorder=z))
 
-    def arrow(p, q, style="-|>", ls="-", c=INK2, rad=0.0):
-        ax.add_patch(FancyArrowPatch(p, q, arrowstyle=style, mutation_scale=13, lw=1.3, color=c, ls=ls,
-                                     connectionstyle=f"arc3,rad={rad}"))
+    def cylinder(x, y, w, h, title, body, e=0.13):
+        ax.add_patch(Ellipse((x + w / 2, y + e / 2), w, e, fc="white", ec=LINE, lw=LW, zorder=3))
+        rect(x, y + e / 2, w, h - e, "white", z=3)
+        ax.plot([x, x], [y + e / 2, y + h - e / 2], color=LINE, lw=LW, zorder=4)
+        ax.plot([x + w, x + w], [y + e / 2, y + h - e / 2], color=LINE, lw=LW, zorder=4)
+        ax.add_patch(Ellipse((x + w / 2, y + h - e / 2), w, e, fc="white", ec=LINE, lw=LW, zorder=4))
+        cy = y + (h - e) / 2 + 0.02
+        ax.text(x + w / 2, cy + 0.2, title, ha="center", va="center", fontsize=7.4, fontweight="bold", color=TXT, zorder=5)
+        ax.text(x + w / 2, cy - 0.1, body, ha="center", va="center", fontsize=6.5, color=TXT2, linespacing=1.45,
+                zorder=5)
 
-    blue_fc, blue_ec = "#eaf2fc", "#2a78d6"
-    org_fc, org_ec = "#fdeee7", "#eb6834"
-    gry_fc, gry_ec = "#f3f2ef", "#898781"
-    # 上排：評論資料 → RQ1 → RQ2（人工智慧）；下排：訂單資料 → RQ3 → RQ4（資料探勘與決策）
-    ax.text(0.2, 5.25, "人工智慧：評論文字的情感分類", fontsize=10, color=blue_ec, fontweight="bold", va="top")
-    ax.text(0.2, 2.55, "資料探勘與智慧決策：訂單層級的負評分析", fontsize=10, color=org_ec, fontweight="bold", va="top")
-    h, yt, yb = 2.0, 2.95, 0.25
-    box(0.2, yt, 2.9, h, "評論資料（作者切分）",
-        "Olist 評論 41,744 則；3 星排除\n1–2 星＝負、4–5 星＝正\n訓練 30,464／驗證 3,808\n測試 3,807", gry_fc, gry_ec)
-    box(3.75, yt, 3.85, h, "RQ1　重現",
-        "TF-IDF＋LR（基準）\nBERT 凍結向量＋LR（9 種聚合）\nBERT 微調；8 個種子、bootstrap 檢定\n超參數搜尋、錯誤分析", blue_fc, blue_ec)
-    box(8.15, yt, 3.65, h, "RQ2　延伸",
-        "學習曲線（1k～30k 筆）\nQwen2.5 零樣本／少樣本／LoRA\n門檻校正、集成、跨資料集\n推論速度與記憶體", blue_fc, blue_ec)
-    box(0.2, yb, 2.9, h, "Olist 原始資料（9 張表）",
-        "訂單、品項、評論、商品、賣家\n顧客、付款、地理位置、品類\n→ 98,673 筆有評論的訂單\n（2016-09～2018-10）", gry_fc, gry_ec)
-    box(3.75, yb, 3.85, h, "RQ3　資料探勘",
-        "負評預測（LR、DT、RF、XGB、LGBM）\nSHAP、規則、各因素負評率\n因果推論（PSM、AIPW、斷點迴歸）\n主題模型、分群、滾動回測", org_fc, org_ec)
-    box(8.15, yb, 3.65, h, "RQ4　智慧決策",
-        "三個預警時點、Precision@K\n成本敏感的名單長度\n蒙地卡羅成本模擬\n可避免負評 → 管理建議", org_fc, org_ec)
-    for y in [yt + h / 2, yb + h / 2]:
-        arrow((3.1, y), (3.75, y))
-        arrow((7.6, y), (8.15, y))
-    arrow((5.0, yt), (5.0, yb + h), ls="--", c=blue_ec)
-    ax.text(5.1, (yt + yb + h) / 2, "BERT 交叉評分有留言的評論\n（3 星評論、隱性不滿）", fontsize=8, color=blue_ec, va="center")
-    save(fig, "research_flow.png")
+    def process(x, y, w, h, tag, title, body, hh=0.25):
+        rect(x, y, w, h, "white", LINE, z=3)
+        rect(x, y + h - hh, w, hh, ACC, LINE, z=4)
+        ax.text(x + 0.08, y + h - hh / 2, f"{tag}　{title}", ha="left", va="center", fontsize=7.4, fontweight="bold",
+                color="white", zorder=5)
+        ax.text(x + 0.09, y + (h - hh) / 2, body, ha="left", va="center", fontsize=6.6, color=TXT2, linespacing=1.55,
+                zorder=5)
+
+    def document(x, y, w, h, text, a=0.055):
+        verts = [(x, y + a), (x, y + h), (x + w, y + h), (x + w, y + a),
+                 (x + 0.72 * w, y - 0.9 * a), (x + 0.32 * w, y + 2.9 * a), (x, y + a)]
+        codes = [Path.MOVETO, Path.LINETO, Path.LINETO, Path.LINETO, Path.CURVE4, Path.CURVE4, Path.CURVE4]
+        ax.add_patch(PathPatch(Path(verts, codes), fc="white", ec=LINE, lw=LW, zorder=3))
+        ax.text(x + w / 2, y + h / 2 + a * 0.6, text, ha="center", va="center", fontsize=7.0, fontweight="bold",
+                color=TXT, linespacing=1.5, zorder=5)
+
+    def arrow(p, q, ls="-", c=LINE):
+        ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=7, lw=0.8, color=c, ls=ls,
+                                     shrinkA=0, shrinkB=0, zorder=6))
+
+    # 欄：泳道標籤｜資料來源｜研究問題與分析方法（兩欄）｜研究產出
+    xl, xd, xa, xb, xo = (0.0, 0.34), (0.47, 1.47), (1.70, 3.22), (3.44, 4.96), (5.19, 6.27)
+    head_y, head_h = 3.12, 0.28
+    lanes = [(1.79, 1.31, "人工智慧"), (0.40, 1.31, "資料探勘與智慧決策")]
+    # 表頭
+    rect(xl[0], head_y, xl[1] - xl[0], head_h, HEAD)
+    rect(xd[0] - 0.08, head_y, xd[1] - xd[0] + 0.16, head_h, HEAD)
+    rect(xa[0] - 0.08, head_y, xb[1] - xa[0] + 0.16, head_h, HEAD)
+    rect(xo[0] - 0.08, head_y, W - xo[0] + 0.08, head_h, HEAD)
+    for (x0, x1), t in [(xl, "主線"), ((xd[0] - 0.08, xd[1] + 0.08), "資料來源"),
+                        ((xa[0] - 0.08, xb[1] + 0.08), "研究問題與分析方法"), ((xo[0] - 0.08, W), "研究產出")]:
+        ax.text((x0 + x1) / 2, head_y + head_h / 2, t, ha="center", va="center", fontsize=7.6, fontweight="bold",
+                color=TXT)
+    # 泳道
+    for y0, h, name in lanes:
+        rect(xl[0], y0, xl[1] - xl[0], h, HEAD)
+        rect(xl[1] + 0.05, y0, W - xl[1] - 0.05, h, BAND)
+        ax.text((xl[0] + xl[1]) / 2, y0 + h / 2, "\n".join(name), ha="center", va="center", fontsize=7.4,
+                fontweight="bold", color=TXT, linespacing=1.08)
+    pad = 0.13
+    (ty, th, _), (by, bh, _) = lanes
+    boxes = {}
+    for (y0, h, _), dat, p1, p2, out in [
+        (lanes[0], ("評論資料", "作者公開的切分\n38,079 則評論\n（排除 3 星）"),
+         ("RQ1", "重現原論文", "TF-IDF 基準\nBERT 凍結向量 vs. 微調\n8 個種子、bootstrap 檢定\n錯誤原因分析"),
+         ("RQ2", "資料量與 LLM", "學習曲線（1k–30k 筆）\nQwen2.5 提示與 LoRA 微調\n跨資料集泛化\n準確度與運算成本"),
+         "論文結論的修正\n模型選型建議"),
+        (lanes[1], ("Olist 原始資料", "9 張資料表\n98,673 筆訂單\n2016-09 至 2018-10"),
+         ("RQ3", "負評成因", "五種分類模型＋SHAP\n因果推論（PSM、AIPW、RDD）\n負評主題與顧客分群\n文字中的隱性不滿"),
+         ("RQ4", "預警與決策", "三個預警時點比較\nPrecision@K 與成本模型\n蒙地卡羅成本模擬\n可避免負評與優先順序"),
+         "負評成因與\n七項管理建議"),
+    ]:
+        bx, bh_ = y0 + pad, h - 2 * pad
+        mid = y0 + h / 2
+        cylinder(xd[0], bx, xd[1] - xd[0], bh_, *dat)
+        process(xa[0], bx, xa[1] - xa[0], bh_, *p1)
+        process(xb[0], bx, xb[1] - xb[0], bh_, *p2)
+        document(xo[0], mid - 0.33, xo[1] - xo[0], 0.66, out)
+        arrow((xd[1], mid), (xa[0], mid))
+        arrow((xa[1], mid), (xb[0], mid))
+        arrow((xb[1], mid), (xo[0], mid))
+        boxes[p1[0]] = (bx, bh_)
+    # 跨主線：RQ1 的 BERT 套用到訂單評論
+    x_link = xa[0] + 0.42
+    arrow((x_link, boxes["RQ1"][0]), (x_link, boxes["RQ3"][0] + boxes["RQ3"][1]), ls=(0, (3, 2)), c=ACC)
+    ax.text(x_link + 0.07, (ty + by + bh) / 2, "BERT 交叉評分 40,748 則留言", ha="left", va="center", fontsize=6.4,
+            color=ACC, zorder=6)
+    # 圖例
+    ly = 0.17
+    items = []
+    lx = 1.35
+    ax.add_patch(Ellipse((lx, ly - 0.045), 0.16, 0.05, fc="white", ec=LINE, lw=0.6, zorder=3))
+    rect(lx - 0.08, ly - 0.045, 0.16, 0.09, "white", z=3)
+    ax.plot([lx - 0.08, lx - 0.08], [ly - 0.045, ly + 0.045], color=LINE, lw=0.6, zorder=4)
+    ax.plot([lx + 0.08, lx + 0.08], [ly - 0.045, ly + 0.045], color=LINE, lw=0.6, zorder=4)
+    ax.add_patch(Ellipse((lx, ly + 0.045), 0.16, 0.05, fc="white", ec=LINE, lw=0.6, zorder=4))
+    items.append((lx + 0.13, "資料"))
+    lx = 2.05
+    rect(lx - 0.08, ly - 0.06, 0.16, 0.12, "white", LINE, lw=0.6, z=3)
+    rect(lx - 0.08, ly + 0.02, 0.16, 0.04, ACC, LINE, lw=0.6, z=4)
+    items.append((lx + 0.13, "分析方法"))
+    lx = 2.92
+    a = 0.02
+    verts = [(lx - 0.08, ly - 0.06 + a), (lx - 0.08, ly + 0.06), (lx + 0.08, ly + 0.06), (lx + 0.08, ly - 0.06 + a),
+             (lx + 0.035, ly - 0.06 - a), (lx - 0.03, ly - 0.06 + 3 * a), (lx - 0.08, ly - 0.06 + a)]
+    ax.add_patch(PathPatch(Path(verts, [Path.MOVETO] + [Path.LINETO] * 3 + [Path.CURVE4] * 3), fc="white", ec=LINE,
+                           lw=0.6, zorder=3))
+    items.append((lx + 0.13, "研究產出"))
+    lx = 3.75
+    arrow((lx - 0.1, ly), (lx + 0.12, ly))
+    items.append((lx + 0.18, "流程"))
+    lx = 4.4
+    arrow((lx - 0.1, ly), (lx + 0.12, ly), ls=(0, (3, 2)), c=ACC)
+    items.append((lx + 0.18, "跨主線的連結"))
+    for x, t in items:
+        ax.text(x, ly, t, ha="left", va="center", fontsize=6.4, color=TXT2)
+    fig.savefig(FIGURES / "research_flow.png", dpi=300)
+    plt.close(fig)
+    log("已存 figures/research_flow.png")
 
 
 def fig_reviews(stats):
