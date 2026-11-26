@@ -15,12 +15,13 @@
   > GEN 名稱                由程式從 results/ 產生的附錄表格（見 GEN_TABLES）
   > REF 參考文獻一筆（*斜體*）
   > PAGEBREAK
-行內：**粗體**、*斜體*、`程式碼`
+行內：**粗體**、*斜體*、`程式碼`、[文字](網址)（可點的超連結）
 
 用法：python src/build_report.py              （產生 Word ＋ PDF）
       python src/build_report.py --no-pdf     （只產生 Word）
       python src/build_report.py --src report_精簡版 --out 報告/精簡版 --name 商業智慧期中報告_Olist評論情感分析與負評決策_精簡版
                                               （精簡版）
+      加上 --github 網址，封面會多一行可點的 GitHub 連結（目前只有精簡版使用）。
 """
 import argparse
 import re
@@ -57,6 +58,7 @@ TITLE_EN = ("Reproducing and Extending Sentiment Analysis of E-commerce Reviews 
 SHORT_TITLE = "以預訓練語言模型重現與延伸電商評論情感分析"
 # 封面資料
 COVER_INFO = [("授課教師", "陳彥良"), ("系所", "資訊管理學系碩士班"), ("學號", "115423029"), ("姓名", "羅傳勛")]
+GITHUB = None  # --github 給的網址；有給才印在封面
 LOGO = SRC / "ncu_logo.png"  # 國立中央大學校徽（Wikimedia Commons：File:NCULogo.svg，公有領域）
 
 
@@ -228,14 +230,30 @@ def header_text(section, text):
 
 
 # ============================================================ 行內格式
-INLINE = re.compile(r"(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)")
+INLINE = re.compile(r"(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)")
+LINK = re.compile(r"\[([^\]]+)\]\(([^)\s]+)\)")
+REL_LINK = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink"
+
+
+def add_link(p, text, url, size=None):
+    """可點的超連結：藍字加底線，轉成 PDF 後仍可點。"""
+    h = OxmlElement("w:hyperlink")
+    h.set(qn("r:id"), p.part.relate_to(url, REL_LINK, is_external=True))
+    r = p.add_run(text)
+    set_run_font(r, size=size, color="1F4E9A")
+    r.font.underline = True
+    h.append(r._element)  # 把 run 移進 hyperlink
+    p._p.append(h)
 
 
 def add_inline(p, text, size=None, bold=False):
     for part in INLINE.split(text):
         if not part:
             continue
-        if part.startswith("**"):
+        m = LINK.fullmatch(part)
+        if m:
+            add_link(p, m.group(1), m.group(2), size)
+        elif part.startswith("**"):
             r = p.add_run(part[2:-2])
             set_run_font(r, size=size, bold=True)
         elif part.startswith("*"):
@@ -625,7 +643,8 @@ class Builder:
     # ---- 段落
     def body(self, text):
         p = self.doc.add_paragraph()
-        para_fmt(p, align=WD_ALIGN_PARAGRAPH.JUSTIFY, first=24, spacing=1.5, after=3)
+        label = re.fullmatch(r"\*\*[^*]+\*\*：?", text.strip())  # 只有粗體小標的一行（例如「**使用的工具**：」）不縮排
+        para_fmt(p, align=WD_ALIGN_PARAGRAPH.JUSTIFY, first=0 if label else 24, spacing=1.5, after=3)
         add_inline(p, text)
 
     def bullet(self, text, level=0):
@@ -768,6 +787,11 @@ class Builder:
             p = d.add_paragraph()
             para_fmt(p, align=WD_ALIGN_PARAGRAPH.CENTER, spacing=1.6)
             set_run_font(p.add_run(line), size=14)
+        if GITHUB:
+            p = d.add_paragraph()
+            para_fmt(p, align=WD_ALIGN_PARAGRAPH.CENTER, spacing=1.6)
+            set_run_font(p.add_run("GitHub："), size=12)
+            add_link(p, GITHUB, GITHUB, size=12)
         p = d.add_paragraph()
         para_fmt(p, align=WD_ALIGN_PARAGRAPH.CENTER, spacing=1.6, before=60)
         set_run_font(p.add_run("中華民國 115 年 11 月"), size=14)
@@ -1031,7 +1055,7 @@ def find_pages(pdf, probe, front_titles):
 
 
 def main():
-    global SRC, OUT, NAME
+    global SRC, OUT, NAME, GITHUB
     ap = argparse.ArgumentParser()
     ap.add_argument("--no-pdf", action="store_true")
     ap.add_argument("--engine", choices=["auto", "word", "libreoffice"], default="auto",
@@ -1039,8 +1063,9 @@ def main():
     ap.add_argument("--src", default="report", help="章節 .md 所在資料夾（相對於專案根目錄）")
     ap.add_argument("--out", default="報告", help="輸出資料夾（相對於專案根目錄）")
     ap.add_argument("--name", default=NAME, help="輸出檔名（不含副檔名）")
+    ap.add_argument("--github", help="GitHub 網址；有給就印在封面")
     a = ap.parse_args()
-    SRC, OUT, NAME = ROOT / a.src, ROOT / a.out, a.name
+    SRC, OUT, NAME, GITHUB = ROOT / a.src, ROOT / a.out, a.name, a.github
     OUT.mkdir(parents=True, exist_ok=True)
     tmpdir = OUT / "_build"
     tmpdir.mkdir(exist_ok=True)
