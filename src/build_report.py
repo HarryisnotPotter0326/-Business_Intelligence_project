@@ -508,6 +508,66 @@ def gen_preship_backtest():
     return ["測試月份", "訂單數", "負評率 %", "原本", "改良版", "差距（百分點）"], rows, None
 
 
+def _p(x):
+    return "< 0.001" if x < 0.001 else f"{x:.3f}"
+
+
+def gen_robust_rq3():
+    r = pd.read_csv(RESULTS / "ext_robust_rq3.csv")
+    fam = {"完整特徵（依時間切分）": "完整特徵", "出貨前特徵（依時間切分）": "出貨前特徵", "出貨前特徵的改良（LightGBM）": "出貨前改良（LightGBM）"}
+    rows = [[fam[x.比較族], f"{x.方法} − {x.對照}", f"{x.方法AUC:.3f}／{x.對照AUC:.3f}",
+             f"{x.差距_百分點:+.2f}".replace("-", "−"), f"[{x.CI低:+.2f}, {x.CI高:+.2f}]".replace("-", "−"),
+             _p(x.p值), _p(x.p值_Holm)] for x in r.itertuples()]
+    return ["比較族", "比較（前者 − 後者）", "AUC", "差距（百分點）", "95% 信賴區間", "p 值", "Holm 校正後"], rows, \
+        ["l", "l", "c", "c", "c", "c", "c"]
+
+
+def gen_robust_rq4():
+    ci = pd.read_csv(RESULTS / "ext_robust_rq4.csv")
+    df = pd.read_csv(RESULTS / "ext_robust_rq4_diff.csv")
+
+    def show(m, v):
+        return f"{v:.3f}" if m == "AUC" else f"{100 * v:.1f}%"
+
+    def dshow(m, v):
+        return (f"{v:+.3f}" if m == "AUC" else f"{100 * v:+.1f}").replace("-", "−")
+    rows = [[x.時點, x.指標, show(x.指標, x.點估計), f"[{show(x.指標, x.CI低)}, {show(x.指標, x.CI高)}]", "", ""]
+            for x in ci.itertuples()]
+    rows += [[x.比較, x.指標, dshow(x.指標, x.差距), f"[{dshow(x.指標, x.CI低)}, {dshow(x.指標, x.CI高)}]", _p(x.p值), _p(x.p值_Holm)]
+             for x in df.itertuples()]
+    return ["時點或比較", "指標", "估計值", "95% 信賴區間", "p 值", "Holm 校正後"], rows, ["l", "l", "c", "c", "c", "c"]
+
+
+def gen_selection():
+    s = pd.read_csv(RESULTS / "ext_robust_selection.csv")
+    c = pd.read_csv(RESULTS / "ext_robust_comment_rate.csv")
+
+    def pc(v):
+        return "—" if pd.isna(v) else f"{100 * v:.1f}%"
+    rows = [[x.群組.replace("（原始訂單表）", ""), f"{int(x.訂單數):,}", pc(x.占全部有評論訂單), pc(x.負評率), pc(x.延遲率_已送達), pc(x.未送達率), pc(x.多賣家比例)]
+            for x in s.itertuples()]
+    hi = c[c.分組方式 != "星等"]
+    rows.append(["4–5 星的留言率", "", "", "", "", "", ""])
+    rows += [[f"　{x.組別}", f"{int(x.訂單數):,}", pc(x.留言率), "", "", "", ""] for x in hi.itertuples()]
+    return ["群組", "訂單數", "占比／留言率", "負評率", "延遲率（已送達）", "未送達率", "多賣家比例"], rows, \
+        ["l", "r", "c", "c", "c", "c", "c"]
+
+
+def gen_bridge():
+    b = pd.read_csv(RESULTS / "ext_bridge_aipw.csv")
+    av = pd.read_csv(RESULTS / "ext_bridge_avoidable.csv").set_index("組別")
+    outs = ["星等負評（1–2 星）", "星等未反映的不滿（3–5 星、文字負面）", "任一不滿（星等或文字）"]
+
+    def cell(x):
+        return f"{x.AIPW_ATT_百分點:+.1f} [{x.CI低:+.1f}, {x.CI高:+.1f}]".replace("-", "−")
+    rows = []
+    for g, d in b.groupby("組別", sort=False):
+        d = d.set_index("結果變數")
+        rows.append([g.replace(">", "＞"), f"{int(d.處理組訂單數.iloc[0]):,}"] + [cell(d.loc[o]) for o in outs])
+    rows.append(["可避免的不滿（則）", "—"] + [f"{av.loc['合計', o]:,.0f}" for o in outs])
+    return ["處理組", "訂單數", "星等負評", "星等未反映的不滿", "任一不滿"], rows, ["l", "r", "c", "c", "c"]
+
+
 def gen_files():
     rows = [
         ["common.py／monitor.py", "共用設定（路徑、離線模式、隨機種子）；進度條與 CPU／GPU 監控、記錄檔"],
@@ -538,6 +598,7 @@ def gen_files():
         ["run_night4.py", "第二輪補做的批次流程（學習曲線延長訓練、Qwen-3B 學習率、出貨前特徵改良）"],
         ["ext_preship.py", "出貨前特徵改良：延遲歷史特徵的消融比較、SHAP、預警時點、蒙地卡羅、滾動回測"],
         ["ext_error_blind.py、ext_error_recode.py、ext_error_kappa.py", "錯誤歸類的盲測表、第二次獨立歸類與 Cohen's κ"],
+        ["ext_robust.py、ext_bridge.py、run_night5.py", "補強檢驗：Holm 校正、RQ3／RQ4 的成對 bootstrap、樣本選擇檢查、以留言情緒擴充結果的 AIPW"],
         ["fig_eda.py、fig_rq12.py", "報告用圖（研究流程、EDA、RQ1／RQ2）"],
         ["summarize.py、build_report.py", "自動結果摘要；產生本報告的 Word 與 PDF"],
     ]
@@ -546,7 +607,8 @@ def gen_files():
 
 GEN_TABLES = {"frozen": gen_frozen, "sweep": gen_sweep, "llm": gen_llm, "calib": gen_calib, "cross_tfidf": gen_cross_tfidf,
               "backtest": gen_backtest, "errors": gen_errors, "files": gen_files, "lora_v2": gen_lora_v2, "ft8": gen_ft8,
-              "preship_backtest": gen_preship_backtest}
+              "preship_backtest": gen_preship_backtest, "robust_rq3": gen_robust_rq3, "robust_rq4": gen_robust_rq4,
+              "selection": gen_selection, "bridge": gen_bridge}
 
 
 # ============================================================ 解析與輸出

@@ -16,7 +16,8 @@ STATES = {"第一晚 run_all.py": ROOT / "logs" / "run_all_state.json", "第二�
           "RQ4 run_rq4.py": ROOT / "logs" / "rq4_state.json",
           "加深・白天 run_extra_cpu.py": ROOT / "logs" / "extra_cpu_state.json",
           "加深・晚上 run_extra_gpu.py": ROOT / "logs" / "extra_gpu_state.json",
-          "第四晚 run_night4.py（11/20 補做）": ROOT / "logs" / "night4_state.json"}
+          "第四晚 run_night4.py（11/20 補做）": ROOT / "logs" / "night4_state.json",
+          "第五晚 run_night5.py（11/26 補強）": ROOT / "logs" / "night5_state.json"}
 PAPER = {"TF-IDF + LR": "96.5%", "bertimbau-large 凍結": "98.1%", "bertimbau-large 微調": "97.9%"}
 
 
@@ -43,6 +44,24 @@ def pick_epoch(df, group):
                                           val_auc=("val_auc", "mean"), test_auc=("test_auc", "mean"),
                                           test_sd=("test_auc", "std")).reset_index())
     return g, g.loc[g.groupby(group).val_auc.idxmax()]
+
+
+def section_night5():
+    lines = ["## 第五晚（11/26 補強）：統計檢定、樣本選擇與兩條主線的連結"]
+    for name, title in [("ext_robust_rq1_holm.csv", "RQ1：21 組成對比較的 Holm 校正"),
+                        ("ext_robust_rq3.csv", "RQ3：模型 AUC 差距的成對 bootstrap（族內 Holm 校正）"),
+                        ("ext_robust_rq4.csv", "RQ4：三個預警時點的 95% 信賴區間"),
+                        ("ext_robust_rq4_diff.csv", "RQ4：時點之間的差距"),
+                        ("ext_robust_selection.csv", "樣本選擇：有留言 vs 沒有留言"),
+                        ("ext_robust_comment_rate.csv", "留言率（各星等；4–5 星依延遲天數）"),
+                        ("ext_bridge_aipw.csv", "延遲的因果效果：星等 vs 加入文字（AIPW）"),
+                        ("ext_bridge_avoidable.csv", "可避免的不滿：只看星等 vs 加入文字")]:
+        t = read(name)
+        if t is not None:
+            lines += [f"\n### {title}", md(t)]
+    if len(lines) == 1:
+        lines.append("（尚未執行）")
+    return "\n".join(lines) + "\n"
 
 
 def section_night4():
@@ -306,7 +325,7 @@ def section_extra():
 def main():
     text = [f"# 自動結果摘要\n\n> 由 `src/summarize.py` 自動產生，最後更新：{time.strftime('%Y-%m-%d %H:%M:%S')}。"
             "\n> 原始數字在 `results/`，完整輸出在 `logs/`。人工整理與觀察寫在 [實驗紀錄.md](實驗紀錄.md)。\n"]
-    for f in [section_status, section_night4, section_rq1, section_dropout, section_significance, section_sweep, section_rq2_curve, section_rq2_llm, section_rq3, section_rq4, section_extra]:
+    for f in [section_status, section_night5, section_night4, section_rq1, section_dropout, section_significance, section_sweep, section_rq2_curve, section_rq2_llm, section_rq3, section_rq4, section_extra]:
         try:
             text.append(f())
         except Exception as e:  # 某一段整理失敗不影響其他段

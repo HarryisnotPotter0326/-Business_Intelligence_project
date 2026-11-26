@@ -1,0 +1,16 @@
+{
+  "robust": {
+    "title": "統計檢定補強：RQ1 多重比較校正、RQ3 模型差距、RQ4 預警時點的信賴區間、樣本選擇（CPU）",
+    "status": "完成",
+    "start": "11-26 11:38",
+    "minutes": 2.8,
+    "log": "logs\\ext_robust_20261126_113810.log"
+  },
+  "bridge": {
+    "title": "兩條主線的連結：以「星等或文字」定義不滿，重估延遲的因果效果（CPU）",
+    "status": "完成",
+    "start": "11-26 11:40",
+    "minutes": 0.4,
+    "log": "logs\\ext_bridge_20261126_114059.log"
+  }
+}

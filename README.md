@@ -64,6 +64,7 @@ python src/download_models.py qwen-0.5b qwen-1.5b qwen-3b      # Qwen2.5，約 1
 | 3 | `python src/run_rq3.py --redo`<br>`python src/run_rq4.py --redo` | RQ3 資料探勘、RQ4 決策分析 |
 | 4 | `python src/run_extra_cpu.py --redo`<br>`python src/run_extra_gpu.py --redo` | 加深實驗（因果推論、回測、跨資料集、錯誤分析等） |
 | 5 | `python src/run_night4.py --redo`<br>`python src/ext_error_recode.py` | 第二輪補做（學習曲線延長訓練、Qwen-3B 學習率、出貨前特徵改良、錯誤歸類的重測信度） |
+| 5b | `python src/run_night5.py --redo` | 補強檢驗（多重比較校正、RQ3／RQ4 的成對 bootstrap、樣本選擇、以留言情緒擴充結果變數的 AIPW；只用 CPU，約 3 分鐘） |
 | 6 | `python src/fig_eda.py`<br>`python src/fig_rq12.py` | 報告用圖 |
 | 7 | `python src/build_report.py`<br>`python src/build_report.py --src report_精簡版 --out 報告/精簡版 --name 商業智慧期中報告_Olist評論情感分析與負評決策_精簡版` | 產生報告的 Word 與 PDF（完整版、精簡版；PDF 需要 Word 或 LibreOffice） |
 
@@ -101,6 +102,7 @@ python src/download_models.py qwen-0.5b qwen-1.5b qwen-3b      # Qwen2.5，約 1
 | `ext_cluster2.py` | 購物經驗分群（K-means、GMM） |
 | `ext_montecarlo.py` | 成本不確定下的蒙地卡羅模擬 |
 | `run_night4.py` | 第二輪補做的批次流程 |
+| `run_night5.py`、`ext_robust.py`、`ext_bridge.py` | 補強檢驗：Holm 校正、RQ3 模型與 RQ4 預警時點的成對 bootstrap、有留言 vs 沒有留言的樣本選擇、以留言情緒擴充結果變數的 AIPW |
 | `ext_preship.py` | 出貨前特徵改良：延遲歷史特徵的消融比較、SHAP、預警時點、蒙地卡羅、滾動回測 |
 | `ext_error_blind.py`、`ext_error_recode.py`、`ext_error_kappa.py` | 錯誤歸類的盲測表、第二次獨立歸類與 Cohen's κ |
 | `ext_apply_bert.py` | BERT 交叉評分有留言的評論（3 星、隱性不滿） |
